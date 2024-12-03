@@ -86,13 +86,15 @@ const Home = () => {
   </div>
 </div>
 
-<section className="white-container">
-  <h3>Discover the Power of Accessible Learning</h3>
+<div className="white-container">
+  <div className="mustard-line"></div>
+  <h2>Fixed Height Container</h2>
   <p>
-    Our mission is to make quality education available to everyone, regardless of language
-    barriers. Join us in transforming how the world learns, one video at a time.
+    This container has a fixed height, and a mustard-colored line is drawn at
+    the top with specific spacing from the edges.
   </p>
-</section>
+</div>
+
 
       <Footer />
     </div>

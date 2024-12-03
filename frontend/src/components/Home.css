@@ -199,15 +199,25 @@
   background-color: #8F7131; /* Line color */
 }
 .white-container {
-  width: 100%; /* Width adjusts to the page or parent element */
-  height: 400px; /* Fixed height */
-  background-color: white; /* Optional background color */
-  padding: 20px; /* Inner spacing */
-  box-sizing: border-box; /* Ensures padding doesn't add to width/height */
-  overflow-y: auto; /* Adds a vertical scrollbar if content overflows */
-  margin: 20px 0; /* Space above and below */
-  border: 1px solid #ddd; /* Optional border */
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  position: relative; /* To position the line inside the container */
+}
 
+.mustard-line {
+  position: absolute;
+  top: 40px; /* Distance from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to align center */
+  width: 450px; /* The width of the line */
+  height: 2px; /* Height of the line */
+  background-color: #8F7131; /* Mustard color */
 }
 
 .white-container h3 {
@@ -224,5 +234,4 @@
   color: #4A4A4A; /* Grey text */
   line-height: 1.5; /* Line spacing */
 }
-
 
