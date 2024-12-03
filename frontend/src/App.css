@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: 'Instrument Sans', sans-serif;
+  background-color: #E7E7DF; /* Light background */
+  color: #263754; /* Dark text */
+}
+
+.App {
+  text-align: center;
+}

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between; /* Align logo and right corner items */
+  align-items: center;
+  padding: 20px;
+  background-color: #E7E7DF; /* Optional background */
+  color: black;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.logo span {
+  font-family: 'Inria Sans', sans-serif;  /* Apply Inria Sans */
+  font-weight: 300; /* Light weight */
+  font-size: 20px;  /* Font size 20px */
+}
+.nav-links {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+  position: relative; /* To position the border relative to each list item */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+/* Add border line below each link */
+.nav-links li:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;  /* Adjust if you want more or less space between the text and the line */
+  left: 50%;
+  transform: translateX(-50%); /* Center the line */
+  width: 200px;  /* The width of the line */
+  height: 2px;  /* Height of the line */
+  background-color: #8F7131;  /* Line color */
+}
+
+.nav-links a:hover {
+  color: #4873af; /* Hover effect */
+}
+
+/* Right corner - Get Info Button and Icons */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.get-info-btn {
+  background-color: #3d3c3c; /* Button background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px; /* Rounded border */
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
+  font-family: 'Instrument Sans', sans-serif; /* Apply Instrument Sans font */
+}
+
+.get-info-btn:hover {
+  background-color: #333; /* Slightly darker on hover */
+}
+
+
+/* Icon Containers */
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  background-color: #3d3c3c; /* Background color for icons */
+  color: white; /* White color for icons */
+  padding: 10px;
+  border-radius: 50%; /* Circle shape for icons */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+  background-color: #333; /* Darker background on hover */
+}
+
+.search-icon i,
+.menu-icon i {
+  font-size: 15px; /* Icon size */
+}

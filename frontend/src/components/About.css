@@ -1,0 +1,43 @@
+.about-container {
+    padding: 50px;
+    background-color: #e8ecf6; /* Light background */
+    color: #263754; /* Dark text */
+    font-family: Arial, sans-serif;
+  }
+  
+  .about-heading {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .about-paragraph {
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  .about-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .about-buttons button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4873af;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  
+  .about-buttons button:hover {
+    background-color: #325386;
+  }
+  
