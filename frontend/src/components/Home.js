@@ -86,15 +86,13 @@ const Home = () => {
   </div>
 </div>
 
-<div className="white-container">
-  <div className="mustard-line"></div>
-  <h2>Fixed Height Container</h2>
-  <p>
-    This container has a fixed height, and a mustard-colored line is drawn at
-    the top with specific spacing from the edges.
-  </p>
+<div class="white-container">
+  <div class="mustard-line"></div>
+  <p>Main content of the container</p>
+  <p class="additional-text">- Dr. Sana Shams</p>
+  <p class="second-text">Principle Manager at CLE, KICKS, UET, Lahore</p>
+  <button class="team-button">About Our Team</button>
 </div>
-
 
       <Footer />
     </div>

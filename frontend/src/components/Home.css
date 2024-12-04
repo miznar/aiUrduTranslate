@@ -207,31 +207,64 @@
   overflow-y: auto;
   margin: 20px 0;
   border: 1px solid #ddd;
-  position: relative; /* To position the line inside the container */
+  position: relative;
 }
 
 .mustard-line {
   position: absolute;
-  top: 40px; /* Distance from the top */
+  top: 40px; /* Distance from the top for the top line */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust to align center */
-  width: 450px; /* The width of the line */
+  width: 450px; /* Width of the line */
   height: 2px; /* Height of the line */
   background-color: #8F7131; /* Mustard color */
 }
 
-.white-container h3 {
-  font-family: 'Instrument Sans', sans-serif; /* Font for the header */
-  font-size: 28px; /* Font size */
-  font-weight: bold; /* Bold text */
-  color: #000000; /* Black text */
-  margin-bottom: 10px; /* Space below the header */
-}
-
 .white-container p {
-  font-family: "inter-variable", sans-serif; /* Font for the paragraph */
+  font-family: "inria-sans", sans-serif;
   font-size: 18px; /* Font size */
   color: #4A4A4A; /* Grey text */
   line-height: 1.5; /* Line spacing */
+  margin-top: 60px; /* Space between mustard line and the paragraph */
 }
 
+.additional-text {
+  margin-top: 50px; /* Space from the above text */
+  margin-left: 300px; /* Move the text slightly to the right */
+  font-family: "inria-sans", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  line-height: 3;
+}
+
+.second-text {
+  margin-top: 0%; /* Reduced space from the first additional text */
+  margin-left: 90px; /* Align with the first additional text */
+  font-family: "inria-sans", sans-serif;
+  font-size: 18px;
+  color: #4A4A4A;
+  line-height: 1.5;
+}
+
+.team-button {
+  position: absolute; /* Position it relative to the container */
+  bottom: 30px; /* Adjust spacing from the bottom */
+  left: 670px; /* Align with the starting position of the line */
+  padding: 15px 30px; /* Button padding */
+  font-family: "inria-sans", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black; /* Initial text color */
+  background-color: white; /* Initial button background */
+  border: 1px solid black; /* Black border initially */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transitions */
+}
+
+.team-button:hover {
+  border-color: black; /* Outline stays black on hover */
+  color: white; /* Text turns white */
+  background-color: black; /* Background turns black */
+}
