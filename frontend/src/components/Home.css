@@ -269,7 +269,8 @@
   background-color: black; /* Background turns black */
 }
 .new-container {
-  width: 100%;
+  width: 100%; /* Full width */
+  max-width: 1750px; /* Maximum width for large screens */
   height: 300px;
   background-color: #143950; /* Mustard color */
   color: white; /* Text color white for contrast */

@@ -1,54 +1,88 @@
 .footer {
-    background-color: #143950; /* Mustard color */
-    color: #f4f6fb; /* Light text */
-    padding: 30px 20px;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0;
-  }
-  
-  .footer-links li {
-    margin: 0 15px;
-  }
-  
-  .footer-links a {
-    color: #f4f6fb;
-    text-decoration: none;
-    font-size: 16px;
-  }
-  
-  .footer-links a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-socials {
-    margin-top: 15px;
-  }
-  
-  .footer-socials a {
-    margin: 0 10px;
-    color: #f4f6fb;
-    font-size: 20px;
-    text-decoration: none;
-  }
-  
-  .footer-socials a:hover {
-    color: #6b91c5;
-  }
-  
-  .footer-note {
-    margin-top: 20px;
-    font-size: 14px;
-    opacity: 0.8;
-  }
-  
+  background-color: #143950; /* Dark background color */
+  color: #f4f6fb; /* Light text color */
+  padding: 50px 20px; /* Increased padding for height */
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-between; /* Align left and right sections */
+  align-items: flex-start; /* Align content at the top */
+  min-height: 200px; /* Ensures minimum footer height */
+}
+
+.footer-left {
+  text-align: left;
+  margin-left: 10px; /* Set uniform left alignment for the entire section */
+  max-width: 50%; /* Prevent text from stretching too wide */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 50px; /* Adds space between the heading and paragraph */
+}
+
+.footer-left h2,
+.footer-left p {
+  margin: 0; /* Remove extra margins */
+  padding-left: 20px; /* Add uniform padding for consistent left alignment */
+}
+
+.footer-left h2 {
+  font-size: 30px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.footer-left p {
+  font-size: 20px;
+  font-family: "inria-sans", sans-serif;
+  line-height: 1.5;
+  opacity: 0.9; /* Slightly dimmer for paragraph text */
+}
+
+
+.footer-right {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsive design */
+  justify-content: flex-start; /* Align items to the left */
+  gap: 20px; /* Add spacing between items */
+  max-width: 50%; /* Prevent items from stretching too wide */
+  margin-top: 60px; /* Move right section slightly downward */
+}
+
+.footer-item {
+  flex: 0 0 45%; /* Two items side-by-side (45% width each) */
+  text-align: left;
+}
+
+.footer-item-full {
+  flex: 0 0 45%; /* Full-width for the third item */
+  margin-top: 20px; /* Ensure the third item starts below the other two */
+}
+
+.footer-item h2 {
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  align-items: center; /* Align arrow and text vertically */
+  margin: 0 0 0 0; /* Remove spacing below the heading */
+}
+
+.footer-item .arrow {
+  color: #8F7131; /* Mustard arrow color */
+  font-size: 30px; /* Increase the size of the arrow */
+  font-weight: bold; /* Make the arrow thicker */
+  margin-right: 0px; /* Remove right margin for tighter spacing */
+  padding-left: 5px; /* Add a little space on the left of the arrow to move it closer to the text */
+  transform: scaleX(1.5); /* Stretch the arrow horizontally to make it appear longer */
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.footer-item .arrow:hover {
+  transform: scaleX(1.5) translateX(5px); /* Move the arrow 5px to the right on hover */
+}
+
+
+.footer-item p {
+  font-size: 16px;
+  font-family: 'Instrument Sans', sans-serif; /* Apply Instrument Sans font */
+  line-height: 1.5;
+  margin: 0; /* Remove extra spacing */
+  opacity: 0.9; /* Slightly dimmer text */
+}

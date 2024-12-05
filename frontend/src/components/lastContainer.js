@@ -6,14 +6,13 @@ const LastContainer = () => {
     <div className="last-container">
       {/* Main Text Section */}
       <h2>Unlock New Horizons</h2>
-            <p>
-            Our platform is now live for course access and translations!
-            </p>
-            <ul>
-            <li>Explore Translations: Access expertly translated educational content in diverse subjects.</li>
-            <li>Get Started: Begin your journey with seamless video translation today!</li>
-            </ul>
-
+      <p>
+        Our platform is now live for course access and translations!
+      </p>
+      <ul>
+        <li>Explore Translations: Access expertly translated educational content in diverse subjects.</li>
+        <li>Get Started: Begin your journey with seamless video translation today!</li>
+      </ul>
 
       {/* Circle Buttons */}
       <div className="circle-container">
@@ -26,20 +25,21 @@ const LastContainer = () => {
 
       {/* Footer Section Below the Line */}
       <div className="lastContainerfooter">
-        <div className="footer-left">
-          <span>MyTranslateAI Login</span>
-          <span>Contact Us</span>
+        <div className="lastContainerfooter-left">
+          {/* Clickable Links */}
+          <a href="/login" className="lastContainerfooter-link">MyTranslateAI Login</a>
+          <a href="/contact" className="lastContainerfooter-link">Contact Us</a>
         </div>
 
-        <div className="footer-right">
+        <div className="lastContainerfooter-right">
           <span>Follow TranslateAI</span>
-          <div className="footer-icon">
+          <div className="lastContainerfooter-icon">
             <i className="fab fa-youtube"></i>
           </div>
-          <div className="footer-icon">
+          <div className="lastContainerfooter-icon">
             <i className="fab fa-instagram"></i>
           </div>
-          <div className="footer-icon">
+          <div className="lastContainerfooter-icon">
             <i className="fab fa-linkedin"></i>
           </div>
         </div>
