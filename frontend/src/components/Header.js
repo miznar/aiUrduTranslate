@@ -7,7 +7,7 @@ const Header = () => {
     <header className="header">
       {/* Logo Section */}
       <div className="logo">
-        <div className="circle"></div>
+        <div className="headercircle"></div>
         <span>TranslateAI</span>
       </div>
 

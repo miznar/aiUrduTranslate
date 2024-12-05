@@ -1,16 +1,10 @@
-import './About.css';
+import React from 'react';
 
 const About = () => {
   return (
-    <div className="about-container">
-      <h1 className="about-heading">About Us</h1>
-      <p className="about-paragraph">
-        TranslateAI is a platform dedicated to breaking language barriers in education by providing Urdu translations for global educational content.
-      </p>
-      <div className="about-buttons">
-        <button>Learn More</button>
-        <button>Contact Us</button>
-      </div>
+    <div>
+      <h1>About Our Team</h1>
+      <p>Details about the team go here.</p>
     </div>
   );
 };
