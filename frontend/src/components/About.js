@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 import './About.css';
 import Header from './Header';
 import Footer from './Footer';
-=======
-import React from 'react';
->>>>>>> b1d0049bc32db985417a26cd2682e86011da5642
 
 const About = () => {
   return (
     <div>
-<<<<<<< HEAD
       <Header />
 
       {/* Video Section */}
@@ -83,10 +78,6 @@ const About = () => {
         </section>
       </div>
       <Footer />
-=======
-      <h1>About Our Team</h1>
-      <p>Details about the team go here.</p>
->>>>>>> b1d0049bc32db985417a26cd2682e86011da5642
     </div>
   );
 };
