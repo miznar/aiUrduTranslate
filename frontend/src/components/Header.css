@@ -23,11 +23,13 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .logo span {
   font-family: 'Inria Sans', sans-serif;  /* Apply Inria Sans */
   font-weight: 300; /* Light weight */
   font-size: 20px;  /* Font size 20px */
 }
+
 .nav-links {
   display: flex;
   list-style-type: none;
@@ -47,18 +49,6 @@
   font-weight: 500;
   font-size: 16px;
   transition: color 0.3s;
-}
-
-/* Add border line below each link */
-.nav-links li:after {
-  content: "";
-  position: absolute;
-  bottom: -20px;  /* Adjust if you want more or less space between the text and the line */
-  left: 50%;
-  transform: translateX(-50%); /* Center the line */
-  width: 200px;  /* The width of the line */
-  height: 2px;  /* Height of the line */
-  background-color: #8F7131;  /* Line color */
 }
 
 .nav-links a:hover {
@@ -88,7 +78,6 @@
   background-color: #333; /* Slightly darker on hover */
 }
 
-
 /* Icon Containers */
 .icons {
   display: flex;
@@ -109,6 +98,15 @@
 
 .icon:hover {
   background-color: #333; /* Darker background on hover */
+}
+
+.icons .icon a {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Set default color to white */
+}
+
+.icons .icon a:hover {
+  color: white; /* Keep hover color white */
 }
 
 .search-icon i,

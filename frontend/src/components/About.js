@@ -1,82 +1,116 @@
 import './About.css';
 import Header from './Header';
 import Footer from './Footer';
+import LastContainer from './lastContainer';
 
 const About = () => {
   return (
     <div>
       <Header />
+      <div className="about-us">
+        <h1 className="main-heading">About Us</h1>
+        <p className="tagline">
+          "Connecting Knowledge, Cultures, and Communities Through Language."
+        </p>
 
-      {/* Video Section */}
-      <div className="about-video">
-        <video
-          width="100%"
-          height="auto"
-          autoPlay
-          loop
-          muted
-          playsInline
-          controls={false} // This removes the controls (time, pause/play, etc.)
-        >
-          <source src="/videos/about-us.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      {/* About Us */}
-      <div className="about-content">
-        <div className="about-text">
-          <h2>About Us</h2>
-          <p>
-            Welcome to TranslateAI, where we bridge the gap between language and learning.
-            Our mission is to empower Urdu-speaking students and educators by translating
-            educational video lectures into Urdu, making knowledge accessible to everyone.
-          </p>
-          <p>
-            Our platform leverages cutting-edge AI technology to ensure that each translation is
-            accurate, contextually relevant, and easy to understand. Whether you're a student eager
-            to learn or a teacher looking to enhance your lessons, TranslateAI offers a seamless
-            experience that helps bridge the language divide.
-          </p>
+        <div className="image-container">
+          <div className="image-box">
+            <img src="/trans.png" alt="Translation" />
+          </div>
+          <div className="image-box"></div>
+          <div className="image-box"></div>
         </div>
 
-        <div className="about-image">
-          <img src="/trans.png" alt="About Us" />
-        </div>
-      </div>
+        <div className="content-container">
+          <div className="section white-box">
+            <h2 className="section-heading">Who We Are?</h2>
+            <p className="section-text">
+              "We’re dreamers, doers, and problem-solvers.
+              <strong> Our mission?</strong> To ensure that language is no longer a barrier to education. By translating English educational content into Urdu, we’re opening doors for millions of learners to connect with world-class knowledge, wherever they are."
+            </p>
+          </div>
 
-      {/* Mission section */}
-      <div class="mission-heading" >
-      <section class="mission-container">
-        <div class="mission-heading">
-          <h2>Our Mission</h2>
-        </div>
-        <div class="mission-text">
-          <p>"To eliminate language barriers in education by leveraging cutting-edge AI and
-            machine learning technologies for precise and meaningful translations."</p>
-          <div>
-            <div className="about-buttons">
-              <button>Learn More</button>
-              <button>Contact Us</button>
-            </div>
+          <div className="section white-box">
+            <h2 className="section-heading">Our Why</h2>
+            <p className="section-text">
+              <strong>Why did we start this journey? </strong>
+              Because we believe every learner, regardless of language or location, deserves access to the same opportunities. <br />
+              Because education is not just information—it's empowerment, and no one should be left behind."
+            </p>
           </div>
         </div>
-      </section>
       </div>
 
+      <div className="about-page">
+        <div className="video-container">
+          <div className="video-placeholder">here comes the video</div>
+        </div>
 
-      <div>
-        <section class="why-choose-us">
-          <h2>Why Choose Us?</h2>
-          <ul>
-            <li><strong>Advanced AI-driven translation</strong> for accuracy and cultural relevance.</li>
-            <li><strong>Comprehensive support</strong> for various educational fields.</li>
-            <li><strong>A focus on inclusivity and accessibility</strong> for Urdu speakers.</li>
-            <li><strong>Highly reliable</strong> and efficient translation models ensuring high-quality results.</li>
-            <li><strong>Continuous improvements</strong> through feedback and advanced AI techniques.</li>
-          </ul>
-        </section>
+        <div className="text-section">
+          <p className="text">
+            "Imagine a world where learning has no boundaries—where a student in
+            Karachi can absorb a lecture from MIT as easily as a student in
+            Boston. That’s the future we’re building."
+          </p>
+        </div>
+
+        <div>
+          <section className="what-sets-us-apart">
+            <h2>What Sets Us Apart?</h2>
+            <div className="apart-item">
+              <h3>1. Precision, Not Just Translation</h3>
+              <p>"Our AI understands context, nuance, and the art of teaching—not just words."</p>
+            </div>
+
+            <div className="apart-item">
+              <h3>2. Learning Tailored to You</h3>
+              <p>"We customize translations for academic needs, ensuring relevance and clarity."</p>
+            </div>
+
+            <div className="apart-item">
+              <h3>3. Empowering Diversity</h3>
+              <p>"Celebrating cultures by making global education accessible to Urdu speakers."</p>
+            </div>
+          </section>
+        </div>
+
+        <div className="voices-container">
+      <h2>Voices Behind the Vision</h2>
+      <div className="quotes-section">
+
+      <div className="quote-item">
+          <p>everybody’s one line quote</p>
+          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+        </div>
+
+        <div className="quote-item">
+          <p>everybody’s one line quote</p>
+          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+        </div>
+
+        <div className="quote-item">
+          <p>everybody’s one line quote</p>
+          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+        </div>
+
+        <div className="quote-item">
+          <p>everybody’s one line quote</p>
+          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+        </div>
       </div>
+      
+      <div className="education-section">
+        <h3>What Drives You?</h3>
+        <textarea
+          placeholder="What does education mean to you?"
+          className="education-textarea"
+        ></textarea>
+      </div>
+    </div>
+
+
+      </div>
+      <LastContainer />
       <Footer />
     </div>
   );

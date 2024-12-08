@@ -31,7 +31,9 @@ const Header = () => {
         <button className="get-info-btn">Get Info</button>
         <div className="icons">
           <div className="icon search-icon">
+            <Link to = "/search">
             <i className="fa fa-search"></i>
+            </Link>
           </div>
           <div className="icon menu-icon">
             <i className="fa fa-bars"></i>
