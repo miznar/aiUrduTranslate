@@ -2,13 +2,13 @@
 
 .about-us {
   font-family: Arial, sans-serif;
-  color: #000;
+  color: #000000;
   background-color: #f9f9f9;
   padding: 20px;
 }
 
 .main-heading {
-  color: #263754;
+  color: #000000;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -17,15 +17,15 @@
   font-style: italic;
   text-align: center;
   margin-bottom: 30px;
-  color: #263754;
+  color: #000000;
 }
 
 /* Image Container */
 .image-container {
   display: inline-flex;
   justify-content: space-around;
-  margin-bottom: 30px;
-  gap: 40px;
+  margin-bottom: 40px;
+  gap: 70px;
 }
 
 .image-box {
@@ -47,11 +47,14 @@
 }
 
 .white-box {
-  background-color: #fff; /* Pure white container */
+  /* background-color: #fff; 
   padding: 35px;
   margin-bottom: 20px;
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  padding-right: 150px;
+  padding-left: 225px;
+  text-align: center;
 }
 
 .section {
@@ -59,7 +62,7 @@
 }
 
 .section-heading {
-  color: #263754;
+  color: #000000;
   margin-bottom: 10px;
   text-align: left; /* Align heading to the left */
   font-size: 32px;
@@ -90,9 +93,9 @@
 }
 
 .video-placeholder {
-  background-color: #555;
+  background-color: #000000;
   color: #fff;
-  width: 80%;
+  width: 65%;
   height: 200px;
   display: flex;
   justify-content: center;
@@ -104,7 +107,8 @@
 
 /* Text Section */
 .text-section {
-  margin: 20px 0;
+  padding-left: 200px;
+  padding-right: 160px;
 }
 
 .heading {
@@ -115,16 +119,16 @@
 }
 
 .text {
-  margin-top: 30px;
+  margin-top: 40px;
   font-size: 18px;
+  font-style: italic;
   color: black;
-  text-align: center;
+  text-align: left;
 }
 
 /* Section styling */
 .what-sets-us-apart {
-  background-color: white;
-  padding: 40px;
+  padding-left: 200px;
   border-radius: 25px;
   margin: 40px 0;
   text-align: left; 
@@ -133,7 +137,7 @@
 .what-sets-us-apart h2 {
   font-size: 32px;
   font-weight: bold;
-  color: #263754;
+  color: #000000;
   text-align: left;
   margin-top: 10px;
 }
@@ -141,7 +145,7 @@
 .apart-item h3 {
   font-size: 20px;
   font-weight: bold;
-  color: #263754;
+  color: #000000;
 }
 
 .apart-item p {
@@ -152,11 +156,10 @@
 
 .voices-container {
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding-left: 2px;
+  padding-right: 210px;
   max-width: 600px;
   margin: 0 auto;
-  /* background-color: #f9f9f9; */
-  /* border: 1px solid #ddd; */
   border-radius: 8px;
 }
 
@@ -164,11 +167,14 @@ h2 {
   font-size: 32px;
   margin-bottom: 20px;
   text-align: center;
+  padding-right: 210px;
+  color: #000000;
 }
 
 .quotes-section {
   display: grid;
   gap: 20px;
+  color: #000;
 }
 
 .quote-item {
@@ -176,8 +182,6 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  /* background-color: #fff; */
-  /* border: 1px solid #ddd; */
   border-radius: 8px;
 }
 
@@ -202,22 +206,22 @@ h2 {
 
 .education-section {
   margin-top: 20px;
-  
+  color: #000000;
 }
 
 .education-section h3 {
   font-size: 32px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
 .education-textarea {
   width: 100%;
-  height: 100px;
+  height: 80px;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px;
   resize: none;
 }
 
