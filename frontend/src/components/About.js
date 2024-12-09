@@ -13,6 +13,7 @@ const About = () => {
           "Connecting Knowledge, Cultures, and Communities Through Language."
         </p>
 
+        {/* image boxes */}
         <div className="image-container">
           <div className="image-box">
             <img src="/trans.png" alt="Translation" />
@@ -21,6 +22,7 @@ const About = () => {
           <div className="image-box"></div>
         </div>
 
+        {/* Headings and text */}
         <div className="content-container">
           <div className="section white-box">
             <h2 className="section-heading">Who We Are?</h2>
@@ -34,13 +36,14 @@ const About = () => {
             <h2 className="section-heading">Our Why</h2>
             <p className="section-text">
               <strong>Why did we start this journey? </strong>
-              Because we believe every learner, regardless of language or location, deserves access to the same opportunities. <br />
+              Because we believe every learner, regardless of language or location, deserves access to the same opportunities.
               Because education is not just information—it's empowerment, and no one should be left behind."
             </p>
           </div>
         </div>
       </div>
 
+      {/* Video */}
       <div className="about-page">
         <div className="video-container">
           <div className="video-placeholder">here comes the video</div>
