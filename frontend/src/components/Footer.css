@@ -3,25 +3,26 @@
   color: #f4f6fb; /* Light text color */
   padding: 50px 20px; /* Increased padding for height */
   font-family: Arial, sans-serif;
+}
+
+.footer-content {
   display: flex;
   justify-content: space-between; /* Align left and right sections */
   align-items: flex-start; /* Align content at the top */
-  min-height: 200px; /* Ensures minimum footer height */
+  flex-wrap: wrap; /* For responsive design */
 }
 
 .footer-left {
   text-align: left;
-  margin-left: 10px; /* Set uniform left alignment for the entire section */
   max-width: 50%; /* Prevent text from stretching too wide */
   display: flex;
   flex-direction: column; /* Stack children vertically */
-  gap: 50px; /* Adds space between the heading and paragraph */
+  gap: 20px; /* Adds space between the heading and paragraph */
 }
 
 .footer-left h2,
 .footer-left p {
   margin: 0; /* Remove extra margins */
-  padding-left: 20px; /* Add uniform padding for consistent left alignment */
 }
 
 .footer-left h2 {
@@ -31,29 +32,27 @@
 
 .footer-left p {
   font-size: 20px;
-  font-family: "inria-sans", sans-serif;
+  font-family: "Inria Sans", sans-serif;
   line-height: 1.5;
   opacity: 0.9; /* Slightly dimmer for paragraph text */
 }
 
-
 .footer-right {
+  text-align: left;
   display: flex;
+  align-items: flex-start; /* Align content at the top */
   flex-wrap: wrap; /* Allow wrapping for responsive design */
   justify-content: flex-start; /* Align items to the left */
   gap: 20px; /* Add spacing between items */
   max-width: 50%; /* Prevent items from stretching too wide */
-  margin-top: 60px; /* Move right section slightly downward */
 }
 
 .footer-item {
   flex: 0 0 45%; /* Two items side-by-side (45% width each) */
-  text-align: left;
 }
 
 .footer-item-full {
-  flex: 0 0 45%; /* Full-width for the third item */
-  margin-top: 20px; /* Ensure the third item starts below the other two */
+  flex: 0 0 45%; /* Full width for the third item */
 }
 
 .footer-item h2 {
@@ -61,28 +60,30 @@
   font-family: 'Oswald', sans-serif;
   display: flex;
   align-items: center; /* Align arrow and text vertically */
-  margin: 0 0 0 0; /* Remove spacing below the heading */
 }
 
 .footer-item .arrow {
   color: #8F7131; /* Mustard arrow color */
   font-size: 30px; /* Increase the size of the arrow */
-  font-weight: bold; /* Make the arrow thicker */
-  margin-right: 0px; /* Remove right margin for tighter spacing */
-  padding-left: 5px; /* Add a little space on the left of the arrow to move it closer to the text */
-  transform: scaleX(1.5); /* Stretch the arrow horizontally to make it appear longer */
-  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+  margin-left: 20px;
+  transform: scaleX(1.5); /* Stretch the arrow horizontally */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .footer-item .arrow:hover {
   transform: scaleX(1.5) translateX(5px); /* Move the arrow 5px to the right on hover */
 }
 
-
 .footer-item p {
   font-size: 16px;
-  font-family: 'Instrument Sans', sans-serif; /* Apply Instrument Sans font */
+  font-family: 'Instrument Sans', sans-serif;
   line-height: 1.5;
-  margin: 0; /* Remove extra spacing */
   opacity: 0.9; /* Slightly dimmer text */
+}
+
+.footer-line {
+  width: 100%; /* Full width of the footer */
+  height: 2px; /* Thickness of the line */
+  background-color: #8F7131; /* Mustard color */
+  margin-top: 70px; /* Space between content and line */
 }
