@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Home.css';
-import Header from './Header';
+import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
 
