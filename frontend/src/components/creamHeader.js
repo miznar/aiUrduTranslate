@@ -35,8 +35,11 @@ const Header = () => {
             <i className="fa fa-search"></i>
             </Link>
           </div>
+
           <div className="icon menu-icon">
+            <Link to = "/blog">
             <i className="fa fa-bars"></i>
+            </Link>
           </div>
         </div>
       </div>

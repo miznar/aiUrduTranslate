@@ -121,7 +121,7 @@
 .blog-section h4:after {
     content: '';
     display: block;
-    width: 1690%;
+    width: 1420%;
     height: 1px;
     background-color: black;
     margin-top: 5px;
@@ -135,7 +135,7 @@
 
 .blog-item h3 {
     font-size: 14px;
-    color: #eab854;
+    color: #8F7131;
     margin-bottom: 5px;
     padding-right: 450px;
 }
@@ -190,4 +190,5 @@ hr {
     border-top: 1px solid #000000;
     margin: 10px 0;
     margin-left: 130px;
+    width: 600px;
 }
