@@ -14,6 +14,8 @@
 
 .footer-left {
   text-align: left;
+  color: #f4f6fb; /* Light text color */
+
   max-width: 50%; /* Prevent text from stretching too wide */
   display: flex;
   flex-direction: column; /* Stack children vertically */
@@ -40,6 +42,8 @@
 
 .footer-right {
   text-align: left;
+  color: #f4f6fb; /* Light text color */
+
   display: flex;
   align-items: flex-start; /* Align content at the top */
   flex-wrap: wrap; /* Allow wrapping for responsive design */
