@@ -1,4 +1,5 @@
 import './Signup.css';
+import Signup2 from './Signup-pg2';
 
 const Signup = () => {
     return (
@@ -16,7 +17,7 @@ const Signup = () => {
                     </button>
                 </form>
                 <p className="signup-login">
-                    Already have an account? <a href="/login">Login</a>
+                    Already have an account? <a href="/signup2">Login</a>
                 </p>
                 <div className="signup-divider">
                     <hr className="divider-line" />
