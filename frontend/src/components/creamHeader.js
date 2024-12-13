@@ -21,7 +21,7 @@ const Header = () => {
             <Link to="/about" style={{ fontWeight: 'bold' }}>About us</Link>
           </li>
           <li>
-            <a href="#login" style={{ fontWeight: 'bold' }}>TranslateAI Login</a>
+            <a href="/signup" style={{ fontWeight: 'bold' }}>TranslateAI Login</a>
           </li>
         </ul>
       </nav>
