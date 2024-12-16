@@ -6,6 +6,7 @@ import Search from './components/Search';
 import Blog from './components/Blog';
 import Signup from './components/Signup';
 import Signup2 from './components/Signup-pg2';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup2" element={<Signup2 />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
     </div>
   );

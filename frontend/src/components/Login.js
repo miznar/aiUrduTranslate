@@ -1,39 +1,38 @@
-import './Signup.css';
-import Signup2 from './Signup-pg2';
+import './Login.css';
 
-const Signup = () => {
+const Login = () => {
     return (
             <div >
-                <h1 className="signup-title">Create an Account</h1>
-                <form className="signup-form">
+                <h1 className="login-title">Welcome Back</h1>
+                <form className="login-form">
                     <input
                         type="email"
                         placeholder="Email address*"
-                        className="signup-input"
+                        className="login-input"
                         required
                     />
-                    <button type="submit" className="signup-button">
+                    <button type="submit" className="login-button">
                         Continue
                     </button>
                 </form>
-                <p className="signup-login">
-                    Already have an account? <a href="/login">Login</a>
+                <p className="login-login">
+                    Don't have an account? <a href="/signup">Signup</a>
                 </p>
-                <div className="signup-divider">
+                <div className="login-divider">
                     <hr className="divider-line" />
                     <span> OR </span>
                     <hr className="divider-line" />
                 </div>
 
-                <div className="signup-alternate">
-                    <button className="signup-google">
+                <div className="login-alternate">
+                    <button className="login-google">
                         <img
                             src="/google.jpg"
                             className="icon"
                         />
                         Continue with Google
                     </button>
-                    <button className="signup-microsoft">
+                    <button className="login-microsoft">
                         <img
                             src="/microsoft.png"
                             alt="Microsoft logo"
@@ -42,11 +41,11 @@ const Signup = () => {
                         Continue with Microsoft Account
                     </button>
                 </div>
-                <div className="signup-footer">
+                <div className="login-footer">
                     <a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a>
                 </div>
             </div>
     );
 };
 
-export default Signup;
+export default Login;
