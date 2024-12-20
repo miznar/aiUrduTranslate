@@ -286,6 +286,7 @@
   font-family: "inria-sans", sans-serif;
   font-size: 50px; /* Size of text */
   font-weight: bold; /* Bold text */
+  color: white;
   animation: textAppearance 2s ease-out; /* Apply animation */
   margin-bottom: 20px;
   margin-left: 90px; /* Align with the first additional text */
