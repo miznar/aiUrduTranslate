@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* WhiteHeader.css */
+.white-header {
+  display: flex;
+  justify-content: space-between; /* Align logo and right corner items */
+  align-items: center;
+  padding: 20px;
+  background-color: white; /* Changed to white */
+  color: black;
+  position: relative;
+}
+
+.white-header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.white-header-circle {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.white-header-logo span {
+  font-family: 'Inria Sans', sans-serif;  /* Apply Inria Sans */
+  font-weight: 300; /* Light weight */
+  font-size: 20px;  /* Font size 20px */
+}
+
+.white-nav-links {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.white-nav-links li {
+  margin: 0 15px;
+  position: relative; /* To position the border relative to each list item */
+}
+
+.white-nav-links a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.white-nav-links a:hover {
+  color: #4873af; /* Hover effect */
+}
+
+/* Right corner - Get Info Button and Icons */
+.white-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.white-get-info-btn {
+  background-color: #3d3c3c; /* Button background */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px; /* Rounded border */
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 15px;
+  transition: background-color 0.3s ease;
+  font-family: 'Instrument Sans', sans-serif; /* Apply Instrument Sans font */
+}
+
+.white-get-info-btn:hover {
+  background-color: #333; /* Slightly darker on hover */
+}
+
+/* Icon Containers */
+.white-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.white-icon {
+  background-color: #3d3c3c; /* Background color for icons */
+  color: white; /* White color for icons */
+  padding: 10px;
+  border-radius: 50%; /* Circle shape for icons */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.white-icon:hover {
+  background-color: #333; /* Darker background on hover */
+}
+
+.white-icons .white-icon a {
+  text-decoration: none; /* Remove underline */
+  color: white; /* Set default color to white */
+}
+
+.white-icons .white-icon a:hover {
+  color: white; /* Keep hover color white */
+}
+
+.search-icon i,
+.menu-icon i {
+  font-size: 15px; /* Icon size */
+}
