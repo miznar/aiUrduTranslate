@@ -11,6 +11,7 @@ import Learner from './components/learner';
 import LearnerHeader from './components/LearnerHeader';
 import Userdashboard from './components/Userdashboard';
 import AccountSetting from './components/AccountSetting';
+import Contact from './components/Contact-us';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/LearnerHeader" element={<LearnerHeader />} />
           <Route path="/Userdashboard" element={<Userdashboard />} />
           <Route path="/AccountSetting" element={<AccountSetting />} />
+          <Route path="/contact" element={<Contact />} />
 
         </Routes>
     </div>
