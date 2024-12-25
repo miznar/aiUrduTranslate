@@ -66,15 +66,15 @@ const LearnerHeader = () => {
         </section>
       </div>
 
-      {/* Footer Section */}
-      <footer className="footer">
+      {/* Footer Section */
+       <footer className="footer-user">
         <div>Privacy</div>
         <div>TOS</div>
         <div>About</div>
         <div>Blogs</div>
         <div>Discussions</div>
         <div>Contact</div>
-      </footer>
+      </footer> }
     </div>
   );
 };

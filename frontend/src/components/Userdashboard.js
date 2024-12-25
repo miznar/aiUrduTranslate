@@ -1,13 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Importing useNavigate
+import { useNavigate } from 'react-router-dom';
 import './Userdashboard.css';
 
 const Userdashboard = () => {
-  const navigate = useNavigate();  // Initialize navigate hook
+  const navigate = useNavigate();
 
-  // Function to handle navigation to LearnerHeader (Edit Profile)
   const handleEditProfileClick = () => {
-    navigate('/LearnerHeader');  // Navigate to LearnerHeader page
+    navigate('/LearnerHeader');
   };
 
   return (
@@ -18,7 +17,9 @@ const Userdashboard = () => {
           <span className="header-logo">Translate AI</span>
         </div>
         <div className="header-right">
-          <span>Option1</span> | <span>Option1</span> | <span>Option1</span> | <span>Option1</span>
+          <span className="header-option">Option1</span> 
+          <span className="header-option">Option2</span> 
+          <span className="header-option">Option3</span>
           <div className="profile-icon">●</div>
         </div>
       </header>
@@ -32,10 +33,11 @@ const Userdashboard = () => {
             <div className="profile-name">Learner Name</div>
             <div className="profile-username">learner's username</div>
           </div>
-          <div className="menu">
-            {/* Updated Edit Profile button to trigger navigation */}
-            <button className="menu-item" onClick={handleEditProfileClick}>Edit Profile</button>
-            <button className="menu-item">Settings</button>
+          <div className="button-container">
+            <button className="edit-profile-btn" onClick={handleEditProfileClick}>
+              Edit Profile
+            </button>
+            <button className="settings-btn">Settings</button>
           </div>
           <div className="interests">Learner's Interests</div>
         </aside>
@@ -49,32 +51,27 @@ const Userdashboard = () => {
           <div className="discussion-section">
             <h3>Your Discussions</h3>
             <div className="discussion-list">
-              <div className="discussion">
-                <div className="discussion-title">Discussion 01</div>
-                <div className="lecture-name">[Video Lecture's Name]</div>
-              </div>
-              <div className="discussion">
-                <div className="discussion-title">Discussion 02</div>
-                <div className="lecture-name">[Video Lecture's Name]</div>
-              </div>
-              <div className="discussion">
-                <div className="discussion-title">Discussion 03</div>
-                <div className="lecture-name">[Video Lecture's Name]</div>
-              </div>
+              {[1, 2, 3].map((num) => (
+                <div className="discussion" key={num}>
+                  <div className="discussion-title">Discussion {`0${num}`}</div>
+                  <div className="lecture-name">[Video Lecture's Name]</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="footer">
+      {/* Footer*/ 
+       <footer className="footer-dashboard">
         <div>Privacy</div>
         <div>TOS</div>
         <div>About</div>
         <div>Blogs</div>
         <div>Discussions</div>
         <div>Contact</div>
-      </footer>
+      </footer> }
+     
     </div>
   );
 };

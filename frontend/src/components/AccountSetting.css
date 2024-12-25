@@ -184,19 +184,27 @@ body {
     cursor: pointer;
   }
   
-  /* Footer */
-  .footer {
+  /* Footer*/
+  .footer-account {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     background-color: #fff;
     border-top: 1px solid #ddd;
-    flex-shrink: 0; /* Prevent shrinking */
-  }
-  
-  .footer div {
-    margin: 0 10px;
+    flex-shrink: 0; 
+    gap: 15px; /* Add gap to control spacing between items */
+}
+
+.footer-account div {
+    margin: 0;
+    padding: 5px 10px; /* Add padding for better spacing */
     cursor: pointer;
-  }
-  
+    font-size: 14px; /* Optional: Adjust font size */
+    color: #333; /* Optional: Text color */
+    transition: color 0.3s ease; /* Add hover effect */
+}
+
+.footer-account div:hover {
+    color: #007bff; /* Change color on hover */
+}

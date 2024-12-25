@@ -59,7 +59,6 @@ body {
   padding: 20px;
   gap: 20px;
 }
-
 /* Sidebar */
 .sidebar {
   width: 250px;
@@ -95,40 +94,26 @@ body {
   margin-bottom: 20px;
 }
 
-.menu {
-  margin-top: 20px;
+.button-container {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: center; /* Ya "center" agar beech mein chahiye */
+  align-items: center;
+  gap: 15px; /* Buttons ke darmiyan 15px ka space */
+  margin-bottom: 20px; /* Buttons ke neeche thoda space */
+   color: black;
 }
 
-.menu-item {
-  padding: 10px 15px;
-  background-color: grey;
-  color: #fff;
-  font-size: 14px;
+.button-container button {
+  padding: 10px 20px;
+  background-color: #D9D8C6;
+  color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
 }
 
-.menu-item:hover {
+.button-container button:hover {
   background-color: black;
-  transform: scale(1.05);
-}
-
-.menu-item:active {
-  background-color: black;
-  transform: scale(0.98);
-}
-
-.interests {
-  margin-top: 30px;
-  font-size: 14px;
-  color: #555;
-  text-align: center;
 }
 
 /* Profile Content */
@@ -190,25 +175,27 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer */
-.footer {
+/* Footer */  
+.footer-user {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
   background-color: #fff;
-  border-top: 2px solid #ddd;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ddd;
+  flex-shrink: 0; 
+  gap: 15px; /* Add gap to control spacing between items */
 }
 
-.footer div {
-  margin: 0 15px;
-  font-size: 14px;
-  color: #555;
+.footer-account div {
+  margin: 0;
+  padding: 5px 10px; /* Add padding for better spacing */
   cursor: pointer;
-  transition: color 0.2s ease;
+  font-size: 14px; /* Optional: Adjust font size */
+  color: #333; /* Optional: Text color */
+  transition: color 0.3s ease; /* Add hover effect */
 }
 
-.footer div:hover {
-  color: black;
+.footer-account div:hover {
+  color: #007bff; /* Change color on hover */
 }
