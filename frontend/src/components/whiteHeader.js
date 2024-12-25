@@ -23,6 +23,9 @@ const WhiteHeader = () => {
           <li>
             <a href="/signup" style={{ fontWeight: 'bold' }}>TranslateAI Login</a>
           </li>
+          <li>
+            <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
+          </li>
         </ul>
       </nav>
 

@@ -26,6 +26,9 @@ const Header = () => {
           <li>
             <Link to="/Userdashboard" style={{ fontWeight: 'bold' }}>Userdashboard</Link>
           </li>
+          <li>
+            <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
+          </li>
         </ul>
       </nav>
 
