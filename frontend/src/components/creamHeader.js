@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './creamHeader.css';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+    const handleButtonClick = () => {
+      navigate("/query");
+    };
+
   return (
     <header className="header">
       {/* Logo Section */}
@@ -34,7 +40,7 @@ const Header = () => {
 
       {/* Right Corner Icons */}
       <div className="header-right">
-        <button className="get-info-btn">Get Info</button> {/* Removed onClick handler */}
+        <button className="get-info-btn" onClick={handleButtonClick} >Get Info</button> 
         <div className="icons">
           <div className="icon search-icon">
             <Link to="/search">

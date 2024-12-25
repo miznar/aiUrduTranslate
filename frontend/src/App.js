@@ -10,6 +10,8 @@ import Login from './components/Login';
 import LearnerHeader from './components/LearnerHeader';
 import Userdashboard from './components/Userdashboard';
 import AccountSetting from './components/AccountSetting';
+import Query from './components/Query';
+import Contact from './components/Contact-us';
 function App() {
   return (
     <div className="App">
@@ -24,6 +26,8 @@ function App() {
           <Route path="/LearnerHeader" element={<LearnerHeader />} />
           <Route path="/Userdashboard" element={<Userdashboard />} />
           <Route path="/AccountSetting" element={<AccountSetting />} />
+          <Route path="/query" element={<Query />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
     </div>
   );

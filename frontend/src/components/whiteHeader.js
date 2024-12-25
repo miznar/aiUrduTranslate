@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './whiteHeader.css';
+import { useNavigate } from "react-router-dom";
 
 const WhiteHeader = () => {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/query");
+  };
+
   return (
     <header className="white-header">
       {/* Logo Section */}
@@ -31,7 +37,8 @@ const WhiteHeader = () => {
 
       {/* Right Corner Icons */}
       <div className="white-header-right">
-        <button className="white-get-info-btn">Get Info</button>
+        <button className="white-get-info-btn" onClick={handleButtonClick} >Get Info</button>
+
         <div className="white-icons">
           <div className="white-icon search-icon">
             <Link to="/search">
