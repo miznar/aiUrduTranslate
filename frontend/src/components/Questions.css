@@ -1,0 +1,76 @@
+/* Center the main content */
+.faq-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Ensures content aligns properly */
+    align-items: center;
+    padding: 20px 10px;
+    /* Reduced padding */
+    background-color: #f9f9f9;
+}
+
+/* Style for the title */
+.faq-title {
+    font-size: 32px;
+    /* Adjusted size */
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+    /* Reduced margin below the title */
+}
+
+/* Style for the description */
+.faq-description {
+    font-size: 16px;
+    /* Adjusted size */
+    color: #333;
+    line-height: 1.3;
+    /* Reduced line height */
+    max-width: 600px;
+    text-align: center;
+    margin-top: 5px;
+    /* Reduced margin above the description */
+}
+
+.faq-description {
+    margin-bottom: 5px; /* Reduced gap between FAQ description and Contact Us text */
+}
+
+.faq-contact {
+    margin-top: 5px; /* Reduced gap above the Contact Us section */
+}
+
+.faq-contact a {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+}
+
+.faq-contact a:hover {
+    text-decoration: underline; /* Underline link on hover */
+}
+
+/* Style for the FAQ list */
+.faq-list {
+    list-style-type: disc; /* Makes the bullet point appear */
+    padding-left: 20px; /* Adds space for the bullet */
+    font-size: 24px; /* Adjust the size of the FAQ title */
+    margin: 0; /* Remove default margins from <ul> */
+}
+
+/* Container for the white boxes */
+.boxes-container {
+    display: block; /* Ensures boxes stack vertically */
+    margin: 40px 0; /* Adds space above and below the boxes */
+}
+
+/* Style for each white box */
+.white-box {
+    width: 50px; /* Very small width */
+    height: 50px; /* Very small height */
+    background-color: white;
+    border: 1px solid #ccc; /* Optional: Light border for visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Slight shadow effect */
+    margin: 10px auto; /* Centers the box and adds space between them */
+}
+

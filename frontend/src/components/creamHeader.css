@@ -3,10 +3,12 @@
 /* Header.css */
 .header {
   display: flex;
-  justify-content: space-between; /* Align logo and right corner items */
+  justify-content: space-between;
+  /* Align logo and right corner items */
   align-items: center;
   padding: 20px;
-  background-color: #E7E7DF; /* Optional background */
+  background-color: #E7E7DF;
+  /* Optional background */
   color: black;
   position: relative;
 }
@@ -25,9 +27,10 @@
 }
 
 .logo span {
-  font-family: 'Inria Sans', sans-serif;  /* Apply Inria Sans */
-  font-weight: 300; /* Light weight */
-  font-size: 20px;  /* Font size 20px */
+  font-family: 'Inria Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: black;
 }
 
 .nav-links {
@@ -40,7 +43,8 @@
 
 .nav-links li {
   margin: 0 15px;
-  position: relative; /* To position the border relative to each list item */
+  position: relative;
+  /* To position the border relative to each list item */
 }
 
 .nav-links a {
@@ -52,7 +56,8 @@
 }
 
 .nav-links a:hover {
-  color: #4873af; /* Hover effect */
+  color: #4873af;
+  /* Hover effect */
 }
 
 /* Right corner - Get Info Button and Icons */
@@ -62,20 +67,24 @@
 }
 
 .get-info-btn {
-  background-color: #3d3c3c; /* Button background */
-  color: white; /* White text */
+  background-color: #3d3c3c;
+  /* Button background */
+  color: white;
+  /* White text */
   border: none;
   padding: 10px 20px;
-  border-radius: 20px; /* Rounded border */
+  border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
   margin-right: 15px;
   transition: background-color 0.3s ease;
-  font-family: 'Instrument Sans', sans-serif; /* Apply Instrument Sans font */
+  font-family: 'Instrument Sans', sans-serif;
+  /* Apply Instrument Sans font */
 }
 
 .get-info-btn:hover {
-  background-color: #333; /* Slightly darker on hover */
+  background-color: #333;
+  /* Slightly darker on hover */
 }
 
 /* Icon Containers */
@@ -85,10 +94,10 @@
 }
 
 .icon {
-  background-color: #3d3c3c; /* Background color for icons */
-  color: white; /* White color for icons */
+  background-color: #3d3c3c;
+  color: white;
   padding: 10px;
-  border-radius: 50%; /* Circle shape for icons */
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -97,19 +106,19 @@
 }
 
 .icon:hover {
-  background-color: #333; /* Darker background on hover */
+  background-color: #333;
 }
 
 .icons .icon a {
-  text-decoration: none; /* Remove underline */
-  color: white; /* Set default color to white */
+  text-decoration: none;
+  color: white;
 }
 
 .icons .icon a:hover {
-  color: white; /* Keep hover color white */
+  color: white;
 }
 
 .search-icon i,
 .menu-icon i {
-  font-size: 15px; /* Icon size */
+  font-size: 15px;
 }

@@ -11,8 +11,7 @@ const Userdashboard = () => {
 
   return (
     <div className="profile-page">
-      {/* Header Section */}
-      <header className="header">
+      {/* Header Section   <header className="header">
         <div className="header-left">
           <span className="header-logo">Translate AI</span>
         </div>
@@ -22,7 +21,8 @@ const Userdashboard = () => {
           <span className="header-option">Option3</span>
           <div className="profile-icon">●</div>
         </div>
-      </header>
+      </header> */}
+    
 
       {/* Main Content */}
       <div className="main-content">

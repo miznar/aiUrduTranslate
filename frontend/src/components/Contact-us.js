@@ -3,7 +3,6 @@ import Header from './creamHeader';
 import WhiteHeader from './whiteHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
-
 const Contact = () => {
     return (
         <div>

@@ -7,9 +7,10 @@ import Blog from './components/Blog';
 import Signup from './components/Signup';
 import Signup2 from './components/Signup-pg2';
 import Login from './components/Login';
-import LearnerHeader from './components/LearnerHeader';
 import Userdashboard from './components/Userdashboard';
-import AccountSetting from './components/AccountSetting';
+import Contact from './components/Contact-us';
+import question  from './components/Questions';
+import Question from './components/Questions';
 function App() {
   return (
     <div className="App">
@@ -21,14 +22,11 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup2" element={<Signup2 />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/LearnerHeader" element={<LearnerHeader />} />
           <Route path="/Userdashboard" element={<Userdashboard />} />
-          <Route path="/AccountSetting" element={<AccountSetting />} />
+          <Route path="/Contact-us" element={<Contact />} />
+          <Route path="/Questions" element={<Question />} />
         </Routes>
     </div>
   );
 }
-
 export default App;
-
-

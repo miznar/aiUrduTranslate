@@ -10,7 +10,6 @@ const Header = () => {
         <div className="headercircle"></div>
         <span>TranslateAI</span>
       </div>
-
       {/* Navigation Links */}
       <nav>
         <ul className="nav-links">
@@ -31,10 +30,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-
       {/* Right Corner Icons */}
       <div className="header-right">
-        <button className="get-info-btn">Get Info</button> {/* Removed onClick handler */}
+        <button className="get-info-btn">Get Info</button>
         <div className="icons">
           <div className="icon search-icon">
             <Link to="/search">

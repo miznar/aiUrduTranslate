@@ -1,161 +1,161 @@
 .contact-container {
-    font-family: 'Arial', sans-serif;
-    color: #616060;
-    padding: 20px;
-    background-color: #f7f6f2;
-    line-height: 1.6;
-  }
-  
-  /* Contact Header Section */
-  .contact-header {
-    text-align: left;
-    margin-bottom: 50px;
-    margin-left: 300px;
-  }
-  
-  .contact-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    /* font-family: 'Times New Roman', Times, serif; */
-  }
-  
-  .contact-header h2 {
-    font-size: 24px;
-    margin-bottom: 3px;
-    margin-right: 230px;
-  }
-  
-  .contact-header p {
-    font-size: 16px;
-    margin-top: 1px;
-    color: #000000;
-    font-weight: bold;
-  }
-  .contact-header h6 {
-    font-size: 16px;
-    margin-top: -5px;
-    color: #252525;
-    font-weight: 200;
-  }
-  
-  .contact-button {
-    background-color: #002a50;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 15px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: -55px;
-    margin-right: 10px;
-  }
-  
-  .contact-button:hover {
-    background-color: #8F7131;
-  }
-  
-  /* Connect with Team Section */
-  .connect-team {
-    background-color: #fff;
-    padding: 70px;
-    width: 52%; /* Adjust width to ensure enough space for text */
-    margin-left: 300px;
-  }
-  
-  .team-header {
-    text-align: center;
-    margin-top: -70px;
-    margin-right: 10px;
-  }
+  font-family: 'Arial', sans-serif;
+  color: #616060;
+  padding: 20px;
+  background-color: #f7f6f2;
+  line-height: 1.6;
+}
 
-  .team-header h2 {
-    margin-right: 20px;
-  }
-  
-  .contact-options {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .contact-option {
-    display: flex;
-    align-items: flex-start;
-    width: 45%;
-    margin-top: -10px;
-  }
-  
-  .bullet {
-    font-size: 20px;
-    color: #003e77;
-    margin-right: 10px;
-    margin-left: 270px;
-    margin-top: 40px;
-  }
-  /* for Phone */
-  .contact-option h3 {
-    font-size: 18px;
-    margin-bottom: -15px;
-    margin-right: 160px;
-  }
+/* Contact Header Section */
+.contact-header {
+  text-align: left;
+  margin-bottom: 50px;
+  margin-left: 300px;
+}
 
-  .contact-option p {
-    font-size: 14px;
-    color: #242323;
-    font-weight: 400;
-  }
+.contact-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  /* font-family: 'Times New Roman', Times, serif; */
+}
 
-  .contact-option2 {
-    display: flex;
-    align-items: flex-start;
-    width: 45%;
-    margin-top: -10px;
-  }
+.contact-header h2 {
+  font-size: 24px;
+  margin-bottom: 3px;
+  margin-right: 230px;
+}
 
-  /* for email */
-  .contact-option2 h3 {
-    font-size: 18px;
-    margin-bottom: -15px;
-    margin-right: 165px;
-  }
-  
-  /* FAQ Section */
-  .faq-section {
-    text-align: left;
-    padding: 20px;
-    margin-left: 280px;
-    margin-right: 300px;
-  }
-  
-  .faq-section h3 {
-    font-size: 16px;
-    color: #242424;
-    margin-bottom: 20px;
-    font-weight: 200;
-  }
-  
-  .faq-highlight {
-    font-weight: bold;
-  }
+.contact-header p {
+  font-size: 16px;
+  margin-top: 1px;
+  color: #000000;
+  font-weight: bold;
+}
 
-  .faq-heading {
-    font-size: 30px;
-    color: #000000;
-  }
-  
-  .faq-button {
-    background-color: #b68d40;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .faq-button:hover {
-    background-color: #b68d40;
-  }
+.contact-header h6 {
+  font-size: 16px;
+  margin-top: -5px;
+  color: #252525;
+  font-weight: 200;
+}
 
+.contact-button {
+  background-color: #002a50;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: -55px;
+  margin-right: 10px;
+}
 
-  
+.contact-button:hover {
+  background-color: #8F7131;
+}
+
+/* Connect with Team Section */
+.connect-team {
+  background-color: #fff;
+  padding: 70px;
+  width: 52%;
+  /* Adjust width to ensure enough space for text */
+  margin-left: 300px;
+}
+
+.team-header {
+  text-align: center;
+  margin-top: -70px;
+  margin-right: 10px;
+}
+
+.team-header h2 {
+  margin-right: 20px;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.contact-option {
+  display: flex;
+  align-items: flex-start;
+  width: 45%;
+  margin-top: -10px;
+}
+
+.bullet {
+  font-size: 20px;
+  color: #003e77;
+  margin-right: 10px;
+  margin-left: 270px;
+  margin-top: 40px;
+}
+
+/* for Phone */
+.contact-option h3 {
+  font-size: 18px;
+  margin-bottom: -15px;
+  margin-right: 160px;
+}
+
+.contact-option p {
+  font-size: 14px;
+  color: #242323;
+  font-weight: 400;
+}
+
+.contact-option2 {
+  display: flex;
+  align-items: flex-start;
+  width: 45%;
+  margin-top: -10px;
+}
+
+/* for email */
+.contact-option2 h3 {
+  font-size: 18px;
+  margin-bottom: -15px;
+  margin-right: 165px;
+}
+
+/* FAQ Section */
+.faq-section {
+  text-align: left;
+  padding: 20px;
+  margin-left: 280px;
+  margin-right: 300px;
+}
+
+.faq-section h3 {
+  font-size: 16px;
+  color: #242424;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+
+.faq-highlight {
+  font-weight: bold;
+}
+
+.faq-heading {
+  font-size: 30px;
+  color: #000000;
+}
+
+.faq-button {
+  background-color: #b68d40;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.faq-button:hover {
+  background-color: #b68d40;
+}
