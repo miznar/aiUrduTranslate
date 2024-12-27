@@ -11,6 +11,9 @@ import Userdashboard from './components/Userdashboard';
 import Contact from './components/Contact-us';
 import question  from './components/Questions';
 import Question from './components/Questions';
+import AccountSetting from './components/AccountSetting';
+import Query from './components/Query';
+import Contact from './components/Contact-us';
 function App() {
   return (
     <div className="App">
@@ -25,6 +28,8 @@ function App() {
           <Route path="/Userdashboard" element={<Userdashboard />} />
           <Route path="/Contact-us" element={<Contact />} />
           <Route path="/Questions" element={<Question />} />
+          <Route path="/query" element={<Query />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
     </div>
   );
