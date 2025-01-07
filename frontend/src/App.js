@@ -8,10 +8,8 @@ import Signup from './components/Signup';
 import Signup2 from './components/Signup-pg2';
 import Login from './components/Login';
 import Userdashboard from './components/Userdashboard';
-import Contact from './components/Contact-us';
 import question  from './components/Questions';
 import Question from './components/Questions';
-import AccountSetting from './components/AccountSetting';
 import Query from './components/Query';
 import Contact from './components/Contact-us';
 function App() {
