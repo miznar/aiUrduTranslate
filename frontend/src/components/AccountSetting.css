@@ -1,0 +1,226 @@
+/* General Styles */
+body {
+    font-family: Inria Sans;
+    margin: 0;
+    padding: 0;
+    background-color: #E5E5D9;
+}
+
+.profile-page-account {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the page covers the full height of the viewport */
+}
+.header-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    font-family: Inria Sans;
+    font-size: 24px;
+    line-height: 18px;
+    background-color: #E5E5D9;
+    border-bottom: 2px solid #E5E5D9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-left .header-logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .header-right span {
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .header-right span:hover {
+    text-decoration: underline;
+  }
+  
+  .header-right .accounts {
+    font-weight: bold; /* Bold accounts */
+    color: black;
+    cursor: pointer;
+  }
+  
+  .header-right .accounts:hover {
+    text-decoration: underline;
+  }
+  
+/* Main Content */
+.main-content-account {
+    flex: 1; /* Take up remaining space between header and footer */
+    display: flex;
+    padding: 20px;
+    gap : 0px;
+}
+
+/* Sidebar */
+.sidebar-account {
+    width: 250px;
+    background-color: #E5E5D9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.profile-picture-account {
+    width: 50px;
+    height: 50px;
+    background-color: #835d1a;
+    color: #E5E5D9;
+    font-size: 20px;
+    border-radius: 50%;
+    text-align: left;
+    line-height: 50px;
+    margin-bottom: 10px;
+}
+
+
+.profile-info-account .profile-name-account {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+
+}
+
+.profile-info-account .profile-username-account {
+    font-size: 14px;
+    color: black;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.menu-account {
+    margin-top: 20px;
+    display: flex;
+    background-color:  E5E5D9;
+    text-align: left;
+    color: black;
+    flex-direction: column; /* This ensures the buttons are stacked vertically */
+    gap: 10px;  /* Adds space between the buttons */
+    width: 100%;  /* Ensures the buttons take up the full width */
+}
+.menu-item-account {
+    font-size: 15px;
+    text-align: left;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+.menu-item-accounts {
+    font-size: 15px;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+.menu-item-account:hover {
+    color:black; /* Change color on hover */
+}
+.menu-item-account span {
+    font-weight: bold;
+}
+/* Profile Settings */
+.Account-settings-account {
+    text-align: left;
+    flex: 1;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #E5E5D9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.Account-settings-account h2 {
+    font-family: Inria Sans;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group-account {
+    margin-bottom: 20px;
+}
+.form-group-account label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+.form-group-account input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Save Button (Aligned Left) */
+.save-button-account {
+    font-family: Inria Sans;
+    text-align: left;
+    padding: 10px 20px;
+    background-color: #D9D8C6;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block; /* To avoid it being full width */
+    margin-left: 0; /* Align it to the left */
+}
+
+/* Delete Account Section */
+.delete-account-section-account {
+    margin-top: 30px;
+}
+
+.delete-account-section-account h3 {
+    font-family: Inria Sans;
+    font-size: 18px;
+}
+
+.delete-account-section-account p {
+ 
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.delete-button-account {
+    padding: 10px 20px;
+    font-family: Inria Sans;
+    background-color: #D9D8C6;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer Section */
+.footer-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #E5E5D9;
+    border-top: 1px solid #ddd;
+    flex-shrink: 0; 
+    gap: 15px; /* Add gap to control spacing between items */
+}
+
+.footer-account div {
+    margin: 0;
+    padding: 5px 10px; /* Add padding for better spacing */
+    cursor: pointer;
+    font-size: 14px; /* Optional: Adjust font size */
+    color: #333; /* Optional: Text color */
+    transition: color 0.3s ease; /* Add hover effect */
+}
+
+.footer-account div:hover {
+    color: black; /* Change color on hover */
+}

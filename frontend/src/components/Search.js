@@ -13,7 +13,6 @@ const Search = () => {
                 <p className="search-description">
                     Search for translations, courses, resources, and more...
                 </p>
-
                 {/* Search Bar */}
                 <div className="search-bar">
                     <input
@@ -22,8 +21,6 @@ const Search = () => {
                         className="search-input"
                     />
                 </div>
-
-
                 {/* Filter Section */}
                 <div className="page-container">
                 <div className="filter-container">
@@ -44,7 +41,6 @@ const Search = () => {
                         </li>
                     </ul>
                 </div>
-
                 {/* Blog Section */}
                 <div className="blog-section">
                     <h4>Blogs</h4>

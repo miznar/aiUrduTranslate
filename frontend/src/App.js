@@ -8,10 +8,15 @@ import Signup from './components/Signup';
 import Signup2 from './components/Signup-pg2';
 import Login from './components/Login';
 import Userdashboard from './components/Userdashboard';
+<<<<<<< Updated upstream
 import question  from './components/Questions';
 import Question from './components/Questions';
-import Query from './components/Query';
+=======
 import Contact from './components/Contact-us';
+>>>>>>> Stashed changes
+import Query from './components/Query';
+import AccountSetting from './components/AccountSetting';
+import LearnerHeader from './components/Learner';
 function App() {
   return (
     <div className="App">
@@ -24,10 +29,10 @@ function App() {
           <Route path="/signup2" element={<Signup2 />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Userdashboard" element={<Userdashboard />} />
-          <Route path="/Contact-us" element={<Contact />} />
-          <Route path="/Questions" element={<Question />} />
+          <Route path="/AccountSetting" element={<AccountSetting/>} />
+          <Route path="/Contact" element={<Contact />} />
           <Route path="/query" element={<Query />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/LearnerHeader" element={<LearnerHeader/>} />
         </Routes>
     </div>
   );

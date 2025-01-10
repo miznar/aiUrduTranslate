@@ -37,7 +37,7 @@ const WhiteHeader = () => {
 
       {/* Right Corner Icons */}
       <div className="white-header-right">
-        <button className="white-get-info-btn" onClick={handleButtonClick} >Get Info</button>
+        <button className="white-get-info-btn">Get Info</button>
 
         <div className="white-icons">
           <div className="white-icon search-icon">
