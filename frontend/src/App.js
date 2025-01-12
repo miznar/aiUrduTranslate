@@ -8,12 +8,7 @@ import Signup from './components/Signup';
 import Signup2 from './components/Signup-pg2';
 import Login from './components/Login';
 import Userdashboard from './components/Userdashboard';
-<<<<<<< Updated upstream
-import question  from './components/Questions';
-import Question from './components/Questions';
-=======
 import Contact from './components/Contact-us';
->>>>>>> Stashed changes
 import Query from './components/Query';
 import AccountSetting from './components/AccountSetting';
 import LearnerHeader from './components/Learner';
