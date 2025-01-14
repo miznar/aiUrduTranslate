@@ -5,7 +5,7 @@ const Footer2 = () => {
     return (
         <div>
             <footer className="footer-user">
-                <Link to="/privacy">
+                <Link to="/privacypage">
                     <div>Privacy</div>
                 </Link>
                 <Link to="/tos">
