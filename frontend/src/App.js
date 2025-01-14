@@ -16,6 +16,7 @@ import UploadVideo from './components/UploadVideo';
 import FAQ from './components/FAQ';
 import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
+import Services from './components/Services';
 function App() {
   return (
     <div className="App">
@@ -36,6 +37,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/footer2" element={<Footer2 />} />
           <Route path="/privacypage" element={<PrivacyPage />} />
+          <Route path="/service" element={<Services />} />
         </Routes>
     </div>
   );

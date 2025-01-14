@@ -21,20 +21,20 @@ body {
   
   .tab {
     padding: 10px 20px;
-    background-color: #ddd;
+    background-color: #263754;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .tab.active {
-    background-color: #8f7131;
+    background-color: #263754;
     color: white;
   }
   
   .content h1 {
     font-size: 20px;
-    color: #333;
+    color: #000000;
     margin-bottom: 10px;
   }
   
@@ -53,8 +53,8 @@ body {
   }
   
   ul {
-    padding-left: 0; /* Remove default padding */
-    list-style: none; /* Remove bullet points */
+    padding-left: 0; 
+    list-style: none; 
   }
   
   ul li {

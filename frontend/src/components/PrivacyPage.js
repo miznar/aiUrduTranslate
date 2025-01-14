@@ -12,7 +12,7 @@ const PrivacyPage = () => {
             <div className="tos-container">
                 <div className="tabs">
                     <button className="tab active" onClick={() => navigate("/privacypage")}>Privacy Policy</button>
-                    <button className="tab">TOS</button>
+                    <button className="tab" onClick={() => navigate("/service")}>TOS</button>
                 </div>
                 <div className="content">
                     <h1>1. Introduction</h1>
