@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f3ef;
+    background-color: #E7E7DF;
     margin: 0;
     padding: 0;
   }
@@ -46,7 +46,7 @@ body {
     width: 85%;
     padding: 30px;
     text-align: center;
-    background-color: #f4f3ef;
+    background-color: #E7E7DF;
   }
   
   .upload-content h1 {

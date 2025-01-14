@@ -1,11 +1,11 @@
 import './UploadVideo.css';
-import WhiteHeader from './whiteHeader';
+import Header from './creamHeader';
 import Footer2 from './Footer2';
 
 const UploadVideo = () => {
     return (
         <div>
-            <WhiteHeader />
+            <Header />
             <div className="upload-page">
                 <aside className="sidebar">
                     <ul>

@@ -78,38 +78,44 @@ const About = () => {
         </div>
 
         <div className="voices-container">
-      <h2>Voices Behind the Vision</h2>
-      <div className="quotes-section">
+          <h2>Voices Behind the Vision</h2>
+          <div className="quotes-section">
 
-      <div className="quote-item">
-          <p>everybody’s one line quote</p>
-          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
-        </div>
+            <div className="quote-item">
+              <p>everybody’s one line quote</p>
+              <div className="picture-placeholder">
+                <img
+                  src={"/mizna.jpeg"}
+                  alt="Everyone's Picture"
+                  className="profile-picture"
+                />
+              </div>
+            </div>
 
-        <div className="quote-item">
-          <p>everybody’s one line quote</p>
-          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
-        </div>
+            <div className="quote-item">
+              <p>everybody’s one line quote</p>
+              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+            </div>
 
-        <div className="quote-item">
-          <p>everybody’s one line quote</p>
-          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
-        </div>
+            <div className="quote-item">
+              <p>everybody’s one line quote</p>
+              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+            </div>
 
-        <div className="quote-item">
-          <p>everybody’s one line quote</p>
-          <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+            <div className="quote-item">
+              <p>everybody’s one line quote</p>
+              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h3>What Drives You?</h3>
+            <textarea
+              placeholder="What does education mean to you?"
+              className="education-textarea"
+            ></textarea>
+          </div>
         </div>
-      </div>
-      
-      <div className="education-section">
-        <h3>What Drives You?</h3>
-        <textarea
-          placeholder="What does education mean to you?"
-          className="education-textarea"
-        ></textarea>
-      </div>
-    </div>
 
 
       </div>
