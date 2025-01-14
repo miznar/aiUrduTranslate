@@ -1,6 +1,6 @@
 import './UploadVideo.css';
 import WhiteHeader from './whiteHeader';
-import { Link } from 'react-router-dom';
+import Footer2 from './Footer2';
 
 const UploadVideo = () => {
     return (
@@ -9,7 +9,7 @@ const UploadVideo = () => {
             <div className="upload-page">
                 <aside className="sidebar">
                     <ul>
-                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="faq">FAQs</a></li>
                         <li><a href="about">About Us</a></li>
                     </ul>
                 </aside>
@@ -27,27 +27,7 @@ const UploadVideo = () => {
                     <button className="translate-button">Translate Now</button>
                 </main>
             </div>
-            {/* Footer */}
-            <footer className="footer-user">
-                <Link to="/privacy">
-                    <div>Privacy</div>
-                </Link>
-                <Link to="/tos">
-                    <div>TOS</div>
-                </Link>
-                <Link to="/about">
-                    <div>About</div>
-                </Link>
-                <Link to="/blogs">
-                    <div>Blog</div>
-                </Link>
-                <Link to="/discussions">
-                    <div>Discussions</div>
-                </Link>
-                <Link to="/contact">
-                    <div>Contact-us</div>
-                </Link>
-            </footer>
+            <Footer2 />
         </div>
     );
 }

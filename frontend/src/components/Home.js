@@ -35,12 +35,14 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <div className="button-row">
-          <button className="custom-button">
-            <span className="button-text">Explore All</span>
-            <span className="arrow">→</span>
-          </button>
-        </div>
+        <Link to="/search" className="custom-link">
+          <div className="button-row">
+            <button className="custom-button">
+              <span className="button-text">Explore All</span>
+              <span className="arrow">→</span>
+            </button>
+          </div>
+        </Link>
       </section>
 
       <section className="right-text-section">

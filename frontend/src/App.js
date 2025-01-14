@@ -13,6 +13,8 @@ import Query from './components/Query';
 import AccountSetting from './components/AccountSetting';
 import LearnerHeader from './components/Learner';
 import UploadVideo from './components/UploadVideo';
+import FAQ from './components/FAQ';
+import Footer2 from './components/Footer2';
 function App() {
   return (
     <div className="App">
@@ -30,6 +32,8 @@ function App() {
           <Route path="/query" element={<Query />} />
           <Route path="/LearnerHeader" element={<LearnerHeader/>} />
           <Route path="/uploadvideo" element={<UploadVideo />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/footer2" element={<Footer2 />} />
         </Routes>
     </div>
   );

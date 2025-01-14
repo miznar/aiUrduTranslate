@@ -126,24 +126,3 @@ body {
     background-color: #725821;
   }
 
-  /* Footer */
-.footer-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background-color: D9D8C6;
-    border-top: 2px solid #ddd;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  }
-  .footer-user div {
-    margin: 0 15px;
-    font-size: 14px;
-    color: #555;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  .footer-user div:hover {
-    color: black;
-  }
-  

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Importing useNavigate
 import './Userdashboard.css';
 import { Link } from 'react-router-dom';
+import Footer2 from './Footer2';
 
 const Userdashboard = () => {
   const navigate = useNavigate();  // Initialize navigate hook
@@ -65,27 +66,7 @@ const Userdashboard = () => {
           </div>
         </div>
       </div>
-      {/* Footer */}
-      <footer className="footer-user">
-      <Link to="/privacy">
-                    <div>Privacy</div>
-                </Link>
-                <Link to="/tos">
-                    <div>TOS</div>
-                </Link>
-                <Link to="/about">
-                    <div>About</div>
-                </Link>
-                <Link to="/blogs">
-                    <div>Blog</div>
-                </Link>
-                <Link to="/discussions">
-                    <div>Discussions</div>
-                </Link>
-                <Link to="/contact">
-                    <div>Contact-us</div>
-                </Link>
-      </footer>
+      <Footer2 />
     </div>
   );
 };
