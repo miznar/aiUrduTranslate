@@ -1,3 +1,4 @@
+import Header from './creamHeader';
 import './UploadVideo.css';
 import Header from './creamHeader';
 import Footer2 from './Footer2';
