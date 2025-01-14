@@ -14,7 +14,7 @@ const Header = () => {
       {/* Logo Section */}
       <div className="logo">
         <div className="headercircle"></div>
-        <span>TranslateAI</span>
+        <span>اردو فہم</span>
       </div>
       {/* Navigation Links */}
       <nav>

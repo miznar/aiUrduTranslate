@@ -1,3 +1,4 @@
+import Header from './creamHeader';
 import './UploadVideo.css';
 import WhiteHeader from './whiteHeader';
 import { Link } from 'react-router-dom';
