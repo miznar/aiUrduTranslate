@@ -46,6 +46,7 @@ body {
     width: 85%;
     padding: 30px;
     text-align: center;
+    
     background-color: #E7E7DF;
   }
   
@@ -53,6 +54,7 @@ body {
     font-size: 24px;
     color: #000;
     margin-right: 300px;
+    text-align: center;
   }
   
   .upload-content p {

@@ -43,7 +43,7 @@ const Signup = () => {
                     </button>
                 </div>
                 <div className="signup-footer">
-                    <a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a>
+                    <a href="/service">Terms of Use</a> | <a href="/privacypage">Privacy Policy</a>
                 </div>
             </div>
     );

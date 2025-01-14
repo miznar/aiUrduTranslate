@@ -26,7 +26,7 @@ const Signup2 = () => {
             </p>
 
             <div className="signup-footer1">
-                <a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a>
+                <a href="/service">Terms of Use</a> | <a href="/privacypage">Privacy Policy</a>
             </div>
         </div>
     );
