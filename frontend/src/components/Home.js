@@ -11,27 +11,29 @@ const Home = () => {
       <Header />
       <section className="hero-section">
         <h1>
-            Breaking Language Barriers
-            <span>for Education</span>
+          Breaking Language Barriers
+          <span>for Education</span>
         </h1>
         <h2>Where language meets Innovation</h2>
         <p className="intro-text">
-            Step into a world of accessible learning. Bridge the gap <br />
-            between language and education, one video at a time.
+          Step into a world of accessible learning. Bridge the gap <br />
+          between language and education, one video at a time.
         </p>
         <div className="underline"></div>
       </section>
-      
+
       <section className="hero-buttons">
         <div className="button-row">
           <button className="custom-button">
             <span className="button-text">Subjects</span>
             <span className="arrow">→</span>
           </button>
-          <button className="custom-button">
-            <span className="button-text">Upload Video and Start</span>
-            <span className="arrow">→</span>
-          </button>
+          <Link to="/uploadvideo" className="custom-link">
+            <button className="custom-button">
+              <span className="button-text">Upload Video and Start</span>
+              <span className="arrow">→</span>
+            </button>
+          </Link>
         </div>
         <div className="button-row">
           <button className="custom-button">
@@ -54,7 +56,7 @@ const Home = () => {
           <div className="feature-description">
             <h3>Learning for Everyone, Everywhere</h3>
             <p>Our platform eliminates language barriers, ensuring anyone, anywhere, can engage <br />
-            with world-class educational content — translated into Urdu with precision and care.</p>
+              with world-class educational content — translated into Urdu with precision and care.</p>
           </div>
           <div className="feature-word">Access</div>
         </div>
@@ -63,7 +65,7 @@ const Home = () => {
           <div className="feature-description">
             <h3>Built for Excellence, Designed for You</h3>
             <p>Powered by advanced AI and expert insights, our translations capture not just <br />
-            words but the essence of learning. Experience unmatched clarity and accuracy.</p>
+              words but the essence of learning. Experience unmatched clarity and accuracy.</p>
           </div>
           <div className="feature-word">Quality</div>
         </div>
@@ -72,7 +74,7 @@ const Home = () => {
           <div className="feature-description">
             <h3>Learning That Fits Your Life</h3>
             <p>Whether you're a student, a professional, or a lifelong learner, our platform <br />
-            adapts to your schedule. Learn at your own pace, on your own terms.</p>
+              adapts to your schedule. Learn at your own pace, on your own terms.</p>
           </div>
           <div className="feature-word">Flexibility</div>
         </div>
@@ -81,7 +83,7 @@ const Home = () => {
           <div className="feature-description">
             <h3>Empower Your Journey</h3>
             <p>Gain access to transformative knowledge and skills in your native language. <br />
-            Empower yourself to succeed, inspire others, and shape a brighter future.</p>
+              Empower yourself to succeed, inspire others, and shape a brighter future.</p>
           </div>
           <div className="feature-word">Impact</div>
         </div>
@@ -100,18 +102,18 @@ const Home = () => {
       </div>
       <div class="new-container">
         <h1>
-      Detailed lecture summaries
-      </h1>
+          Detailed lecture summaries
+        </h1>
         <h2>Translated Lectures
-      </h2>
+        </h2>
         <h3> Interactive multiple-choice questions</h3>
       </div>
       <div className="centered-container">
         {/* Your content goes here */}
         <h2>What Sets Us Apart?</h2>
         <p>Discover the power of learning without boundaries through the experiences of our community.<br />
-        Explore why learners choose our platform — whether it's our cutting-edge AI-driven translations, <br />
-        the global reach of educational content, or the life-changing opportunities for Urdu-speaking students. </p>
+          Explore why learners choose our platform — whether it's our cutting-edge AI-driven translations, <br />
+          the global reach of educational content, or the life-changing opportunities for Urdu-speaking students. </p>
         <button>Hear from our learners</button>
 
       </div>

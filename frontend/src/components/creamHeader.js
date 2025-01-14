@@ -38,7 +38,6 @@ const Header = () => {
       </nav>
       {/* Right Corner Icons */}
       <div className="header-right">
-        <button className="get-info-btn">Get Info</button>
         <button className="get-info-btn" onClick={handleButtonClick} >Get Info</button> 
         <div className="icons">
           <div className="icon search-icon">

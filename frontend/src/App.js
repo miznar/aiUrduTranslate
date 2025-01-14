@@ -12,6 +12,7 @@ import Contact from './components/Contact-us';
 import Query from './components/Query';
 import AccountSetting from './components/AccountSetting';
 import LearnerHeader from './components/Learner';
+import UploadVideo from './components/UploadVideo';
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/query" element={<Query />} />
           <Route path="/LearnerHeader" element={<LearnerHeader/>} />
+          <Route path="/uploadvideo" element={<UploadVideo />} />
         </Routes>
     </div>
   );

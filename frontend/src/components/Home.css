@@ -3,6 +3,8 @@
 .hero-section {
   padding: 20px;
   margin-top: 10px;
+}.custom-link {
+  text-decoration: none; /* Removes the underline */
 }
 
 .hero-section h1 {
@@ -86,6 +88,10 @@
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
+.custom-link {
+  text-decoration: none; /* Removes the underline */
+}
+
 .custom-button:hover {
   background-color: #000000; /* Change background color to black on hover */
   color: #FFFFFF; /* Change text color to white on hover */
@@ -93,7 +99,7 @@
 
 .arrow {
   font-size: 24px;
-  color: #143950; /* Mustard color for the arrow */
+  color: #143950; 
   margin-left: auto; /* Push the arrow to the right */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow */
   transition: color 0.3s; /* Smooth color transition for arrow */

@@ -1,0 +1,149 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f3ef;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .upload-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Sidebar Styling */
+  .sidebar {
+    width: 15%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 100px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .sidebar a:hover {
+    color: #8f7131;
+  }
+  
+  /* Main Content Styling */
+  .upload-content {
+    width: 85%;
+    padding: 30px;
+    text-align: center;
+    background-color: #f4f3ef;
+  }
+  
+  .upload-content h1 {
+    font-size: 24px;
+    color: #000;
+    margin-right: 300px;
+  }
+  
+  .upload-content p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    margin-right: 290px;
+  }
+  
+  .upload-button {
+    padding: 10px 20px;
+    background-color: #143950;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-right: 200px;
+  }
+  
+  .upload-button:hover {
+    background-color: #143950;
+  }
+  
+  .upload-box {
+    width: 70%;
+    height: 200px;
+    margin: 20px auto;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 20px;
+  }
+  
+  .upload-box p {
+    color: #888;
+    font-size: 14px;
+  }
+  
+  .progress-bar {
+    width: 70%;
+    height: 10px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    width: 50%; /* Adjust this width dynamically for progress */
+    height: 100%;
+    background-color: #00283c;
+  }
+  
+  /* Translate Button */
+  .translate-button {
+    padding: 10px 20px;
+    background-color: #8f7131;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .translate-button:hover {
+    background-color: #725821;
+  }
+
+  /* Footer */
+.footer-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: D9D8C6;
+    border-top: 2px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .footer-user div {
+    margin: 0 15px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .footer-user div:hover {
+    color: black;
+  }
+  
