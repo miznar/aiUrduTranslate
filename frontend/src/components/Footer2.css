@@ -11,7 +11,7 @@
   .footer-user div {
     margin: 0 15px;
     font-size: 14px;
-    color: #555;
+    color: #000000;
     cursor: pointer;
     transition: color 0.2s ease;
   }

@@ -16,7 +16,7 @@ const About = () => {
         {/* image boxes */}
         <div className="image-container">
           <div className="image-box">
-            <img src="/trans.png" alt="Translation" />
+            {/* <img src="/trans.png" alt="Translation" /> */}
           </div>
           <div className="image-box"></div>
           <div className="image-box"></div>
@@ -84,27 +84,27 @@ const About = () => {
             <div className="quote-item">
               <p>everybody’s one line quote</p>
               <div className="picture-placeholder">
-                <img
+                {/* <img
                   src={"/mizna.jpeg"}
                   alt="Everyone's Picture"
                   className="profile-picture"
-                />
-              </div>
+                /> */}
+              Mizna Rauf</div>
             </div>
 
             <div className="quote-item">
               <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+              <div className="picture-placeholder">Faiza Nazakat</div>
             </div>
 
             <div className="quote-item">
               <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+              <div className="picture-placeholder">Ifrah Muzahir</div>
             </div>
 
             <div className="quote-item">
               <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">EVERYONE'S PICTURE</div>
+              <div className="picture-placeholder">Yasir Baig</div>
             </div>
           </div>
 
