@@ -4,67 +4,66 @@ body {
     background-color: #E7E7DF;
     margin: 0;
     padding: 0;
-  }
-  
-  .upload-page {
+}
+
+.upload-page {
     display: flex;
     height: 100vh;
-  }
-  
-  /* Sidebar Styling */
-  .sidebar {
+}
+
+/* Sidebar Styling */
+.sidebar {
     width: 15%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 100px;
-  }
-  
-  .sidebar ul {
+}
+
+.sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .sidebar li {
+}
+
+.sidebar li {
     margin-bottom: 10px;
-  }
-  
-  .sidebar a {
+}
+
+.sidebar a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
-  }
-  
-  .sidebar a:hover {
+}
+
+.sidebar a:hover {
     color: #8f7131;
-  }
-  
-  /* Main Content Styling */
-  .upload-content {
+}
+
+/* Main Content Styling */
+.upload-content {
     width: 85%;
     padding: 30px;
     text-align: center;
-    
     background-color: #E7E7DF;
-  }
-  
-  .upload-content h1 {
+}
+
+.upload-content h1 {
     font-size: 24px;
     color: #000;
     margin-right: 300px;
     text-align: center;
-  }
-  
-  .upload-content p {
+}
+
+.upload-content p {
     font-size: 16px;
     color: #555;
     margin-bottom: 20px;
     margin-right: 290px;
-  }
-  
-  .upload-button {
+}
+
+.upload-button {
     padding: 10px 20px;
     background-color: #143950;
     color: #fff;
@@ -74,13 +73,13 @@ body {
     cursor: pointer;
     margin-bottom: 20px;
     margin-right: 200px;
-  }
-  
-  .upload-button:hover {
+}
+
+.upload-button:hover {
     background-color: #143950;
-  }
-  
-  .upload-box {
+}
+
+.upload-box {
     width: 70%;
     height: 200px;
     margin: 20px auto;
@@ -91,30 +90,30 @@ body {
     justify-content: center;
     background-color: #fff;
     border-radius: 20px;
-  }
-  
-  .upload-box p {
+}
+
+.upload-box p {
     color: #888;
     font-size: 14px;
-  }
-  
-  .progress-bar {
+}
+
+.progress-bar {
     width: 70%;
     height: 10px;
     background-color: #ffffff;
     margin: 20px auto;
     border-radius: 5px;
     overflow: hidden;
-  }
-  
-  .progress {
+}
+
+.progress {
     width: 50%; /* Adjust this width dynamically for progress */
     height: 100%;
     background-color: #00283c;
-  }
-  
-  /* Translate Button */
-  .translate-button {
+}
+
+/* Translate Button */
+.translate-button {
     padding: 10px 20px;
     background-color: #8f7131;
     color: #fff;
@@ -122,9 +121,194 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .translate-button:hover {
-    background-color: #725821;
-  }
+}
 
+.translate-button:hover {
+    background-color: #725821;
+}
+
+/* Loading message */
+.upload-content p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Transcript Styling */
+.transcript-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+.transcript-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.transcript-container p {
+    font-size: 16px;
+    color: #333;
+    white-space: pre-wrap;
+}
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #E7E7DF;
+  margin: 0;
+  padding: 0;
+}
+
+.upload-page {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 15%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 100px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.sidebar a:hover {
+  color: #8f7131;
+}
+
+/* Main Content Styling */
+.upload-content {
+  width: 85%;
+  padding: 30px;
+  text-align: center;
+  background-color: #E7E7DF;
+}
+
+.upload-content h1 {
+  font-size: 24px;
+  color: #000;
+  margin-right: 300px;
+  text-align: center;
+}
+
+.upload-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  margin-right: 290px;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  background-color: #143950;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-right: 200px;
+}
+
+.upload-button:hover {
+  background-color: #143950;
+}
+
+.upload-box {
+  width: 70%;
+  height: 200px;
+  margin: 20px auto;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.upload-box p {
+  color: #888;
+  font-size: 14px;
+}
+
+.progress-bar {
+  width: 70%;
+  height: 10px;
+  background-color: #ffffff;
+  margin: 20px auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 50%; /* Adjust this width dynamically for progress */
+  height: 100%;
+  background-color: #00283c;
+}
+
+/* Translate Button */
+.translate-button {
+  padding: 10px 20px;
+  background-color: #8f7131;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.translate-button:hover {
+  background-color: #725821;
+}
+
+/* Loading message */
+.upload-content p {
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Transcript Styling */
+.transcript-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.transcript-container h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.transcript-container p {
+  font-size: 16px;
+  color: #333;
+  white-space: pre-wrap;
+}

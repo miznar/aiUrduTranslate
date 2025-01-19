@@ -14,7 +14,7 @@ const WhiteHeader = () => {
       {/* Logo Section */}
       <div className="white-header-logo">
         <div className="white-header-circle"></div>
-        <span>TranslateAI</span>
+        <span>اردو فہم</span>
       </div>
 
       {/* Navigation Links */}
