@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Signup-pg2.css';
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const Signup2 = () => {
     return (
