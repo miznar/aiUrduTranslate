@@ -18,6 +18,7 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
+import Unregister_User from './components/unregister_User';
 function App() {
   return (
     <div className="App">
@@ -40,6 +41,7 @@ function App() {
           <Route path="/privacypage" element={<PrivacyPage />} />
           <Route path="/service" element={<Services />} />
           <Route path="/completeUser" element={<CompleteProfile />} />
+          <Route path="/unregisterUser" element={<Unregister_User />} />
         </Routes>
     </div>
   );

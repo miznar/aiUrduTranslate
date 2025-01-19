@@ -34,6 +34,9 @@ const Header = () => {
           <li>
             <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
           </li>
+          <li>
+            <a href="/unregisterUser" style={{ fontWeight: 'bold' }}>unreg</a>
+          </li>
         </ul>
       </nav>
       {/* Right Corner Icons */}
