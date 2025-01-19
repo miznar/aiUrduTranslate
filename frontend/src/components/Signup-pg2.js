@@ -1,6 +1,14 @@
 import './Signup-pg2.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup2 = () => {
+    const navigate = useNavigate();
+    
+        const handleContinue = () => {
+            // Navigate to the signup2 page
+            navigate("/completeUser");
+        };
     return (
         <div >
             <h1 className="signup-title">Create an Account</h1>
@@ -18,7 +26,7 @@ const Signup2 = () => {
                     className="signup-input"
                     required
                 />
-                <button type="submit" className="signup-button">
+                <button type="button" className="signup-button" onClick={handleContinue}>
                     Continue
                 </button>
             </form>

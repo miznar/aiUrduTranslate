@@ -17,6 +17,7 @@ import FAQ from './components/FAQ';
 import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
+import CompleteProfile from './components/complete_User';
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
           <Route path="/footer2" element={<Footer2 />} />
           <Route path="/privacypage" element={<PrivacyPage />} />
           <Route path="/service" element={<Services />} />
+          <Route path="/completeUser" element={<CompleteProfile />} />
         </Routes>
     </div>
   );
