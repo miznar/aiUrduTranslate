@@ -1,11 +1,11 @@
 import './Contact-us.css';
-import WhiteHeader from './whiteHeader';
+import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
 const Contact = () => {
     return (
         <div>
-            <WhiteHeader />
+            <Header />
             <div className="contact-container">
                 {/* Contact Header Section */}
                 <div className="contact-header">
