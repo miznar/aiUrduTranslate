@@ -45,13 +45,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Keep this line
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
@@ -136,3 +137,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media files (uploads)
 MEDIA_URL = '/media/'  # URL that serves media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Path where uploaded files will be saved
+# settings.py
+
+# Ensure session engine is configured for database sessions
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Optional: Set a custom session cookie name (default is `sessionid`)
+SESSION_COOKIE_NAME = 'myproject_session'
+
+# Optional: Configure session expiration (default is when the browser closes)
+# settings.py
+# Example of session cookie settings
+SESSION_COOKIE_AGE = 60 * 60 * 24  # 1 day
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+
+
+# Optional: Secure session settings
+SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Set to True to expire sessions on browser close
