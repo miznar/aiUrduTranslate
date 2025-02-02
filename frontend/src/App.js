@@ -19,6 +19,7 @@ import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
 import Unregister_User from './components/unregister_User';
+import ViewTranslation from './components/ViewTranslation';
 function App() {
   return (
     <div className="App">
@@ -42,6 +43,7 @@ function App() {
           <Route path="/service" element={<Services />} />
           <Route path="/completeUser" element={<CompleteProfile />} />
           <Route path="/unregisterUser" element={<Unregister_User />} />
+          <Route path="/viewtranslation" element={<ViewTranslation />} />
         </Routes>
     </div>
   );

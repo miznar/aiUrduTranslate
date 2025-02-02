@@ -1,37 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
 
-/* Header.css */
-.header-cream {
+.blue-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #E7E7DF;
-  color: black;
+  background-color: #143950; /* Blue background */
+  color: white;
   position: relative;
 }
 
-.logo {
+.blue-logo {
   display: flex;
   align-items: center;
 }
 
-.headercircle {
+.blue-header-circle {
   width: 30px;
   height: 30px;
-  background-color: grey;
+  background-color: white;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-.logo span {
+.blue-logo span {
   font-family: 'Inria Sans', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  color: black;
+  color: white;
 }
 
-.nav-links {
+.blue-nav-links {
   display: flex;
   list-style-type: none;
   justify-content: center;
@@ -39,32 +38,31 @@
   padding: 0;
 }
 
-.nav-links li {
+.blue-nav-links li {
   margin: 0 15px;
   position: relative;
 }
 
-.nav-links a {
-  color: black;
+.blue-nav-links a {
+  color: white;
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
-  color: #8F7131;
-  /* Hover effect */
+.blue-nav-links a:hover {
+  color: #E3B23C;
 }
 
 /* Right corner - Get Info Button and Icons */
-.header-right {
+.blue-header-right {
   display: flex;
   align-items: center;
 }
 
-.get-info-btn {
-  background-color: #3d3c3c;
+.blue-get-info-btn {
+  background-color: #181616;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -76,18 +74,18 @@
   font-family: 'Instrument Sans', sans-serif;
 }
 
-.get-info-btn:hover {
-  background-color: #333;
+.blue-get-info-btn:hover {
+  background-color: #1D3557;
 }
 
 /* Icon Containers */
-.icons {
+.blue-icons {
   display: flex;
   gap: 15px;
 }
 
-.icon {
-  background-color: #3d3c3c;
+.blue-icon {
+  background-color: #181616;
   color: white;
   padding: 10px;
   border-radius: 50%;
@@ -98,20 +96,20 @@
   transition: background-color 0.3s ease;
 }
 
-.icon:hover {
-  background-color: #333;
+.blue-icon:hover {
+  background-color: #1D3557;
 }
 
-.icons .icon a {
+.blue-icons .blue-icon a {
   text-decoration: none;
   color: white;
 }
 
-.icons .icon a:hover {
+.blue-icons .blue-icon a:hover {
   color: white;
 }
 
-.search-icon i,
-.menu-icon i {
+.blue-search-icon i,
+.blue-menu-icon i {
   font-size: 15px;
 }

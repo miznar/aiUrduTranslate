@@ -10,7 +10,7 @@ const Header = () => {
     };
 
   return (
-    <header className="header">
+    <header className="header-cream">
       {/* Logo Section */}
       <div className="logo">
         <div className="headercircle"></div>
@@ -34,9 +34,9 @@ const Header = () => {
           <li>
             <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
           </li>
-          <li>
+          {/* <li>
             <a href="/unregisterUser" style={{ fontWeight: 'bold' }}>unreg</a>
-          </li>
+          </li> */}
         </ul>
       </nav>
       {/* Right Corner Icons */}

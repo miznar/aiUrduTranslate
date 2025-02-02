@@ -31,7 +31,7 @@
 .image-box {
   width: 200px;
   height: 300px;
-  background-color: #263754; /* Gray placeholder color */
+  background-color: #143950; /* Gray placeholder color */
   border-radius: 20px;
 }
 
@@ -79,7 +79,7 @@
 
 .about-page {
   font-family: 'Arial', sans-serif;
-  color: #263754;
+  color: #143950;
   line-height: 1.6;
   margin: 20px;
   padding: 0 15px;
@@ -115,7 +115,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #263754;
+  color: #143950;
 }
 
 .text {

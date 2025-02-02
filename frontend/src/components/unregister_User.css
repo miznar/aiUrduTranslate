@@ -1,4 +1,3 @@
-/* General Styling */
 @import url('https://use.typekit.net/zfb7mwp.css');
 
 .hero-section {
@@ -112,15 +111,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
 
-/* Header.css */
 .header {
   display: flex;
   justify-content: space-between;
-  /* Align logo and right corner items */
   align-items: center;
   padding: 20px;
   background-color: #E7E7DF;
-  /* Optional background */
   color: black;
   position: relative;
 }
@@ -156,7 +152,6 @@
 .nav-links li {
   margin: 0 15px;
   position: relative;
-  /* To position the border relative to each list item */
 }
 
 .nav-links a {
@@ -169,10 +164,8 @@
 
 .nav-links a:hover {
   color: #8F7131;
-  /* Hover effect */
 }
 
-/* Right corner - Get Info Button and Icons */
 .header-right {
   display: flex;
   align-items: center;
@@ -194,10 +187,8 @@
 
 .get-sign-btn:hover {
   background-color: #333;
-  /* Slightly darker on hover */
 }
 
-/* Icon Containers */
 .icons {
   display: flex;
   gap: 15px;

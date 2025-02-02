@@ -7,7 +7,7 @@ import LastContainer from './lastContainer';
 
 const Home = () => {
   return (
-    <div>
+    <div className= "main">
       <Header />
       <section className="hero-section">
         <h1>
