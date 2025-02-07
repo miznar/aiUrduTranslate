@@ -1,14 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import './Home.css';
 import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
+import WelcomeBackPopup from './WelcomeBackPopup'; 
 
 const Home = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const handleSubjectsClick = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
-    <div>
+    <div className= "main">
       <Header />
+      {showPopup && <WelcomeBackPopup onClose={handleClosePopup} />}
+
       <section className="hero-section">
         <h1>
           Breaking Language Barriers
@@ -24,7 +36,10 @@ const Home = () => {
 
       <section className="hero-buttons">
         <div className="button-row">
-          <button className="custom-button">
+        <button 
+            className="custom-button" 
+            onClick={handleSubjectsClick}
+          >
             <span className="button-text">Subjects</span>
             <span className="arrow">→</span>
           </button>

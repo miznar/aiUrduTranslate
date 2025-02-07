@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,9 +54,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CORS Configuration
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    "http://localhost:3000",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 
 ROOT_URLCONF = 'aiUrduTranslate.urls'
@@ -134,10 +138,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Media files (uploads)
-MEDIA_URL = '/media/'  # URL that serves media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Path where uploaded files will be saved
-# settings.py
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Ensure session engine is configured for database sessions
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -150,8 +153,35 @@ SESSION_COOKIE_NAME = 'myproject_session'
 # Example of session cookie settings
 SESSION_COOKIE_AGE = 60 * 60 * 24  # 1 day
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+# Allow uploads up to 10MB (adjust as needed)
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 104857600  # 100MB
+
 
 
 # Optional: Secure session settings
-SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+SESSION_COOKIE_SECURE = True  # Set True if serving via HTTPS
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Set to True to expire sessions on browser close
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

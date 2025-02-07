@@ -36,7 +36,7 @@ const CompleteProfile = () => {
             });
 
             if (response.ok) {
-                navigate('/success');
+                navigate('/home');
             } else {
                 const data = await response.json();
                 setError(data.error || 'An error occurred.');

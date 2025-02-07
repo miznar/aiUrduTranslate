@@ -1,5 +1,8 @@
 @import url('https://use.typekit.net/zfb7mwp.css');
 
+.main {
+  background-color: #E7E7DF;
+}
 .hero-section {
   padding: 20px;
   margin-top: 10px;

@@ -1,0 +1,117 @@
+/* WelcomeBackPopup.css */
+.welcome-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .welcome-popup {
+    background-color: #143950;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%; /* Controls width on smaller screens */
+    max-width: 400px; /* Maximum width on larger screens */
+    min-height: 200px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical centering */
+    align-items: center; /* Horizontal centering */
+    min-height: 300px; /* Ensure minimum height for vertical centering */
+    padding: 40px 30px;
+  }
+  .welcome-popup-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+    padding: 5px;
+  }
+  
+  .welcome-popup-close-btn:hover {
+    color: #333;
+  }
+  .welcome-popup h2 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 28px;
+    margin-bottom: 40px; /* Adjust space between h2 and message */
+
+    margin: 0; /*  Remove any default margins */
+    padding: 0; /* Remove any default padding */
+    color: #FFFFFF;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Optional: hides overflowed text */
+    text-overflow: ellipsis; /* Optional: adds ellipsis if the text overflows */
+    text-align: center; /* Ensure text alignment */
+  }
+  
+  .welcome-popup-message {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color:#FFFFFF;
+    margin-top: 10px; /* Move message upwards */
+    margin-bottom: 30px; /* Adjust bottom margin */
+    width: 100%;
+    max-width: 400px; /* Control text width */
+    margin: 0 auto 30px; /* Center horizontally */
+    text-align: center; /* Ensure text alignment */
+  }
+
+.welcome-popup-login-btn {
+    background-color: #143950; /* Matches pop-up background color */
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Instrument Sans', sans-serif;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%; /* Ensure both buttons have consistent width */
+    max-width: 300px;
+}
+
+.welcome-popup-login-btn:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: none;
+}
+
+.welcome-popup-signup-btn {
+  background-color: #FFFFFF;
+  width: 100%; /* Ensure both buttons have consistent width */
+  max-width: 300px;
+  color: #000000;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px; /* Increased spacing between buttons */
+
+  font-family: 'Instrument Sans', sans-serif;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.welcome-popup-signup-btn:hover {
+  background-color: #143950; /* Matches pop-up background color */
+  color: #FFFFFF;
+  border: 1px solid #000000;
+}

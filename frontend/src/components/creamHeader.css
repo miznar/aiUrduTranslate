@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
 
 /* Header.css */
-.header {
+.header-cream {
   display: flex;
   justify-content: space-between;
-  /* Align logo and right corner items */
   align-items: center;
   padding: 20px;
   background-color: #E7E7DF;
-  /* Optional background */
   color: black;
   position: relative;
 }
@@ -44,7 +42,6 @@
 .nav-links li {
   margin: 0 15px;
   position: relative;
-  /* To position the border relative to each list item */
 }
 
 .nav-links a {
@@ -68,9 +65,7 @@
 
 .get-info-btn {
   background-color: #3d3c3c;
-  /* Button background */
   color: white;
-  /* White text */
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
@@ -79,12 +74,10 @@
   margin-right: 15px;
   transition: background-color 0.3s ease;
   font-family: 'Instrument Sans', sans-serif;
-  /* Apply Instrument Sans font */
 }
 
 .get-info-btn:hover {
   background-color: #333;
-  /* Slightly darker on hover */
 }
 
 /* Icon Containers */

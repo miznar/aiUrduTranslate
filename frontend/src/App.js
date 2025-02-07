@@ -1,5 +1,6 @@
-import './App.css';
-import {Route, Routes} from 'react-router-dom'
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Search from './components/Search';
@@ -18,23 +19,31 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
-import Unregister_User from './components/unregister_User';
+import ViewTranslation from './components/ViewTranslation';
+import Unregister_User from  './components/unregister_User';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+import './App.css';
+
+
 function App() {
   return (
-    <div className="App">
-      <Routes>
-          <Route path="" element={<Home />}/>
-          <Route path="/about" element={<About />}/>
+    <GoogleOAuthProvider clientId="1023365653776-fq5i85u1cgk3rgif49de5lpkakamirhn.apps.googleusercontent.com">
+
+      <div className="App">
+        <Routes>
+          <Route path="" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/search" element={<Search />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup2" element={<Signup2 />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Userdashboard" element={<Userdashboard />} />
-          <Route path="/AccountSetting" element={<AccountSetting/>} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/userdashboard" element={<Userdashboard />} />
+          <Route path="/accountsetting" element={<AccountSetting />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/query" element={<Query />} />
-          <Route path="/LearnerHeader" element={<LearnerHeader/>} />
+          <Route path="/learnerheader" element={<LearnerHeader />} />
           <Route path="/uploadvideo" element={<UploadVideo />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/footer2" element={<Footer2 />} />
@@ -42,8 +51,14 @@ function App() {
           <Route path="/service" element={<Services />} />
           <Route path="/completeUser" element={<CompleteProfile />} />
           <Route path="/unregisterUser" element={<Unregister_User />} />
+          <Route path="/viewtranslation" element={<ViewTranslation />} />
+
         </Routes>
-    </div>
+      </div>
+
+  </GoogleOAuthProvider>
+
   );
 }
+
 export default App;

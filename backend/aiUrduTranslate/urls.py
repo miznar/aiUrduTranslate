@@ -8,6 +8,4 @@ urlpatterns = [
     path('', include('api.urls')),  # Include your app's URLs
 ]
 
-# Serve media files during development
-if settings.DEBUG:  # Only active in debug mode
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
