@@ -19,11 +19,13 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
+
 import ViewTranslation from './components/ViewTranslation';
 import Unregister_User from  './components/unregister_User';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import './App.css';
+
 
 
 function App() {
