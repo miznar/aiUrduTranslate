@@ -24,10 +24,12 @@ const Home = () => {
 
       <section className="hero-buttons">
         <div className="button-row">
+          <Link to="/subjects" className="custom-link" >
           <button className="custom-button">
             <span className="button-text">Subjects</span>
             <span className="arrow">→</span>
           </button>
+          </Link>
           <Link to="/uploadvideo" className="custom-link">
             <button className="custom-button">
               <span className="button-text">Upload Video and Start</span>

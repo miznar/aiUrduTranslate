@@ -1,0 +1,113 @@
+/* General Page Styling */
+main {
+    background-color: #002b45;
+}
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #002b45;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Page Title */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-left: 340px;
+    padding-right: 480px;
+}
+
+/* Subject Buttons */
+.subject-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    margin-right: 85px;
+}
+
+.subject-button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.subject-button:hover {
+    background-color: #005a8d;
+    color: white;
+}
+
+.subject-button.active {
+    background-color: #003e66;
+    color: white;
+}
+
+/* Video Container */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-right: 110px;
+}
+
+/* Video Player */
+.video-player {
+    width: 320px;  /* Fixing the width */
+    height: 180px;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Play Icon */
+.play-icon {
+    color: white;
+    font-size: 30px;
+}
+
+/* Video Caption - Center Aligned */
+.video-caption {
+    color: #61a5c2;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    width: 320px;  /* Same as video width */
+    margin-top: 5px;
+}
+
+/* Category (Finance) */
+.video-category {
+    font-style: italic;
+    font-size: 13px;
+    color: #a1c6db;
+    margin-top: 5px;
+}
+
+/* Divider - Same as Video Width */
+.divider {
+    width: 320px;  /* Same as video width */
+    border-bottom: 1px solid #61a5c2;
+    margin: 10px auto;
+}
+
+/* .video-caption:hover {
+    color: #000000;
+} */
+

@@ -20,6 +20,7 @@ import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
 import Unregister_User from './components/unregister_User';
 import ViewTranslation from './components/ViewTranslation';
+import Subjects from './components/Subjects';
 function App() {
   return (
     <div className="App">
@@ -44,6 +45,7 @@ function App() {
           <Route path="/completeUser" element={<CompleteProfile />} />
           <Route path="/unregisterUser" element={<Unregister_User />} />
           <Route path="/viewtranslation" element={<ViewTranslation />} />
+          <Route path="/subjects" element={<Subjects />} />
         </Routes>
     </div>
   );
