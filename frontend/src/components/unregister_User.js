@@ -3,7 +3,7 @@ import "./unregister_User.css";
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
 
-const Unregister_User = () => {
+const UnregisterUser = () => {
     const navigate = useNavigate();
         const handleButtonClick = () => {
           navigate("/query");
@@ -87,4 +87,4 @@ const Unregister_User = () => {
   );
 };
 
-export default Unregister_User;
+export default UnregisterUser;

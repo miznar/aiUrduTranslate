@@ -1,5 +1,5 @@
 import './Query.css';
-import WhiteHeader from './whiteHeader';
+import Header from './creamHeader';
 import LastContainer from './lastContainer';
 import Footer from './Footer';
 
@@ -7,7 +7,7 @@ import Footer from './Footer';
 const Query = () => {
     return (
         <div>
-            <WhiteHeader />
+            <Header />
             <div class="contact-form-container">
                 <div class="form-content">
                     <h5> <span className="highlight">Have Questions? </span> We’re Here to Assist! </h5>

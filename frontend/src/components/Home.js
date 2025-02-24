@@ -8,10 +8,6 @@ import WelcomeBackPopup from './WelcomeBackPopup';
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const handleSubjectsClick = () => {
-    setShowPopup(true);
-  };
-
   const handleClosePopup = () => {
     setShowPopup(false);
   };
@@ -36,13 +32,12 @@ const Home = () => {
 
       <section className="hero-buttons">
         <div className="button-row">
-        <button 
-            className="custom-button" 
-            onClick={handleSubjectsClick}
-          >
-            <span className="button-text">Subjects</span>
-            <span className="arrow">→</span>
-          </button>
+        <Link to="/subjects" className="custom-link">
+            <button className="custom-button">
+              <span className="button-text">Subjects</span>
+              <span className="arrow">→</span>
+            </button>
+          </Link>
           <Link to="/uploadvideo" className="custom-link">
             <button className="custom-button">
               <span className="button-text">Upload Video and Start</span>
@@ -50,7 +45,7 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <Link to="/search" className="custom-link">
+        <Link to="/LectureViewTranslation" className="custom-link">
           <div className="button-row">
             <button className="custom-button">
               <span className="button-text">Explore All</span>

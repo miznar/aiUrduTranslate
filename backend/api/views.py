@@ -19,6 +19,9 @@ import torch
 import subprocess
 import re
 logger = logging.getLogger(__name__)
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -131,23 +134,26 @@ def signup_google(request):
             return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
 
     return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
+from django.contrib.auth.hashers import make_password, check_password
+
+from django.contrib.auth.hashers import make_password
+
 @csrf_exempt
 def signup_email(request):
-    """
-    Endpoint to sign up a user by email and password.
-    """
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             email = data.get('email')
             password = data.get('password')
 
-            # Validate input
             if not email or not password:
                 return JsonResponse({'error': 'Email and password are required.'}, status=400)
 
+            # Hash the password before saving
+            hashed_password = make_password(password)
+
             # Create user profile
-            UserProfile.objects.create(email=email, password=password)
+            UserProfile.objects.create(email=email, password=hashed_password)
 
             return JsonResponse({'message': 'User signed up successfully.'}, status=201)
 
@@ -160,31 +166,26 @@ def signup_email(request):
 
     return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
 
-
 @csrf_exempt
 def complete_profile(request):
     """
     Endpoint to complete the user's profile.
     """
-
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
 
-            # Extract fields from request
             email = data.get('email')
             password = data.get('password')
             username = data.get('username')
             full_name = data.get('full_name')
             interests = data.get('interests')
 
-            # Validate required fields
             if not email or not password or not username or not full_name or not interests:
                 return JsonResponse({'error': 'All fields are required.'}, status=400)
 
-            # Fetch user and update profile
-            user = UserProfile.objects.filter(email=email, password=password).first()
-            if not user:
+            user = UserProfile.objects.filter(email=email).first()
+            if not user or not check_password(password, user.password):  # Verify hashed password
                 return JsonResponse({'error': 'Invalid email or password.'}, status=404)
 
             user.username = username
@@ -202,17 +203,48 @@ def complete_profile(request):
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
+from django.contrib.auth.hashers import check_password
+
+@csrf_exempt
+def loginView(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            username_or_email = data.get("email") or data.get("username")
+            password = data.get("password")
+
+            if not username_or_email or not password:
+                return JsonResponse({"error": "Username/Email and password are required"}, status=400)
+
+            user = UserProfile.objects.filter(email=username_or_email).first()
+
+            if user and check_password(password, user.password):
+                return JsonResponse({"message": "Login successful", "username": user.username, "token": "your_generated_token_here"})
+
+            return JsonResponse({"error": "Invalid credentials"}, status=401)
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
+
 def home(request):
     return JsonResponse('HOME here')
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import os
+from django.conf import settings
 
 @csrf_exempt
 def upload_video(request):
     if request.method == "OPTIONS":
         return JsonResponse({"message": "CORS preflight handled."}, status=200)
+
     if request.method == 'POST' and request.FILES.get('file'):
         video_file = request.FILES['file']
         upload_folder = os.path.join(settings.MEDIA_ROOT, 'uploaded_files')
@@ -228,8 +260,9 @@ def upload_video(request):
                 for chunk in video_file.chunks():
                     destination.write(chunk)
 
-            return JsonResponse({'message': f'File saved successfully at {file_path}'})
+            return JsonResponse({'message': f'File saved successfully at {file_path}', 'file_url': request.build_absolute_uri(settings.MEDIA_URL + 'uploaded_files/' + video_file.name)}, status=201)
+
         except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-    else:
-        return JsonResponse({'error': 'Invalid request or no file uploaded'}, status=400)
+            return JsonResponse({'error': f'Failed to save file: {str(e)}'}, status=500)
+
+    return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)

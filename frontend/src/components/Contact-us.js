@@ -16,7 +16,13 @@ const Contact = () => {
                     <h2>Need Assistance? We’re Here to Help!</h2>
                     <p>Reach Out to Us</p>
                     <h6>Share your contact information and area of issue so <br></br> we can follow up with you.</h6>
-                    <button className="contact-button" onClick={() => navigate("/viewtranslation")} >Get In Touch</button>
+                    <button 
+                        className="contact-button" 
+                        onClick={() => navigate("/view-translation", { state: { videoName: "Sample Video Name" } })}
+                        >
+                        Get In Touch
+                        </button>
+
                 </div>
 
                 {/* Connect with Team */}

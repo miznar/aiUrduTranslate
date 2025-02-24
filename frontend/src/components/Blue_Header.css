@@ -5,8 +5,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #143950; /* Blue background */
-  color: white;
+  background-color: #061F2F; /* Blue background */
+  color: #AFAF9D;
   position: relative;
 }
 
@@ -18,7 +18,7 @@
 .blue-header-circle {
   width: 30px;
   height: 30px;
-  background-color: white;
+  background-color: #AFAF9D;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -27,7 +27,7 @@
   font-family: 'Inria Sans', sans-serif;
   font-weight: 300;
   font-size: 20px;
-  color: white;
+  color: #AFAF9D;
 }
 
 .blue-nav-links {
@@ -44,7 +44,7 @@
 }
 
 .blue-nav-links a {
-  color: white;
+  color: #AFAF9D;
   text-decoration: none;
   font-weight: 500;
   font-size: 16px;
@@ -52,7 +52,7 @@
 }
 
 .blue-nav-links a:hover {
-  color: #E3B23C;
+  color: #AFAF9D;
 }
 
 /* Right corner - Get Info Button and Icons */
@@ -63,7 +63,7 @@
 
 .blue-get-info-btn {
   background-color: #181616;
-  color: white;
+  color: #AFAF9D;
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
@@ -86,7 +86,7 @@
 
 .blue-icon {
   background-color: #181616;
-  color: white;
+  color: #AFAF9D;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
@@ -102,11 +102,11 @@
 
 .blue-icons .blue-icon a {
   text-decoration: none;
-  color: white;
+  color: #AFAF9D;
 }
 
 .blue-icons .blue-icon a:hover {
-  color: white;
+  color: #AFAF9D;
 }
 
 .blue-search-icon i,
