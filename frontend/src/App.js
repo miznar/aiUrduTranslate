@@ -32,7 +32,8 @@ function App() {
      
         <div className="App">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<UnregisterUser />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/search" element={<Search />} />
             <Route path="/blog" element={<Blog />} />
@@ -54,7 +55,6 @@ function App() {
             {/* <Route path="/viewtranslation" element={<ViewTranslation />} /> */}
             <Route path="/view-translation" element={<LectureViewTranslation />} />
             <Route path="/subjects" element={<Subjects />} />
-            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
   

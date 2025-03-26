@@ -96,13 +96,16 @@ const Signup = () => {
       </div>
 
       <div className="signup-alternate">
-      <GoogleLogin
+      {/* <GoogleLogin
        onSuccess={(credentialResponse) => handleGoogleLogin(credentialResponse)}
        onError={() => setError('Google Login Failed.')}
        text="signup_with"
        size="large"
-      />
-
+      /> */}
+         <button className="signup-microsoft">
+          <img src="/google.jpg" alt="Google logo" className="icon" />
+          Continue with Google
+        </button>
         <button className="signup-microsoft">
           <img src="/microsoft.png" alt="Microsoft logo" className="icon" />
           Continue with Microsoft Account

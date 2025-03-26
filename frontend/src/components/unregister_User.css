@@ -183,6 +183,9 @@
   transition: background-color 0.3s ease;
   font-family: 'Instrument Sans', sans-serif;
   margin-left: 10px;
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Ensure proper button appearance */
+  text-align: center;
 }
 
 .get-sign-btn:hover {

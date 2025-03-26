@@ -24,7 +24,7 @@ const Login = () => {
             if (response.ok) {
                 console.log("Login Successful:", data);
                 localStorage.setItem('token', data.token); // Store token for authentication
-                window.location.href = '/'; // Redirect if needed
+                window.location.href = '/home'; // Redirect if needed
             } else {
                 setError(data.error || 'Invalid credentials');
             }
@@ -34,7 +34,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div className="login-container">
             <h1 className="login-title">Welcome Back</h1>
             {error && <p className="error-message">{error}</p>} {/* Show error if any */}
             <form className="login-form" onSubmit={handleLogin}>
@@ -59,7 +59,7 @@ const Login = () => {
                 </button>
             </form>
             <p className="login-login">
-                Don't have an account? <a href="/signup">Signup</a>
+                Don't have an account? <a href="/signup">Sign Up</a>
             </p>
             <div className="login-divider">
                 <hr className="divider-line" />

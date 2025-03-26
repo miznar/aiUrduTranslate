@@ -21,7 +21,7 @@ const WhiteHeader = () => {
       <nav>
         <ul className="white-nav-links">
           <li>
-            <Link to="/" style={{ fontWeight: 'bold' }}>How it Works</Link>
+            <Link to="/home" style={{ fontWeight: 'bold' }}>How it Works</Link>
           </li>
           <li>
             <Link to="/about" style={{ fontWeight: 'bold' }}>About us</Link>

@@ -23,7 +23,7 @@ const WelcomeBackPopup = ({ onClose }) => {
           <br />
           educational catalog.
         </p>
-        <button class="welcome-popup-login-btn">Log In</button>
+        <button className="welcome-popup-login-btn">Log In</button>
         <button 
           className="welcome-popup-signup-btn"
           onClick={handleSignUp}
