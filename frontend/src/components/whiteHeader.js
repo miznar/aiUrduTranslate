@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const WhiteHeader = () => {
   const navigate = useNavigate();
   const handleButtonClick = () => {
-    navigate("/query");
+    navigate("/Userdashboard");
   };
 
   return (

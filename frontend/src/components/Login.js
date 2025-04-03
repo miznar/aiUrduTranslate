@@ -1,7 +1,9 @@
 import './Login.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -9,7 +11,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError(null); // Clear previous errors
-
+    
         try {
             const response = await fetch('http://127.0.0.1:8000/login/', { 
                 method: 'POST',
@@ -18,13 +20,18 @@ const Login = () => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-
+    
             const data = await response.json();
-
+    
             if (response.ok) {
                 console.log("Login Successful:", data);
-                localStorage.setItem('token', data.token); // Store token for authentication
-                window.location.href = '/home'; // Redirect if needed
+                // Store token and user data in localStorage
+                localStorage.setItem('token', data.token); 
+                localStorage.setItem('username', data.username); 
+                localStorage.setItem('full_name', data.full_name); 
+                localStorage.setItem('interests', JSON.stringify(data.interests));
+    
+                navigate('/home');  // Navigate to home or dashboard
             } else {
                 setError(data.error || 'Invalid credentials');
             }
@@ -32,7 +39,7 @@ const Login = () => {
             setError('Something went wrong. Please try again.');
         }
     };
-
+    
     return (
         <div className="login-container">
             <h1 className="login-title">Welcome Back</h1>

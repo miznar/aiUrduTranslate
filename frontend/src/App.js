@@ -24,6 +24,7 @@ import UnregisterUser from './components/unregister_User';
 import LectureViewTranslation from './components/LectureTranslation';
 import Subjects from './components/SubjectsPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import CornerNavigation from "./components/CornerNavigation";
 import './App.css';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
             {/* <Route path="/viewtranslation" element={<ViewTranslation />} /> */}
             <Route path="/view-translation" element={<LectureViewTranslation />} />
             <Route path="/subjects" element={<Subjects />} />
+            <Route path="/corner-navigation" element={<CornerNavigation />} />
           </Routes>
         </div>
   

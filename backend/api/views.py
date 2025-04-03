@@ -204,7 +204,6 @@ def complete_profile(request):
 
     return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
 from django.contrib.auth.hashers import check_password
-
 @csrf_exempt
 def loginView(request):
     if request.method == "POST":
@@ -219,7 +218,13 @@ def loginView(request):
             user = UserProfile.objects.filter(email=username_or_email).first()
 
             if user and check_password(password, user.password):
-                return JsonResponse({"message": "Login successful", "username": user.username, "token": "your_generated_token_here"})
+                return JsonResponse({
+                    "message": "Login successful",
+                    "username": user.username,
+                    "full_name": user.full_name,  
+                    "interests": user.interests,  
+                    "token": "your_generated_token_here"
+                })
 
             return JsonResponse({"error": "Invalid credentials"}, status=401)
 
@@ -227,7 +232,6 @@ def loginView(request):
             return JsonResponse({"error": "Invalid JSON data"}, status=400)
 
     return JsonResponse({"error": "Invalid request method"}, status=405)
-
 
 def home(request):
     return JsonResponse('HOME here')
