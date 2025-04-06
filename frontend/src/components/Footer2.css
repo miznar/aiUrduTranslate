@@ -1,21 +1,43 @@
- /* Footer */
- .footer-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background-color: D9D8C6;
-    border-top: 2px solid #ddd;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  }
-  .footer-user div {
-    margin: 0 15px;
-    font-size: 14px;
-    color: #000000;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  .footer-user div:hover {
-    color: black;
-  }
-  
+/* Footer */
+.footer-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #E5E5D9; /* Corrected color format */
+  border-top: 2px solid #ddd;
+  font-family: Inria Sans;
+}
+
+/* Remove underline from links */
+.footer-user a {
+  text-decoration: none; /* Removes default underline */
+}
+
+/* Style for text inside links */
+.footer-user div {
+  font-weight: bold; /* Makes text bold */
+  margin: 0 15px;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Hover effect */
+.footer-user div:hover {
+  color: black;
+}
+/* Unique logo placeholder styling */
+.footer-logo-placeholder {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+
+.footer-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #002a50;
+  border-radius: 50%;
+}

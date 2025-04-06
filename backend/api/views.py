@@ -149,16 +149,18 @@ def signup_email(request):
             if not email or not password:
                 return JsonResponse({'error': 'Email and password are required.'}, status=400)
 
+            # ✅ Check if email already exists
+            if UserProfile.objects.filter(email=email).exists():
+                return JsonResponse({'error': 'A user with this email already exists.'}, status=400)
+
             # Hash the password before saving
             hashed_password = make_password(password)
 
-            # Create user profile
+            # ✅ Create user only if email does not exist
             UserProfile.objects.create(email=email, password=hashed_password)
 
             return JsonResponse({'message': 'User signed up successfully.'}, status=201)
 
-        except IntegrityError:
-            return JsonResponse({'error': 'A user with this email already exists.'}, status=400)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
         except Exception as e:

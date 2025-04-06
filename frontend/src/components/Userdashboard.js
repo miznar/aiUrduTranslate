@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Userdashboard.css';
 import { Link } from 'react-router-dom';
 import Footer2 from './Footer2';
-
+import './Footer2.css';
 const Userdashboard = () => {
   const navigate = useNavigate();  
   const [user, setUser] = useState({
@@ -44,7 +44,10 @@ const Userdashboard = () => {
     <div className="profile-page">
       <header className="header-user">
         <div className="header-left">
-          <span className="header-logo">Translate AI</span>
+          <div className="footer-logo-placeholder">
+            <div className="footer-circle"></div>
+          </div>
+          <span className="header-logo">اردو فہم</span>
         </div>
         <div className="header-right">
           <span>Option1</span> | <span>Option1</span> | <span>Option1</span> | <span>Option1</span>
@@ -52,6 +55,7 @@ const Userdashboard = () => {
         </div>
       </header>
 
+      <div className="header-divider"></div>
       <div className="main-content">
         <aside className="sidebar-user">
           <div className="profile-picture"></div>
@@ -71,12 +75,12 @@ const Userdashboard = () => {
 
         <div className="profile-content">
           <div className="score-section">
-            <h3>Total Quiz Score</h3>
+          <h3><i class="fa-solid fa-percent"></i>&nbsp;   Total Quiz Score</h3>
             <p>00</p>
           </div>
 
           <div className="discussion-section">
-            <h3>Your Discussions</h3>
+          <h3><i class="fa-solid fa-user-group"></i>&nbsp;   Your Discussions</h3>
             <div className="discussion-list">
               <div className="discussion">
                 <div className="discussion-title">Discussion 01</div>
@@ -94,7 +98,7 @@ const Userdashboard = () => {
           </div>
         </div>
       </div>
-
+      <div className="header-divider"></div>
       <Footer2 />
     </div>
   );

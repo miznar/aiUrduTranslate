@@ -1,5 +1,5 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #E5E5D9;
@@ -11,24 +11,30 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 /* Header */
 .header-user {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  font-family: Inria Sans;
-  size: 24px;
-  line-height: 18px;
+  padding: 4px 12px; /* reduced padding */
+  font-family: 'Inria Sans', sans-serif;
+  font-size: 16px; /* reduced font size */
+  line-height: 2; /* tighter line height */
   background-color: #E5E5D9;
-  border-bottom: 2px solid #E5E5D9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ccc; /* smaller border */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 60px; /* force a compact header height */
 }
 
-.header-left .header-logo {
-  font-size: 22px;
-  font-weight: bold;
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between items */
+}
+
+.header-logo {
+  font-size: 14px;
   color: black;
 }
 
@@ -43,9 +49,20 @@ body {
   text-decoration: underline;
 }
 
+.header-divider {
+  height: 1px;
+  background-color: #786541;
+  width: 100%;
+}
+
+.header-user * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .profile-icon {
-  width: 31px;
-  height: 31px;
+  width: 50px;
+  height: 50px;
   display: inline-block;
   background-color:#8F7131;
   color: #E5E5D9;
@@ -66,20 +83,20 @@ body {
 
 /* Sidebar */
 .sidebar-user {
-  width: 250px;
+  width: 400px;
   background-color: #E5E5D9;
   border: 1px solid black;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
   border: black;
 }
 
 .profile-picture {
-  width: 70px;
-  height: 70px;
+  width: 150px;
+  height: 150px;
   background-color: #8F7131;
-  font-size: 24px;
+  font-size: 18px;
   border-radius: 50%;
   line-height: 70px;
   margin: 0 auto 15px;
@@ -89,8 +106,9 @@ body {
 .profile-info .profile-name {
   font-family: Inria Sans;
   font-size: 20px;
-  font-weight: bold;
   text-align: left;
+  font-weight: bold;
+
 }
 
 .profile-info .profile-username {
@@ -120,8 +138,9 @@ body {
   background-color: #D9D8C6;
   color: black;
   font-size: 14px;
+  font-weight: bold; 
   border: none;
-  border-radius: 5px;
+  border-radius: 13px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -148,6 +167,8 @@ body {
   font-family: Inria Sans;
   color: black;
   text-align: left;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
 }
 
 /* Profile Content */
@@ -155,78 +176,79 @@ body {
   flex: 1;
   padding: 25px;
   background-color: #E5E5D9;
-  border: 1px solid #E5E5D9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* border: 1px solid #E5E5D9; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  
 }
 
 .score-section h3 {
+
+  margin-top: 20px;
   font-family: Inria Sans;
   text-align: left;
-  size: 24px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
   justify-content: space-between;
-  gap: 8px;
+  gap: 16px;
 }
 
 .score-section p {
   font-family: Inria Sans;
-  font-size: 24px;
+  font-size: 20px;
+  color: black;
   color: black;
   text-align: left;
-}
+  margin-bottom: 100px;
 
+}
+/* Discussion title styling */
 .discussion-section h3 {
   font-family: Inria Sans;
   text-align: left;
-  font-size: 24px;
-  margin-bottom: 15px;
   color: black;
-  font-size: medium;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
+/* Discussion section container */
 .discussion-section {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+/* Discussion list container (Allow items to wrap, and add some space between them) */
 .discussion-list {
   display: flex;
-  flex-wrap: wrap;
-  /* Allow items to wrap if needed */
-  gap: 20px;
-  /* Space between boxes */
-  justify-content: flex-start;
-  /* Align items to the start */
+  flex-wrap: wrap; /* Allow items to wrap if needed */
+  gap: 20px; /* Space between boxes */
+  justify-content: flex-start; /* Align items to the start */
 }
 
+/* General discussion box styling */
 .discussion {
   font-family: Inria Sans;
   padding: 10px;
   background-color: #D9D8C6;
   border: 1px solid #D9D8C6;
-  border-radius: 5px;
+  border-radius: 13px;
   text-align: center;
-  flex-grow: 1;
-  /* Allow boxes to grow evenly */
-  width: auto;
-  /* Automatically adjust width based on text */
-  max-width: 300px;
-  /* Optional: Set a maximum width for better design */
+  width: calc(50% - 10px); /* 50% width for each of the first two items, with a gap */
+  max-width: 300px; /* Optional: max width for each box */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
 }
 
+/* Hover effect */
 .discussion:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
 
+/* The third discussion takes up the full width */
 .discussion:nth-child(3) {
-  /* Center the third discussion item */
-  flex: 1 1 60%;
-  /* Make it larger or use a specific width */
-}
-.discussion:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%; /* 100% width to take up the full line */
 }

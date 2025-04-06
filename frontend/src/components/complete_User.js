@@ -92,4 +92,4 @@ const CompleteProfile = () => {
     );
 };
 
-export default CompleteProfile;
+export default CompleteProfile;  
