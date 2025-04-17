@@ -26,10 +26,14 @@ const Login = () => {
             if (response.ok) {
                 console.log("Login Successful:", data);
                 // Store token and user data in localStorage
+                console.log(typeof data.interests, Array.isArray(data.interests)); 
+                localStorage.setItem("email", data.email);
                 localStorage.setItem('token', data.token); 
                 localStorage.setItem('username', data.username); 
                 localStorage.setItem('full_name', data.full_name); 
                 localStorage.setItem('interests', JSON.stringify(data.interests));
+                localStorage.setItem('token', data.token);
+
     
                 navigate('/home');  // Navigate to home or dashboard
             } else {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';  
 import './Userdashboard.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Footer2 from './Footer2';
 import './Footer2.css';
 const Userdashboard = () => {
@@ -9,26 +9,26 @@ const Userdashboard = () => {
   const [user, setUser] = useState({
     fullName: '',
     username: '',
+    email:'',
     interests: []  // Default to an empty array
   });
 
   useEffect(() => {
     // Retrieve user data from localStorage
+    const userEmail = localStorage.getItem('email'); 
     const userFullName = localStorage.getItem('full_name');
     const userUsername = localStorage.getItem('username');
     const userInterests = localStorage.getItem('interests');
 
     if (userFullName && userUsername) {
       // Safely parse interests to ensure it's always an array
-      let parsedInterests = userInterests ? JSON.parse(userInterests) : [];
-      
-      // Check if parsedInterests is actually an array
-      if (!Array.isArray(parsedInterests)) {
-        console.error("Interests should be an array");
-        parsedInterests = []; // Fall back to empty array if it's not an array
-      }
+        let parsedInterests = userInterests ? JSON.parse(userInterests) : [];
+        if (!Array.isArray(parsedInterests)) {
+            parsedInterests = [];
+        }
 
       setUser({
+        email: userEmail,  
         fullName: userFullName,
         username: userUsername,
         interests: parsedInterests  // Ensure interests is always an array
@@ -61,6 +61,7 @@ const Userdashboard = () => {
           <div className="profile-picture"></div>
           <div className="profile-info">
             <div className="profile-name">{user.fullName}</div>
+            <div className="profile-name">{user.email}</div>
             <div className="profile-username">@{user.username}</div>
           </div>
           <div className="menu">

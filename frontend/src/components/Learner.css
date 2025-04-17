@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap');
+
 body {
-  font-family: Inria Sans;
+  font-family: 'Inria Sans', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #E5E5D9;
@@ -65,16 +67,17 @@ body {
 /* Sidebar */
 .sidebar-learner {
   width: 250px;
-  background-color: #E5E5D9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  height: 250px;
+  background-color: #E4E3D3;
+  border: 1px solid #E4E3D3;
+  border-radius: 5px; 
   padding: 20px;
 }
 
 .profile-picture-learner {
   width: 50px;
   height: 50px;
-  background-color: #835d1a;
+  background-color: #8F7131;
   color: #E5E5D9;
   font-size: 28px;
   border-radius: 50%;
@@ -152,7 +155,6 @@ body {
 }
 
 .Account-settings-learner h2 {
-  font-family: Inria Sans;
   margin-bottom: 20px;
   text-align: left;
 }
@@ -172,12 +174,12 @@ body {
   width: 100%;
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #E5E5D9;
+  border: 1px solid #1B1302;
+  border-radius: 10px;
 }
 
 .save-button-learner {
-  font-family: Inria Sans;
   text-align: left;
   padding: 10px 20px;
   background-color: #D9D8C6;
@@ -189,34 +191,4 @@ body {
   /* To avoid it being full width */
   margin-left: 0;
   /* Align it to the left */
-}
-
-.footer-learner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  background-color: #E5E5D9;
-  border-top: 1px solid #ddd;
-  flex-shrink: 0;
-  gap: 15px;
-  /* Add gap to control spacing between items */
-}
-
-.footer-learner div {
-  margin: 0;
-  padding: 5px 10px;
-  /* Add padding for better spacing */
-  cursor: pointer;
-  font-size: 14px;
-  /* Optional: Adjust font size */
-  color: #333;
-  /* Optional: Text color */
-  transition: color 0.3s ease;
-  /* Add hover effect */
-}
-
-.footer-learner div:hover {
-  color: black;
-  /* Change color on hover */
 }

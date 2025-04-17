@@ -31,8 +31,16 @@ const Signup = () => {
       });
 
       if (response.ok) {
+        const data = await response.json();
+      
+        // Store tokens in localStorage
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+      
+        // Then go to complete profile page
         navigate('/completeUser', { state: { email, password } });
-      } else {
+      }
+       else {
         const data = await response.json();
         setError(data.error || 'An error occurred.');
       }

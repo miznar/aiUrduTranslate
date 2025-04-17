@@ -21,7 +21,7 @@ const CompleteProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const accessToken = localStorage.getItem("accessToken");
         if (!username || !fullName || !interests) {
             setError('All fields are required.');
             return;
@@ -31,16 +31,33 @@ const CompleteProfile = () => {
             // Send the complete user profile data
             const response = await fetch('http://127.0.0.1:8000/complete_profile/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password, username, full_name: fullName, interests }),
+                headers: { 'Content-Type': 'application/json',
+                "Authorization": "Bearer " + accessToken, 
+                 },
+             
+                 body: JSON.stringify({
+                    username,
+                    full_name: fullName,
+                    interests: interests.split(',').map(item => item.trim()).filter(item => item !== ''),
+                  }),
+                  
+                
             });
-
             if (response.ok) {
+                const data = await response.json();
+                const { access, refresh } = data;
+            
+                // Store tokens in localStorage or cookies
+                localStorage.setItem('accessToken', access);
+                localStorage.setItem('refreshToken', refresh);
+            
                 navigate('/home');
             } else {
                 const data = await response.json();
                 setError(data.error || 'An error occurred.');
             }
+            
+            
         } catch (err) {
             setError('Failed to connect to the server.');
         }
