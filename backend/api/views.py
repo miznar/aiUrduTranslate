@@ -7,6 +7,7 @@ import logging
 import subprocess
 import tempfile
 import requests
+from datetime import datetime
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -29,7 +30,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from google.oauth2 import id_token
 from google.auth.transport.requests import Request
 
-from .models import UserProfile
+from .models import UserProfile, UploadedVideoLecture,LectureTranslation
 import uuid
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -311,25 +312,45 @@ def update_interests(request):
             return JsonResponse({'error': str(e)}, status=500)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.http import JsonResponse
+from django.views import View
+from .models import UserProfile  # or wherever you store users
+import json
 
+@method_decorator(csrf_exempt, name='dispatch')
+class UpdatePasswordView(View):
+    def post(self, request):
+        auth_header = request.headers.get('Authorization')
 
-@api_view(['POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def update_password(request):
-    new_password = request.data.get('password')
+        if not auth_header or not auth_header.startswith("Bearer "):
+            return JsonResponse({"error": "Unauthorized"}, status=401)
 
-    if not new_password:
-        return Response({'error': 'Password is required'}, status=400)
+        token = auth_header.split(" ")[1]
 
-    user = request.user
-    user.set_password(new_password)
-    user.save()
-    return Response({'message': 'Password updated successfully'})
+        try:
+            user = UserProfile.objects.get(token=token)
 
+            data = json.loads(request.body)
+            new_password = data.get("password")
+
+            if not new_password:
+                return JsonResponse({"error": "Password required"}, status=400)
+
+            user.set_password(new_password)
+            user.save()
+
+            return JsonResponse({"message": "Password updated successfully"})
+
+        except UserProfile.DoesNotExist:
+            return JsonResponse({"error": "Invalid token"}, status=401)
+        except Exception as e:
+            print("Error:", e)
+            return JsonResponse({"error": "Something went wrong"}, status=500)
 
 @csrf_exempt
-def upload_video(request):
+def GenerateTranscript(request):
     if request.method == "OPTIONS":
         return JsonResponse({"message": "CORS preflight handled."}, status=200)
 
@@ -337,14 +358,15 @@ def upload_video(request):
         video_file = request.FILES['file']
         upload_folder = os.path.join(settings.MEDIA_ROOT, 'uploaded_files')
         os.makedirs(upload_folder, exist_ok=True)
-        file_path = os.path.join(upload_folder, video_file.name)
+        filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{video_file.name}"
+        file_path = os.path.join(upload_folder, filename)
 
         try:
             with open(file_path, 'wb+') as destination:
                 for chunk in video_file.chunks():
                     destination.write(chunk)
 
-            file_url = request.build_absolute_uri(settings.MEDIA_URL + 'uploaded_files/' + video_file.name)
+            file_url = request.build_absolute_uri(settings.MEDIA_URL + 'uploaded_files/' + filename)
             return JsonResponse({'message': 'File saved successfully.', 'file_url': file_url}, status=201)
 
         except Exception as e:
@@ -355,3 +377,204 @@ def upload_video(request):
 
 def home(request):
     return JsonResponse({"message": "HOME here"})
+
+from django.http import JsonResponse
+from .models import UserProfile
+
+def authenticate_user(view_func):
+    def _wrapped_view(request, *args, **kwargs):
+        auth_header = request.headers.get('Authorization')
+        if not auth_header or not auth_header.startswith("Token "):
+            return JsonResponse({'error': 'Unauthorized'}, status=401)
+
+        token = auth_header.split(" ")[1]
+        try:
+            user = UserProfile.objects.get(token=token)
+            request.user_profile = user  # Attach user to request
+        except UserProfile.DoesNotExist:
+            return JsonResponse({'error': 'Invalid token'}, status=401)
+
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view
+
+
+def get_video_metadata(video_path):
+    command = [
+        "ffprobe", "-v", "error", "-print_format", "json", "-show_format", "-show_streams", video_path
+    ]
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    metadata = json.loads(result.stdout.decode())
+    return metadata
+
+def guess_category(text):
+    text_lower = text.lower()
+    categories = {
+        "Banking": ["bank", "finance", "loan", "credit", "investment", "atm", "branch"],
+        "Law": ["law", "legal", "justice", "court", "attorney", "contract", "crime"],
+        "Agriculture": ["agriculture", "farm", "crop", "harvest", "irrigation", "fertilizer", "seeds"],
+    }
+
+    for category, keywords in categories.items():
+        if any(keyword in text_lower for keyword in keywords):
+            return category
+    return "General"
+
+
+@csrf_exempt
+@authenticate_user
+def process_transcript_upload(request):
+    if request.method == 'OPTIONS':
+        return JsonResponse({"message": "CORS preflight handled."}, status=200)
+
+    if request.method == 'POST' and request.FILES.get('file'):
+        try:
+            # STEP 1: Save video to media
+            video_file = request.FILES['file']
+            upload_folder = os.path.join(settings.MEDIA_ROOT, 'uploaded_files')
+            os.makedirs(upload_folder, exist_ok=True)
+
+            filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{video_file.name}"
+            video_path = os.path.join(upload_folder, filename)
+            with open(video_path, 'wb+') as destination:
+                for chunk in video_file.chunks():
+                    destination.write(chunk)
+
+            # STEP 2: Extract metadata
+            # STEP 2: Extract metadata
+                metadata = get_video_metadata(video_path)
+
+                # Title fallback to filename (without extension) if not in metadata
+                title_from_meta = metadata.get('format', {}).get('tags', {}).get('title')
+                video_title = title_from_meta if title_from_meta else os.path.splitext(video_file.name)[0]
+
+                # Description is optional – fallback to empty
+                description = metadata.get('format', {}).get('tags', {}).get('description', '')
+
+            # STEP 3: Extract audio
+            audio_path = os.path.join(settings.MEDIA_ROOT, 'temp_audio.wav')
+            extract_audio(video_path, audio_path)
+
+            # STEP 4: Generate transcript
+            transcript = transcribe_audio(audio_path)
+
+            # STEP 5: Guess lecture category
+            # STEP 5: Guess lecture category
+            def guess_category(text):
+                text_lower = text.lower()
+                if "bank" in text_lower or "finance" in text_lower or "account" in text_lower:
+                    return "Banking"
+                elif "law" in text_lower or "legal" in text_lower or "court" in text_lower:
+                    return "Law"
+                elif "farm" in text_lower or "crop" in text_lower or "agriculture" in text_lower or "soil" in text_lower:
+                    return "Agriculture"
+                return "General"
+
+
+            category = guess_category(transcript + " " + description)
+
+            # STEP 6: Save to model
+            user = request.user_profile  # ✅ Comes from your decorator
+            video_instance = UploadedVideoLecture.objects.create(
+                uploadedBy=user,
+                videoTitle=video_title,
+                video_file=os.path.join('videos', filename),
+                lectureCategory=category,
+                transcript=transcript
+            )
+
+            file_url = request.build_absolute_uri(settings.MEDIA_URL + f"videos/{filename}")
+            # STEP 6.5: Save transcript to LectureTranslation as sourceText
+            LectureTranslation.objects.create(
+                video=video_instance,
+                sourceText=transcript,
+                status='undone'
+            )
+                        # Cleanup
+            if os.path.exists(audio_path):
+                os.remove(audio_path)
+
+            return JsonResponse({
+                'message': 'Transcript generated and saved.',
+                'file_url': file_url,
+                'transcript': transcript,
+                'category': category,
+                'videoId': str(video_instance.videoId)
+            }, status=201)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Failed to process file: {str(e)}'}, status=500)
+
+    return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)
+
+# @csrf_exempt
+# def process_transcript_upload(request):
+#     if request.method == 'OPTIONS':
+#         return JsonResponse({"message": "CORS preflight handled."}, status=200)
+
+#     if request.method == 'POST' and request.FILES.get('file'):
+#         try:
+#             # STEP 1: Save video to media
+#             video_file = request.FILES['file']
+#             upload_folder = os.path.join(settings.MEDIA_ROOT, 'videos')
+#             os.makedirs(upload_folder, exist_ok=True)
+
+#             filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{video_file.name}"
+#             video_path = os.path.join(upload_folder, filename)
+#             with open(video_path, 'wb+') as destination:
+#                 for chunk in video_file.chunks():
+#                     destination.write(chunk)
+
+#             # STEP 2: Extract audio
+#             audio_path = os.path.join(settings.MEDIA_ROOT, 'temp_audio.wav')
+#             extract_audio(video_path, audio_path)
+
+#             # STEP 3: Generate transcript
+#             transcript = transcribe_audio(audio_path)
+
+#             # STEP 4: Guess lecture category (VERY basic logic)
+#             def guess_category(text):
+#                 text_lower = text.lower()
+#                 if "math" in text_lower:
+#                     return "Mathematics"
+#                 elif "physics" in text_lower:
+#                     return "Physics"
+#                 elif "biology" in text_lower:
+#                     return "Biology"
+#                 elif "chemistry" in text_lower:
+#                     return "Chemistry"
+#                 elif "computer" in text_lower:
+#                     return "Computer Science"
+#                 return "General"
+
+#             category = guess_category(transcript)
+
+#             # STEP 5: Save to model
+#             user = request.user.userprofile  # assuming request.user is authenticated
+#             video_instance = UploadedVideoLecture.objects.create(
+#                 uploadedBy=user,
+#                 videoTitle=filename,
+#                 video_file=os.path.join('videos', filename),
+#                 lectureCategory=category
+#             )
+
+#             file_url = request.build_absolute_uri(settings.MEDIA_URL + f"videos/{filename}")
+
+#             # Cleanup
+#             if os.path.exists(audio_path):
+#                 os.remove(audio_path)
+
+#             return JsonResponse({
+#                 'message': 'Transcript generated and saved.',
+#                 'file_url': file_url,
+#                 'transcript': transcript,
+#                 'category': category,
+#                 'videoId': str(video_instance.videoId)
+#             }, status=201)
+
+#         except Exception as e:
+#             return JsonResponse({'error': f'Failed to process file: {str(e)}'}, status=500)
+
+#     return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)
+# import subprocess
+# import json
+

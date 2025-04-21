@@ -4,13 +4,16 @@ import Header from './creamHeader';
 import Footer2 from './Footer2';
 import './UploadVideo.css';
 import axios from './axios';
+import ProcessingPopup from './ProcessingPopup';
+import { useNavigate } from 'react-router-dom';
 
 const UploadVideo = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [progress, setProgress] = useState(0);
   const [transcript, setTranscript] = useState('');
   const [isDragging, setIsDragging] = useState(false);
-  const [loading, setLoading] = useState(false);  // Loading state for better user experience
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -33,41 +36,42 @@ const UploadVideo = () => {
       setProgress(0);
     }
   };
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleUpload = async () => {
     if (!selectedFile) {
-      alert('Please select a video file first!');
+      setErrorMessage('Please select a video file first!');
       return;
     }
-
+  
     const formData = new FormData();
     formData.append('file', selectedFile);
-
+    const token = localStorage.getItem('token');
     try {
-      setLoading(true);  // Show loading indicator
-      const response = await axios.post('/upload/', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      setLoading(true);
+      const response = await axios.post('/generate-transcript/', formData, {
+        headers: { 'Authorization': `Token ${token}` },
         onUploadProgress: (progressEvent) => {
           setProgress(Math.round((progressEvent.loaded * 100) / progressEvent.total));
         },
       });
-
+      localStorage.setItem('transcriptData', JSON.stringify(response.data));
+      navigate('/view-translation');
       setTranscript(response.data.transcript || 'No transcript available.');
-      alert(response.data.message || 'File uploaded and processed successfully!');
+      setErrorMessage('');
     } catch (error) {
-      console.error(error);
-      alert(`Upload failed: ${error.response?.data?.error || error.message}`);
+      setErrorMessage(`Upload failed: ${error.response?.data?.error || error.message}`);
     } finally {
       setLoading(false);
       setProgress(0);
     }
   };
-
+  
   return (
     <div>
       <Header />
       <div className="upload-page">
-        <aside className="sidebar">
+        <aside className="upload-sidebar">
           <ul>
             <li><Link to="/faq">FAQs</Link></li>
             <li><Link to="/about">About Us</Link></li>
@@ -106,17 +110,16 @@ const UploadVideo = () => {
           <button className="translate-button" onClick={handleUpload} disabled={loading}>
             {loading ? 'Processing...' : 'Translate Now'}
           </button>
-          {transcript && (
-            <div className="transcript-container">
-              <h2>Generated Transcript:</h2>
-              <p>{transcript}</p>
-            </div>
-          )}
         </main>
       </div>
+  
+      {/* 🟡 Show popup while loading */}
+      {loading && <ProcessingPopup />}
+  
       <Footer2 />
     </div>
   );
+  
 };
 
 export default UploadVideo;

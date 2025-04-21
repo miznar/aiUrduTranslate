@@ -27,9 +27,10 @@ const AccountSetting = () => {
                     password: password,
                 }),
             });
-
             if (response.ok) {
                 setMessage("Password updated successfully!");
+                setPassword('');
+                setConfirmPassword('');
             } else {
                 setMessage("Failed to update password.");
             }

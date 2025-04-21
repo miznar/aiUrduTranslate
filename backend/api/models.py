@@ -1,5 +1,6 @@
 from django.db import models
-import uuid
+from uuid import uuid4
+
 
 class UserProfile(models.Model):
     email = models.EmailField(unique=True)
@@ -21,3 +22,25 @@ class UserProfile(models.Model):
     def check_password(self, raw_password):
         from django.contrib.auth.hashers import check_password
         return check_password(raw_password, self.password)
+
+class UploadedVideoLecture(models.Model):
+    videoId = models.UUIDField(default=uuid4, editable=False, unique=True)
+    uploadedBy = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='uploaded_videos')
+    videoTitle = models.CharField(max_length=255)
+    video_file = models.FileField(upload_to='videos/')
+    uploadDate = models.DateTimeField(auto_now_add=True)
+    lectureCategory = models.CharField(max_length=100)
+    transcript = models.TextField(blank=True, null=True)  
+
+    def __str__(self):
+        return self.videoTitle
+
+class LectureTranslation(models.Model):
+    translationId = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    video = models.ForeignKey('UploadedVideoLecture', on_delete=models.CASCADE, related_name='translations')
+    sourceText = models.TextField()
+    translatedText = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=10, choices=[('done', 'Done'), ('undone', 'Undone')], default='undone')
+
+    def __str__(self):
+        return f"Translation {self.translationId} - {self.status}"
