@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'api',
     'rest_framework.authtoken'
@@ -93,11 +94,11 @@ WSGI_APPLICATION = 'aiUrduTranslate.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "urdufaham",
-        "USER": "mizna",
-        "PASSWORD": "dasthepassword90",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": "ufaidb",  
+        "USER": "mizna",          
+        "PASSWORD": "urdufaham",  
+        "HOST": "127.0.0.1",       
+        "PORT": "5432",           
     }
 }
 
@@ -126,17 +127,22 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+     'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 from datetime import timedelta
-
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # You can change this
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,  # Your secret key
+    'AUDIENCE': 'myapi',
+    'ISSUER': 'myapi.com',
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 

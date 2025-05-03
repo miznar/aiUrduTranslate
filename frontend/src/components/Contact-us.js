@@ -18,7 +18,7 @@ const Contact = () => {
                     <h6>Share your contact information and area of issue so <br></br> we can follow up with you.</h6>
                     <button 
                         className="contact-button" 
-                        onClick={() => navigate("/view-translation", { state: { videoName: "Sample Video Name" } })}
+                        onClick={() => navigate("/query")}
                         >
                         Get In Touch
                         </button>
@@ -64,7 +64,9 @@ const Contact = () => {
                     <h1 className= "faq-heading">
                         Frequently Asked Questions
                     </h1>
-                    <button className="faq-button">View Here</button>
+                    <button className="faq-button" onClick={() => navigate('/faq')}>
+                        View Here
+                    </button>
                 </div>
             </div>
 

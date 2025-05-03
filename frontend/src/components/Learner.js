@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Learner.css';
 import Footer2 from './Footer2';
 import './Userdashboard.css';
+import { jwtDecode } from "jwt-decode";
 
 const LearnerHeader = () => {
   const [user, setUser] = useState({
@@ -38,23 +39,59 @@ const LearnerHeader = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
+    // Split the interests by commas, trim whitespace, and remove empty strings
     const trimmedInterests = interests
       .split(',')
       .map(item => item.trim())
       .filter(Boolean);
   
-    const token = localStorage.getItem('token'); // ✅ Declare token here
+    // Handle case where no interests are provided
+    if (trimmedInterests.length === 0) {
+      alert("Please enter at least one interest.");
+      return;
+    }
   
+    // Get the token from localStorage
+    const token = localStorage.getItem('access_token');
+    
+    if (!token) {
+      alert('No token found. Please log in.');
+      return;  // Early exit if no token
+    }
+  
+    // Decode and check token expiration
     try {
+      const decoded = jwtDecode(token);
+      console.log(decoded);  // Check the `exp` field
+
+      const currentTime = Date.now() / 1000;  // Current time in seconds
+  
+      if (decoded.exp < currentTime) {
+        alert('Session expired. Please log in again.');
+        // Handle token expiry (e.g., redirect to login page)
+        return;
+      }
+    } catch (err) {
+      console.error('Invalid token:', err);
+      alert('Error decoding token. Please log in again.');
+      return;
+    }
+  
+    console.log("Token:", token);
+    console.log("Interests to update:", trimmedInterests);
+    console.log("Sending token:", token); // Check if token is correct
+
+    try {
+      console.log("Sending token:", token); // Check if token is correct
+
       const response = await fetch('http://127.0.0.1:8000/update-interests/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Token ${token}`, 
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: user.email,
-          interests: trimmedInterests, // ✅ Use the correct variable
+          interests: trimmedInterests,
         }),
       });
   
@@ -62,13 +99,15 @@ const LearnerHeader = () => {
   
       if (response.ok) {
         alert('Interests updated successfully!');
+        // Update interests in localStorage and state
         localStorage.setItem('interests', JSON.stringify(trimmedInterests));
+        setInterests(trimmedInterests.join(', '));
       } else {
         alert(data.error || 'Failed to update interests');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Something went wrong.');
+      alert('Something went wrong. Please try again.');
     }
   };
   

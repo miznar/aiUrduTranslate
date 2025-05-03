@@ -22,6 +22,11 @@ const CompleteProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const accessToken = localStorage.getItem("accessToken");
+        if (username.length < 3) {
+            setError('Username should be at least 3 characters long.');
+            return;
+          }
+          
         if (!username || !fullName || !interests) {
             setError('All fields are required.');
             return;

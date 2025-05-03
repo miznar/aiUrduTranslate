@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './creamHeader';
 import Footer2 from './Footer2';
@@ -13,8 +13,10 @@ const UploadVideo = () => {
   const [transcript, setTranscript] = useState('');
   const [isDragging, setIsDragging] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -23,30 +25,18 @@ const UploadVideo = () => {
     }
   };
 
-  const handleDragEvents = (event, isDragActive) => {
-    event.preventDefault();
-    setIsDragging(isDragActive);
-  };
-
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    if (file) {
-      setSelectedFile(file);
-      setProgress(0);
-    }
-  };
-  const [errorMessage, setErrorMessage] = useState('');
-
+  // Handle file upload
   const handleUpload = async () => {
     if (!selectedFile) {
       setErrorMessage('Please select a video file first!');
       return;
     }
-  
+
     const formData = new FormData();
     formData.append('file', selectedFile);
     const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email');
+    formData.append('email', email); 
     try {
       setLoading(true);
       const response = await axios.post('/generate-transcript/', formData, {
@@ -66,7 +56,39 @@ const UploadVideo = () => {
       setProgress(0);
     }
   };
-  
+
+  // useEffect for handling drag and drop events
+  useEffect(() => {
+    const handleDragOver = (event) => {
+      event.preventDefault();
+      setIsDragging(true);
+    };
+
+    const handleDragLeave = (event) => {
+      event.preventDefault();
+      setIsDragging(false);
+    };
+
+    const handleDrop = (event) => {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        setSelectedFile(file);
+        setProgress(0);
+      }
+    };
+
+    window.addEventListener('dragover', handleDragOver);
+    window.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('drop', handleDrop);
+
+    return () => {
+      window.removeEventListener('dragover', handleDragOver);
+      window.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('drop', handleDrop);
+    };
+  }, []); // Empty dependency array ensures this effect runs only once on mount/unmount
+
   return (
     <div>
       <Header />
@@ -93,9 +115,6 @@ const UploadVideo = () => {
           <p><small>Supported formats: MP4 | Max size: 10 MB.</small></p>
           <div
             className={`upload-box ${isDragging ? 'dragging' : ''}`}
-            onDragOver={(e) => handleDragEvents(e, true)}
-            onDragLeave={(e) => handleDragEvents(e, false)}
-            onDrop={handleDrop}
           >
             <p>{selectedFile ? selectedFile.name : 'Drag or Drop your video here'}</p>
           </div>
@@ -112,14 +131,13 @@ const UploadVideo = () => {
           </button>
         </main>
       </div>
-  
+
       {/* 🟡 Show popup while loading */}
       {loading && <ProcessingPopup />}
-  
+
       <Footer2 />
     </div>
   );
-  
 };
 
 export default UploadVideo;

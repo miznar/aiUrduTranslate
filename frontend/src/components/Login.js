@@ -11,6 +11,12 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError(null); // Clear previous errors
+        console.log("Email:", email);
+        console.log("Password:", password);
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
     
         try {
             const response = await fetch('http://127.0.0.1:8000/login/', { 
@@ -25,17 +31,17 @@ const Login = () => {
     
             if (response.ok) {
                 console.log("Login Successful:", data);
+    
                 // Store token and user data in localStorage
-                console.log(typeof data.interests, Array.isArray(data.interests)); 
                 localStorage.setItem("email", data.email);
-                localStorage.setItem('token', data.token); 
+                localStorage.setItem("access_token", data.access_token); 
+                localStorage.setItem("refresh_token", data.refresh_token);                 
                 localStorage.setItem('username', data.username); 
                 localStorage.setItem('full_name', data.full_name); 
                 localStorage.setItem('interests', JSON.stringify(data.interests));
-                localStorage.setItem('token', data.token);
-
     
-                navigate('/home');  // Navigate to home or dashboard
+                // Navigate to home or dashboard page after successful login
+                navigate('/home');
             } else {
                 setError(data.error || 'Invalid credentials');
             }
@@ -43,6 +49,7 @@ const Login = () => {
             setError('Something went wrong. Please try again.');
         }
     };
+    
     
     return (
         <div className="login-container">

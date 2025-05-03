@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SubjectsPage.css";
 import BlueHeader from "./Blue_Header";
 import Footer from "./Footer";
+import LastContainer from './lastContainer';
 
 const Subjects = () => {
   const [activeSubject, setActiveSubject] = useState("Banking");
@@ -63,7 +64,7 @@ const Subjects = () => {
           ))}
         </div>
       </div>
-
+      <LastContainer />
       <Footer />
     </div>
   );

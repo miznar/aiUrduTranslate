@@ -16,7 +16,7 @@ from django.db import IntegrityError
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from .models import UserProfile 
+from .models import ufUserProfile 
 from moviepy.editor import VideoFileClip
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 
@@ -26,11 +26,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-
-from google.oauth2 import id_token
-from google.auth.transport.requests import Request
-
-from .models import UserProfile, UploadedVideoLecture,LectureTranslation
+from rest_framework.generics import ListAPIView
+from .models import FAQ
+from .serializers import FAQSerializer
+from .models import ufUserProfile,UploadedVideoLecture,LectureTranslation
 import uuid
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -41,6 +40,253 @@ import json
 logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth.hashers import make_password
+from django.http import JsonResponse
+import json
+import json
+import uuid
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import make_password
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import ufUserProfile
+import json
+import uuid
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import make_password
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import ufUserProfile,Subject
+
+from django.contrib.auth.hashers import make_password
+from rest_framework_simplejwt.tokens import AccessToken
+from django.http import JsonResponse
+import json
+import uuid
+import logging
+
+logger = logging.getLogger(__name__)
+
+@csrf_exempt
+def signup_email(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            email = data.get('email')
+            password = data.get('password')
+
+            # Validate email and password
+            if not email or not password:
+                return JsonResponse({'error': 'Email and password are required.'}, status=400)
+
+            # Check if email is already registered
+            if ufUserProfile.objects.filter(email=email).exists():
+                return JsonResponse({'error': 'A user with this email already exists.'}, status=400)
+
+            # Hash password
+            hashed_password = make_password(password)
+            temp_username = str(uuid.uuid4())[:12]  # Placeholder username
+
+            # Create the user object
+            user = ufUserProfile.objects.create(
+                email=email,
+                password=hashed_password,
+                username=temp_username,
+                full_name="",  # Empty initially
+                interests=[],  # Empty initially
+            )
+
+            # Generate JWT tokens for the user
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            refresh_token = str(refresh)
+
+            # Optionally, save the access token in the user object (if you want to)
+            user.token = access_token
+            user.save()
+
+            return JsonResponse({
+                'message': 'User signed up successfully.',
+                'access': access_token,
+                'refresh': refresh_token,
+                'email': user.email,
+                'username': user.username  # Placeholder username
+            }, status=201)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
+        except Exception as e:
+            logger.error(f"Error during signup: {e}")
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
+
+
+@csrf_exempt
+def complete_profile(request):
+    if request.method == 'POST':
+        try:
+            # Extract and verify the token from the Authorization header
+            auth_header = request.headers.get('Authorization')
+            if not auth_header or not auth_header.startswith('Bearer '):
+                return JsonResponse({'error': 'Missing or invalid token'}, status=401)
+
+            token_str = auth_header.split(' ')[1]
+            try:
+                access_token = AccessToken(token_str)
+                user_id = access_token['user_id']
+            except Exception as e:
+                return JsonResponse({'error': 'Invalid or expired token.'}, status=401)
+
+            # Fetch the user from the database
+            try:
+                user = ufUserProfile.objects.get(id=user_id)
+            except ufUserProfile.DoesNotExist:
+                return JsonResponse({'error': 'User not found'}, status=404)
+
+            # Get request data for profile completion
+            data = json.loads(request.body)
+            username = data.get('username')
+            full_name = data.get('full_name', '')
+            interests = data.get('interests', [])
+
+            # Ensure all required fields are provided
+            if not username:
+                return JsonResponse({'error': 'Username is required.'}, status=400)
+
+            # Update the user profile with the provided details
+            user.username = username
+            user.full_name = full_name
+            user.interests = interests
+            user.save()
+
+            return JsonResponse({'message': 'Profile completed successfully.'}, status=201)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
+        except Exception as e:
+            logger.error(f"Error during profile completion: {e}")
+            return JsonResponse({'error': str(e)}, status=500)
+
+from django.contrib.auth.hashers import check_password
+from django.http import JsonResponse
+from .models import ufUserProfile
+import json
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.contrib.auth.hashers import check_password
+from django.http import JsonResponse
+from .models import ufUserProfile
+import json
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.contrib.auth.hashers import check_password
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.http import JsonResponse
+import json
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+@method_decorator(csrf_exempt, name='dispatch')
+class LoginView(View):
+    def post(self, request):
+        try:
+            # Parse incoming JSON data
+            data = json.loads(request.body)
+            email = data.get('email')
+            password = data.get('password')
+
+            # Ensure both email and password are provided
+            if not email or not password:
+                return JsonResponse({"error": "Email and password are required"}, status=400)
+
+            # Authenticate user using the custom UserProfile model
+            user = ufUserProfile.objects.filter(email=email).first()
+
+            if user is None:
+                return JsonResponse({"error": "Invalid email "}, status=400)
+            
+            # Debugging: print stored password hash and provided password
+            print("Stored password hash:", user.password)
+            print("Provided password:", password)
+
+            # Check if the password matches the stored hash
+            if not user.check_password(password):  # Using check_password explicitly
+                return JsonResponse({"error": "Invalid email or password"}, status=400)
+
+            # Generate JWT tokens for the user
+            refresh = RefreshToken.for_user(user)
+            access_token = refresh.access_token  # Access token for API requests
+            refresh_token = str(refresh)  # Refresh token to get a new access token
+
+            # Respond with user information and JWT tokens
+            return JsonResponse({
+                "message": "Login successful",
+                "email": user.email,
+                "username": user.username,
+                "full_name": user.full_name,
+                "interests": user.interests,
+                "access_token": str(access_token),
+                "refresh_token": refresh_token,
+            })
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+        except Exception as e:
+            print("Login error:", e)
+            return JsonResponse({"error": "Internal server error"}, status=500)
+
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import ufUserProfile  # Adjust if needed
+from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from uuid import UUID
+from uuid import UUID
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import ufUserProfile  # Make sure you import your UserProfile model
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def update_interests(request):
+    print(f"Request received with data: {request.data}")  # Log to ensure the request is reaching the view
+    if not request.user.is_authenticated:
+        return Response({"detail": "Authentication credentials were not provided."}, status=401)
+
+    interests = request.data.get("interests")
+    request.user.interests = interests  # Update the interests
+    request.user.save()
+
+    return Response({"detail": "Interests updated successfully."})
+
 
 
 # ========== WHISPER UTILS ==========
@@ -90,8 +336,6 @@ def transcribe_audio(audio_path):
     return clean_text(result["text"]) if isinstance(result, dict) and "text" in result else clean_text(str(result))
 
 
-# ========== VIEWS ==========
-
 @csrf_exempt
 def upload_and_transcribe(request):
     if request.method == 'POST' and request.FILES.get('file'):
@@ -119,268 +363,6 @@ def upload_and_transcribe(request):
     return JsonResponse({"error": "Invalid request"}, status=400)
 
 
-@csrf_exempt
-def signup_google(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            token = data.get('token')
-
-            if not token:
-                return JsonResponse({'error': 'Google token is required.'}, status=400)
-
-            try:
-                id_info = id_token.verify_oauth2_token(token, Request())
-
-                if id_info.get('exp') < time.time():
-                    return JsonResponse({'error': 'Google token has expired.'}, status=400)
-
-                email = id_info.get('email')
-                name = id_info.get('name')
-
-                user = UserProfile.objects.filter(email=email).first()
-                if not user:
-                    user = UserProfile.objects.create(email=email, username=email, full_name=name)
-
-                return JsonResponse({'message': 'User signed up successfully via Google.'}, status=201)
-            except ValueError:
-                return JsonResponse({'error': 'Invalid Google token.'}, status=400)
-
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
-
-    return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
-import uuid
-@csrf_exempt
-def signup_email(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            email = data.get('email')
-            password = data.get('password')
-
-            if not email or not password:
-                return JsonResponse({'error': 'Email and password are required.'}, status=400)
-
-            if UserProfile.objects.filter(email=email).exists():
-                return JsonResponse({'error': 'A user with this email already exists.'}, status=400)
-
-            hashed_password = make_password(password)
-            temp_username = str(uuid.uuid4())[:12]
-
-            user = UserProfile.objects.create(
-                email=email,
-                password=hashed_password,
-                username=temp_username,
-                full_name="",
-                interests=[]
-            )
-
-            # Generate JWT token manually (fake user object workaround)
-            from django.contrib.auth.models import AnonymousUser
-            user.id = user.pk  # Fake user object compatibility
-            refresh = RefreshToken.for_user(user)
-            access_token = str(refresh.access_token)
-            refresh_token = str(refresh)
-
-            # Optionally save the access token
-            user.token = access_token
-            user.save()
-
-            return JsonResponse({
-                'message': 'User signed up successfully.',
-                'access': access_token,
-                'refresh': refresh_token,
-                'email': user.email,
-                'username': user.username
-            }, status=201)
-
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-
-    return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
-from rest_framework_simplejwt.tokens import AccessToken
-@csrf_exempt
-def complete_profile(request):
-    if request.method == 'POST':
-        try:
-            # Extract and verify token
-            auth_header = request.headers.get('Authorization')
-            if not auth_header or not auth_header.startswith('Bearer '):
-                return JsonResponse({'error': 'Missing or invalid token'}, status=401)
-
-            token_str = auth_header.split(' ')[1]
-            access_token = AccessToken(token_str)
-            user_id = access_token['user_id']
-
-            user = UserProfile.objects.filter(id=user_id).first()
-            if not user:
-                return JsonResponse({'error': 'User not found'}, status=404)
-
-            # Get request data
-            data = json.loads(request.body)
-            username = data.get('username')
-            full_name = data.get('full_name')
-            interests = data.get('interests')
-
-            if not all([username, full_name, interests]):
-                return JsonResponse({'error': 'All fields are required.'}, status=400)
-
-            # Update user
-            user.username = username
-            user.full_name = full_name
-            user.interests = interests
-            user.save()
-
-            return JsonResponse({'message': 'Profile completed successfully.'}, status=201)
-
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-
-    return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
-
-from rest_framework.authtoken.models import Token
-@method_decorator(csrf_exempt, name='dispatch')
-class LoginView(View):
-    def post(self, request):
-        try:
-            data = json.loads(request.body)
-            email = data.get('email')
-            password = data.get('password')
-
-            user = UserProfile.objects.get(email=email)
-
-            if not user.check_password(password):  # Use check_password!
-                return JsonResponse({"error": "Invalid email or password"}, status=400)
-
-            # If user doesn't have a token, assign one
-            if not user.token:
-                user.token = str(uuid.uuid4())
-                user.save()
-
-            return JsonResponse({
-                "message": "Login successful",
-                "email": user.email,
-                "username": user.username,
-                "full_name": user.full_name,
-                "interests": user.interests,
-                "token": user.token,
-            })
-
-        except UserProfile.DoesNotExist:
-            return JsonResponse({"error": "Invalid email or password"}, status=400)
-
-        except Exception as e:
-            print("Login error:", e)
-            return JsonResponse({"error": "Internal server error"}, status=500)
-
-import json
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-from .models import UserProfile
-
-@csrf_exempt
-def update_interests(request):
-    if request.method == 'POST':
-        try:
-            auth_header = request.headers.get('Authorization')
-
-            if not auth_header or not auth_header.startswith('Token '):
-                return JsonResponse({'error': 'Authorization header missing or invalid.'}, status=401)
-
-            token = auth_header.split(' ')[1]
-
-            try:
-                user = UserProfile.objects.get(token=token)
-            except UserProfile.DoesNotExist:
-                return JsonResponse({'error': 'Invalid token.'}, status=401)
-
-            data = json.loads(request.body.decode('utf-8'))
-            interests = data.get('interests')
-
-            if interests is None:
-                return JsonResponse({'error': 'Interests are required.'}, status=400)
-
-            user.interests = interests if isinstance(interests, list) else [interests]
-            user.save()
-
-            return JsonResponse({'status': 'success', 'message': 'Interests updated successfully.'})
-
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-    else:
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
-from django.http import JsonResponse
-from django.views import View
-from .models import UserProfile  # or wherever you store users
-import json
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UpdatePasswordView(View):
-    def post(self, request):
-        auth_header = request.headers.get('Authorization')
-
-        if not auth_header or not auth_header.startswith("Bearer "):
-            return JsonResponse({"error": "Unauthorized"}, status=401)
-
-        token = auth_header.split(" ")[1]
-
-        try:
-            user = UserProfile.objects.get(token=token)
-
-            data = json.loads(request.body)
-            new_password = data.get("password")
-
-            if not new_password:
-                return JsonResponse({"error": "Password required"}, status=400)
-
-            user.set_password(new_password)
-            user.save()
-
-            return JsonResponse({"message": "Password updated successfully"})
-
-        except UserProfile.DoesNotExist:
-            return JsonResponse({"error": "Invalid token"}, status=401)
-        except Exception as e:
-            print("Error:", e)
-            return JsonResponse({"error": "Something went wrong"}, status=500)
-
-@csrf_exempt
-def GenerateTranscript(request):
-    if request.method == "OPTIONS":
-        return JsonResponse({"message": "CORS preflight handled."}, status=200)
-
-    if request.method == 'POST' and request.FILES.get('file'):
-        video_file = request.FILES['file']
-        upload_folder = os.path.join(settings.MEDIA_ROOT, 'uploaded_files')
-        os.makedirs(upload_folder, exist_ok=True)
-        filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{video_file.name}"
-        file_path = os.path.join(upload_folder, filename)
-
-        try:
-            with open(file_path, 'wb+') as destination:
-                for chunk in video_file.chunks():
-                    destination.write(chunk)
-
-            file_url = request.build_absolute_uri(settings.MEDIA_URL + 'uploaded_files/' + filename)
-            return JsonResponse({'message': 'File saved successfully.', 'file_url': file_url}, status=201)
-
-        except Exception as e:
-            return JsonResponse({'error': f'Failed to save file: {str(e)}'}, status=500)
-
-    return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)
-
-
-def home(request):
-    return JsonResponse({"message": "HOME here"})
-
-from django.http import JsonResponse
-from .models import UserProfile
-
 def authenticate_user(view_func):
     def _wrapped_view(request, *args, **kwargs):
         auth_header = request.headers.get('Authorization')
@@ -389,9 +371,9 @@ def authenticate_user(view_func):
 
         token = auth_header.split(" ")[1]
         try:
-            user = UserProfile.objects.get(token=token)
+            user = ufUserProfile.objects.get(token=token)
             request.user_profile = user  # Attach user to request
-        except UserProfile.DoesNotExist:
+        except ufUserProfile.DoesNotExist:
             return JsonResponse({'error': 'Invalid token'}, status=401)
 
         return view_func(request, *args, **kwargs)
@@ -421,7 +403,6 @@ def guess_category(text):
 
 
 @csrf_exempt
-@authenticate_user
 def process_transcript_upload(request):
     if request.method == 'OPTIONS':
         return JsonResponse({"message": "CORS preflight handled."}, status=200)
@@ -439,8 +420,7 @@ def process_transcript_upload(request):
                 for chunk in video_file.chunks():
                     destination.write(chunk)
 
-            # STEP 2: Extract metadata
-            # STEP 2: Extract metadata
+                # STEP 2: Extract metadata
                 metadata = get_video_metadata(video_path)
 
                 # Title fallback to filename (without extension) if not in metadata
@@ -473,12 +453,28 @@ def process_transcript_upload(request):
             category = guess_category(transcript + " " + description)
 
             # STEP 6: Save to model
-            user = request.user_profile  # ✅ Comes from your decorator
+            
+           #  Extract email from request
+            email = request.POST.get('email')
+
+            if not email:
+                return JsonResponse({'error': 'Email is required.'}, status=400)
+
+            # Get the user profile from email
+            try:
+               user_profile = ufUserProfile.objects.get(email=email)
+            except ufUserProfile.DoesNotExist:
+                return JsonResponse({'error': 'User profile not found.'}, status=400)
+
+            # Create video instance using that profile
+            # Get subject object based on guessed category
+            subject_obj, created = Subject.objects.get_or_create(name=category)
+
             video_instance = UploadedVideoLecture.objects.create(
-                uploadedBy=user,
+                uploadedBy=user_profile,
                 videoTitle=video_title,
                 video_file=os.path.join('videos', filename),
-                lectureCategory=category,
+                subject=subject_obj,
                 transcript=transcript
             )
 
@@ -502,79 +498,75 @@ def process_transcript_upload(request):
             }, status=201)
 
         except Exception as e:
-            return JsonResponse({'error': f'Failed to process file: {str(e)}'}, status=500)
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error during transcript processing: {str(e)}", exc_info=True)
 
+            return JsonResponse({'error': f'Failed to process file: {str(e)}'}, status=500)
     return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)
 
-# @csrf_exempt
-# def process_transcript_upload(request):
-#     if request.method == 'OPTIONS':
-#         return JsonResponse({"message": "CORS preflight handled."}, status=200)
 
-#     if request.method == 'POST' and request.FILES.get('file'):
-#         try:
-#             # STEP 1: Save video to media
-#             video_file = request.FILES['file']
-#             upload_folder = os.path.join(settings.MEDIA_ROOT, 'videos')
-#             os.makedirs(upload_folder, exist_ok=True)
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from .models import LearnerStories
+from .serializers import LearnerStoriesSerializer
+import json
 
-#             filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{video_file.name}"
-#             video_path = os.path.join(upload_folder, filename)
-#             with open(video_path, 'wb+') as destination:
-#                 for chunk in video_file.chunks():
-#                     destination.write(chunk)
+@csrf_exempt
+def postLearnerStory(request):
+    if request.method == 'OPTIONS':
+        return JsonResponse({'message': 'CORS preflight successful'}, status=200)
 
-#             # STEP 2: Extract audio
-#             audio_path = os.path.join(settings.MEDIA_ROOT, 'temp_audio.wav')
-#             extract_audio(video_path, audio_path)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            story = data.get('story')
+            email = data.get('email')  # optional
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON.'}, status=400)
 
-#             # STEP 3: Generate transcript
-#             transcript = transcribe_audio(audio_path)
+        if not story:
+            return JsonResponse({'error': 'Story text is required.'}, status=400)
 
-#             # STEP 4: Guess lecture category (VERY basic logic)
-#             def guess_category(text):
-#                 text_lower = text.lower()
-#                 if "math" in text_lower:
-#                     return "Mathematics"
-#                 elif "physics" in text_lower:
-#                     return "Physics"
-#                 elif "biology" in text_lower:
-#                     return "Biology"
-#                 elif "chemistry" in text_lower:
-#                     return "Chemistry"
-#                 elif "computer" in text_lower:
-#                     return "Computer Science"
-#                 return "General"
+        user = None
+        if request.user.is_authenticated:
+            user = request.user
+        elif email:
+            try:
+                user = ufUserProfile.objects.get(email=email)
+            except ufUserProfile.DoesNotExist:
+                pass
 
-#             category = guess_category(transcript)
+        learner_story = LearnerStories.objects.create(
+            user=user,
+            story=story
+        )
 
-#             # STEP 5: Save to model
-#             user = request.user.userprofile  # assuming request.user is authenticated
-#             video_instance = UploadedVideoLecture.objects.create(
-#                 uploadedBy=user,
-#                 videoTitle=filename,
-#                 video_file=os.path.join('videos', filename),
-#                 lectureCategory=category
-#             )
+        serializer = LearnerStoriesSerializer(learner_story)
+        return JsonResponse(serializer.data, status=201)
 
-#             file_url = request.build_absolute_uri(settings.MEDIA_URL + f"videos/{filename}")
+    return JsonResponse({'error': 'Only POST method is allowed.'}, status=405)
 
-#             # Cleanup
-#             if os.path.exists(audio_path):
-#                 os.remove(audio_path)
 
-#             return JsonResponse({
-#                 'message': 'Transcript generated and saved.',
-#                 'file_url': file_url,
-#                 'transcript': transcript,
-#                 'category': category,
-#                 'videoId': str(video_instance.videoId)
-#             }, status=201)
+from rest_framework import generics
+from .models import UserQuery
+from .serializers import UserQuerySerializer
+from rest_framework import generics, permissions
 
-#         except Exception as e:
-#             return JsonResponse({'error': f'Failed to process file: {str(e)}'}, status=500)
 
-#     return JsonResponse({'error': 'No file uploaded or invalid request method'}, status=400)
-# import subprocess
-# import json
+class UserQueryCreateView(generics.CreateAPIView):
+    queryset = UserQuery.objects.all()
+    serializer_class = UserQuerySerializer
+    permission_classes = [permissions.AllowAny]  # Adjust if authentication is required
 
+    def create(self, request, *args, **kwargs):
+        # Log the incoming request data to check if it matches expected structure
+        print("Received data:", request.data)
+
+        # Call the parent create method
+        return super().create(request, *args, **kwargs)
+    
+class FAQListView(ListAPIView):
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
+    permission_classes = [AllowAny]
