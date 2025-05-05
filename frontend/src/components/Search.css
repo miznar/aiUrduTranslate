@@ -10,28 +10,34 @@
     margin-bottom: 100px;
 }
 
+/* Shared left alignment container for consistency */
+.aligned-content {
+    width: 57%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;         
+}
+
 .search-heading {
     font-size: 36px;
-    text-align: center;
     margin-top: 100px;
-    padding-right: 550px;
+    margin-bottom: 10px;
 }
 
 .search-description {
-    text-align: center;
     margin-bottom: 20px;
     font-size: 18px;
-    padding-right: 230px;
     color: #666;
+    text-align: left;         
+    width: 100%;  
 }
 
 .search-bar {
-    text-align: center;
     margin-bottom: 30px;
 }
 
 .search-input {
-    width: 57%;
+    width: 100%;
     padding: 13px;
     border: 1px solid #fff;
     border-radius: 20px;
@@ -187,8 +193,15 @@
 
 hr {
     border: none;
-    border-top: 1px solid #000000;
+    border-top: 1px solid #8F7131;
     margin: 10px 0;
     margin-left: 130px;
     width: 600px;
+}
+
+.separator {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-top: 1px solid #8F7131;  /* Updated color */
 }

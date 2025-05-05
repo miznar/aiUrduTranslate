@@ -473,7 +473,7 @@ def process_transcript_upload(request):
             video_instance = UploadedVideoLecture.objects.create(
                 uploadedBy=user_profile,
                 videoTitle=video_title,
-                video_file=os.path.join('videos', filename),
+                video_file=os.path.join('uploaded_files', filename).replace('\\', '/'),
                 subject=subject_obj,
                 transcript=transcript
             )
@@ -570,3 +570,66 @@ class FAQListView(ListAPIView):
     queryset = FAQ.objects.all()
     serializer_class = FAQSerializer
     permission_classes = [AllowAny]
+
+
+# views.py
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import ArticlesBlog, LearnerStories
+from .serializers import ArticlesBlogSerializer, LearnerStoriesSearchSerializer
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from .models import ArticlesBlog, LearnerStories, Subject
+from .serializers import ArticlesBlogSerializer, LearnerStoriesSearchSerializer
+import random
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_search_content(request):
+    # Get any 2 blogs and 1 learner story
+    blogs = list(ArticlesBlog.objects.all())
+    learner_stories = list(LearnerStories.objects.all())
+
+    selected_blogs = random.sample(blogs, min(2, len(blogs)))
+    selected_learner_story = random.choice(learner_stories) if learner_stories else None
+
+    return Response({
+        'blogs': ArticlesBlogSerializer(selected_blogs, many=True).data,
+        'learner_story': LearnerStoriesSearchSerializer(selected_learner_story).data if selected_learner_story else None,
+        'counts': {
+            'blogs': len(blogs),
+            'learner_stories': len(learner_stories),
+            'subjects': Subject.objects.count()
+        }
+    })
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import UploadedVideoLecture
+
+@csrf_exempt
+def get_videos_by_subject(request, subject_name):
+    try:
+        # Fetch subject by name
+        subject = Subject.objects.get(name=subject_name)
+
+        # Get videos associated with that subject
+        videos = UploadedVideoLecture.objects.filter(subject=subject)
+
+        # Prepare response data
+        response_data = []
+        for video in videos:
+            response_data.append({
+                "title": video.videoTitle,
+                "src": video.video_file.url,
+                "category": video.subject.name,
+                "transcriptFile": video.transcript,
+            })
+
+        return JsonResponse(response_data, safe=False)
+
+    except Subject.DoesNotExist:
+        return JsonResponse({"error": "Subject not found"}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
     const navigate = useNavigate();
+
     return (
         <div>
             <Header />
@@ -14,15 +15,15 @@ const Contact = () => {
                 <div className="contact-header">
                     <h1>Contact Us</h1>
                     <h2>Need Assistance? We’re Here to Help!</h2>
+
                     <p>Reach Out to Us</p>
-                    <h6>Share your contact information and area of issue so <br></br> we can follow up with you.</h6>
+                    <h6>Share your contact information and area of issue so <br /> we can follow up with you.</h6>
                     <button 
                         className="contact-button" 
                         onClick={() => navigate("/query")}
-                        >
+                    >
                         Get In Touch
-                        </button>
-
+                    </button>
                 </div>
 
                 {/* Connect with Team */}
@@ -33,25 +34,30 @@ const Contact = () => {
                     </div>
                 </div>
 
-                    {/* Contact Options */}
-                    <div className="contact-options">
-                        <div className="contact-option">
+                {/* Contact Options */}
+                <div className="contact-options">
+                    <div className="contact-option">
+                        
+                      
+                        <div>
+                            <h3>Phone</h3>
                             <span className="bullet">●</span>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>Our phone number detail will come here</p>
-                            </div>
-                        </div>
-                        <div className="contact-option2">
-                            <span className="bullet">●</span>
-                            <div>
-                                <h3>Email</h3>
-                                <p>We respond back to all emails sent to the following accounts within 2-3 business days:</p>
-                                <p>Our email detail will come here</p>
-                            </div>
+                            <p>Our phone number detail will come here</p>
                         </div>
                     </div>
-                
+                    <div className="contact-option2">
+                       
+                        <div>
+                            <h3>Email</h3>
+                            <span className="bullet">●</span>
+                            <p>We respond back to all emails sent to the following accounts within 2-3 business days. Our support team is available Monday through Friday, and we aim to address all queries as promptly as possible. Please ensure you provide clear details so we can assist you efficiently. If your issue is urgent, please mark it as high priority.</p>
+
+                            <p>Our email detail will come here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr className="mustard-divider" />
 
                 {/* FAQ Section */}
                 <div className="faq-section">
@@ -61,7 +67,7 @@ const Contact = () => {
                         understanding features, or using resources for registered users. Whatever your query, we’ve got you
                         covered!
                     </h3>
-                    <h1 className= "faq-heading">
+                    <h1 className="faq-heading">
                         Frequently Asked Questions
                     </h1>
                     <button className="faq-button" onClick={() => navigate('/faq')}>
@@ -69,11 +75,10 @@ const Contact = () => {
                     </button>
                 </div>
             </div>
-
             <LastContainer />
             <Footer />
         </div>
     );
 }
 
-export default Contact; 
+export default Contact;

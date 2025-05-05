@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./SubjectsPage.css";
 import BlueHeader from "./Blue_Header";
 import Footer from "./Footer";
@@ -7,25 +8,24 @@ import LastContainer from './lastContainer';
 
 const Subjects = () => {
   const [activeSubject, setActiveSubject] = useState("Banking");
+  const [videos, setVideos] = useState([]);
   const navigate = useNavigate();
 
-  const videos = [
-    {
-      title: "Banking Awareness Lecture - Module 1",
-      src: "/videos/lecture02.mp4",
-      category: "Finance",
-      transcriptFile: "transcript02.xlsx",
-    },
-    {
-      title: "Financial System and Banks | Banking Awareness ",
-      src: "/videos/lecture03.mp4",
-      category: "Finance",
-      transcriptFile: "transcript03.xlsx",
-    },
-  ];
+  useEffect(() => {
+    // Fetch videos based on selected subject
+    axios.get(`http://127.0.0.1:8000/videos/${activeSubject}/`)
+      .then(res => setVideos(res.data))
+      .catch(err => console.error("Error fetching videos:", err));
+  }, [activeSubject]);
 
   const handleVideoClick = (video) => {
-    navigate("/view-translation", { state: { videoName: video.title, transcriptFile: video.transcriptFile, videoSrc: video.src  } });
+    navigate("/view-translation", { 
+      state: { 
+        videoName: video.title, 
+        transcriptFile: video.transcriptFile, 
+        videoSrc: video.src 
+      } 
+    });
   };
 
   return (
@@ -38,7 +38,7 @@ const Subjects = () => {
 
         {/* Subject Buttons */}
         <div className="subject-buttons">
-          {["Banking", "Law", "Agriculture"].map((subject) => (
+          {["Banking", "Law", "Agriculture", "General"].map((subject) => (
             <button
               key={subject}
               className={`subject-button ${activeSubject === subject ? "active" : ""}`}
@@ -54,9 +54,11 @@ const Subjects = () => {
           {videos.map((video, index) => (
             <div key={index} onClick={() => handleVideoClick(video)}>
               <video className="video-player" width="320" height="180" controls>
-                <source src={video.src} type="video/mp4" />
+              <source src={`http://localhost:8000${video.src}`} type="video/mp4" />
+
                 Your browser does not support the video tag.
               </video>
+
               <p className="video-caption">"{video.title}"</p>
               <p className="video-category">{video.category}</p>
               <div className="divider"></div>

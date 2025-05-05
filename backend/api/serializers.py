@@ -32,3 +32,18 @@ class FAQSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQ
         fields = ['id', 'question', 'answer']
+
+
+# serializers.py
+from rest_framework import serializers
+from .models import ArticlesBlog, LearnerStories
+
+class ArticlesBlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticlesBlog
+        fields = ['title', 'oneLinerHeader', 'mainContent']
+
+class LearnerStoriesSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LearnerStories
+        fields = ['story', 'user']

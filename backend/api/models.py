@@ -96,7 +96,7 @@ class UploadedVideoLecture(BaseModel):
     videoId = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     uploadedBy = models.ForeignKey(ufUserProfile, on_delete=models.CASCADE, related_name='uploaded_videos')
     videoTitle = models.CharField(max_length=255)
-    video_file = models.FileField(upload_to='videos/')
+    video_file = models.FileField(upload_to='uploaded_files/')
     subject = models.ForeignKey('Subject', on_delete=models.SET_NULL, null=True, blank=True, related_name='videos')
     transcript = models.TextField(blank=True, null=True)
 
@@ -198,6 +198,25 @@ class FAQ(models.Model):
     class Meta:
         db_table = "faq"
         ordering = ['-created_at']
+
+from uuid import uuid4
+from django.db import models
+
+class ArticlesBlog(BaseModel):
+    articleId = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    title = models.CharField(max_length=255)
+    oneLinerHeader = models.TextField(default="How Large Language Models Are Revolutionizing")
+    mainContent = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        db_table = "articles_blog"
+        verbose_name = "Articles Blog"
+        verbose_name_plural = "Articles Blogs"
+        ordering = ['-created_at']  
+
 
 
 
