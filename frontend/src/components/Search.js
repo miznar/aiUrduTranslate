@@ -4,11 +4,13 @@ import './Search.css';
 import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
     const [blogs, setBlogs] = useState([]);
     const [learnerStory, setLearnerStory] = useState(null);
     const [counts, setCounts] = useState({ blogs: 0, learner_stories: 0, subjects: 0 });
+   const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/search-content/')  
@@ -36,7 +38,7 @@ const Search = () => {
                                     placeholder="What can we help you find?"
                                     className="search-input"
                                 />
-                    </div>
+                            </div>
                 </div>
 
 
@@ -51,18 +53,33 @@ const Search = () => {
                         </ul>
 
                     </div>
+                            <div className="blogsaligned-content">
 
                     <div className="blog-section">
                         <h4>Blogs</h4>
-                        {blogs.map((blog, index) => (
-                            <div key={index} className="blog-item">
-                                <h3>Blog</h3>
-                                <h2>{blog.title}</h2>
-                                <p>{blog.oneLinerHeader}</p>
-                                <p>{blog.mainContent.split('. ')[0]}.</p>
-                                <hr className="separator" />
-                            </div>
-                        ))}
+                       {blogs.map((blog, index) => (
+                                <div
+                                    key={index}
+                                    className="blog-item"
+                                    onClick={() => navigate('/blog', {
+                                        state: {
+                                            title: blog.title,
+                                            oneLiner: blog.oneLinerHeader,
+                                            content: blog.mainContent,
+                                            date: blog.date || "May 2025", // optional
+                                            image: blog.image || "" // optional if you want to support pictures
+                                        }
+                                    })}
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <h3>Blog</h3>
+                                    <h2>{blog.title}</h2>
+                                    <p>{blog.oneLinerHeader}</p>
+                                    <p>{blog.mainContent.split('. ')[0]}.</p>
+                                    <hr className="separator" />
+                                </div>
+                            ))}
+
 
                         {learnerStory && (
                             <div className="blog-item">
@@ -73,6 +90,8 @@ const Search = () => {
                         )}
 
                     </div>
+                    </div>
+
                 </div>
             </div>
             <LastContainer />

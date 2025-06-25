@@ -143,3 +143,150 @@ body {
     max-width: 90%;
   }
 }
+
+
+
+/* Discussion Section */
+.discussion-section {
+  background-color: #061F2F;
+  color: #AFAF9D;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  border-top: 1px solid #AFAF9D;
+}
+
+.discussion-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+
+   text-align: left;
+  font-size: 22px;
+  margin: 20px 50px;
+  color: #AFAF9D;
+
+  
+
+}
+
+.discussion-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.discussion-textarea {
+  /* background-color: #1b2c3d; */
+  border: 1px solid #AFAF9D;
+  border-radius: 20px;
+  padding: 12px;
+  color: #AFAF9D;
+  font-size: 16px;
+  resize: vertical;
+   max-width: 80%;
+   align-items: center;
+
+
+    width: 100%;
+  padding: 10px;
+  background-color: #1A3545;
+  color: #ffffff;
+  border-radius: 20px;
+
+}
+
+.post-button {
+  align-self: flex-end;
+  padding: 8px 20px;
+  background-color: #1A3545;
+  color: #AFAF9D;
+  border: 1px solid #AFAF9D;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-items: center;
+  font-size: 14px;
+
+
+}
+
+.post-button:hover {
+  background-color: #0e1d2a;
+}
+
+.discussion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+} 
+
+.discussion-comment {
+  background-color: #1A3545;
+  border: 1px solid #AFAF9D;
+  border-radius: 10px;
+  padding: 12px;
+    align-items: center;
+
+   max-width: 80%;
+}
+
+.comment-author {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-time {
+  font-weight: normal;
+  color: #8b8b8b;
+}
+
+.comment-body {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.reply-input-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reply-textarea {
+  max-width: 75%;
+  margin-left: 20px;
+  background-color: #112233;
+}
+
+.reply-box {
+  background-color: #1a2d3a;
+  border: 1px solid #AFAF9D;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+.like-button {
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  margin-top: 4px;
+  margin-left: 5px;
+}
+
+.like-button:hover {
+  color: #6b91c5;
+}
+
+.like-button.liked {
+  color: #6b91c5;
+}
+
+.reply-like {
+  margin-left: 25px;
+  font-size: 0.9em;
+}

@@ -208,7 +208,7 @@ body {
 
 }
 /* Discussion title styling */
-.discussion-section h3 {
+.usersdiscussion-section h3 {
   font-family: Inria Sans;
   text-align: left;
   color: black;
@@ -218,14 +218,14 @@ body {
 }
 
 /* Discussion section container */
-.discussion-section {
+.usersdiscussion-section {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 /* Discussion list container (Allow items to wrap, and add some space between them) */
-.discussion-list {
+.usersdiscussion-list {
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap if needed */
   gap: 20px; /* Space between boxes */
@@ -233,7 +233,7 @@ body {
 }
 
 /* General discussion box styling */
-.discussion {
+.usersdiscussion {
   font-family: Inria Sans;
   padding: 10px;
   background-color: #D9D8C6;
@@ -246,13 +246,13 @@ body {
 }
 
 /* Hover effect */
-.discussion:hover {
+.usersdiscussion:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
 }
 
 /* The third discussion takes up the full width */
-.discussion:nth-child(3) {
+.usersdiscussion:nth-child(3) {
   width: 100%; /* 100% width to take up the full line */
 }

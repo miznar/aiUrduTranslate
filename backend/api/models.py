@@ -217,6 +217,56 @@ class ArticlesBlog(BaseModel):
         verbose_name_plural = "Articles Blogs"
         ordering = ['-created_at']  
 
+# dicsussions models
+
+class Discussion(BaseModel):
+    discussionId = models.UUIDField(default=uuid4, editable=False, unique=True)
+    author = models.ForeignKey(ufUserProfile, on_delete=models.CASCADE, related_name='discussions')
+    video = models.ForeignKey(UploadedVideoLecture, on_delete=models.CASCADE, related_name='discussions')
+    body = models.TextField()
+    likes = models.ManyToManyField(ufUserProfile, related_name='liked_discussions', blank=True)
+
+    def __str__(self):
+        return f"Discussion by {self.author.username} on {self.video.videoTitle}"
+
+    def total_likes(self):
+        return self.likes.count()
+
+    class Meta:
+        db_table = "discussion"
+        verbose_name = "Discussion"
+        verbose_name_plural = "Discussions"
+
+
+class DiscussionReply(BaseModel):
+    replyId = models.UUIDField(default=uuid4, editable=False, unique=True)
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name='replies')
+    author = models.ForeignKey(ufUserProfile, on_delete=models.CASCADE, related_name='replies')
+    body = models.TextField()
+    likes = models.ManyToManyField(ufUserProfile, related_name='liked_replies', blank=True)
+
+    def __str__(self):
+        return f"Reply by {self.author.username} on discussion {self.discussion.discussionId}"
+
+    def total_likes(self):
+        return self.likes.count()
+
+    class Meta:
+        db_table = "discussion_reply"
+        verbose_name = "Discussion Reply"
+        verbose_name_plural = "Discussion Replies"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

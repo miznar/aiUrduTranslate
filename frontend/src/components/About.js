@@ -7,39 +7,37 @@ import { useState } from 'react';
 const About = () => {
   const [story, setStory] = useState('');
   const [message, setMessage] = useState('');
-  
-  // Function to handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!story.trim()) {
       setMessage('Please write your story before submitting.');
       return;
     }
-  
-    const token = localStorage.getItem('token');
-    const email = localStorage.getItem('email'); // ✅ Get email from localStorage
-  
-    // Create headers
+
+    const token = localStorage.getItem('access_token') || localStorage.getItem('token'); 
+    const email = localStorage.getItem('email');
+
     const headers = {
       'Content-Type': 'application/json',
     };
+
     if (token) {
-      headers['Authorization'] = `Token ${token}`;
+      headers['Authorization'] = token.startsWith('Bearer') ? token : `Bearer ${token}`;
     }
-  
     try {
       const response = await fetch('http://127.0.0.1:8000/learner-story/', {
         method: 'POST',
         headers,
         body: JSON.stringify({
           story,
-          email: email || null, // ✅ Include email in body
+          email: email || null,
         }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         setMessage('Your story has been successfully submitted!');
         setStory('');
@@ -50,7 +48,7 @@ const About = () => {
       setMessage(`Error: ${error.message}`);
     }
   };
-  
+
   return (
     <div>
       <WhiteHeader />
@@ -60,19 +58,18 @@ const About = () => {
           "Connecting Knowledge, Cultures, and Communities Through Language."
         </p>
 
-        {/* image boxes */}
         <div className="image-container">
           <div className="image-box"></div>
           <div className="image-box"></div>
           <div className="image-box"></div>
         </div>
 
-        {/* Headings and text */}
         <div className="content-container">
           <div className="section white-box">
             <h2 className="section-heading">Who We Are?</h2>
             <p className="section-text">
               "We’re dreamers, doers, and problem-solvers.
+              <br />
               <strong> Our mission?</strong> To ensure that language is no longer a barrier to education. By translating English educational content into Urdu, we’re opening doors for millions of learners to connect with world-class knowledge, wherever they are."
             </p>
           </div>
@@ -81,94 +78,83 @@ const About = () => {
             <h2 className="section-heading">Our Why</h2>
             <p className="section-text">
               <strong>Why did we start this journey? </strong>
+              <br />
               Because we believe every learner, regardless of language or location, deserves access to the same opportunities.
               Because education is not just information—it's empowerment, and no one should be left behind."
             </p>
           </div>
         </div>
-      </div>
 
-      {/* Video */}
-      <div className="about-page">
         <div className="video-container">
           <div className="video-placeholder">here comes the video</div>
         </div>
 
-        <div className="text-section">
-          <p className="text">
-            "Imagine a world where learning has no boundaries—where a student in
-            Karachi can absorb a lecture from MIT as easily as a student in
-            Boston. That’s the future we’re building."
+        <div className="section white-box">
+          <h2 className="bigpicture-heading">The Big Picture</h2>
+          <p className="section-text">
+            We envision a future where language differences no longer stand in the way of academic excellence. With every translated lecture, we’re not just breaking linguistic barriers—we’re building educational bridges.
           </p>
         </div>
 
-        <div>
-          <section className="what-sets-us-apart">
-            <h2>What Sets Us Apart?</h2>
-            <div className="apart-item">
-              <h3>1. Precision, Not Just Translation</h3>
-              <p>"Our AI understands context, nuance, and the art of teaching—not just words."</p>
-            </div>
-
-            <div className="apart-item">
-              <h3>2. Learning Tailored to You</h3>
-              <p>"We customize translations for academic needs, ensuring relevance and clarity."</p>
-            </div>
-
-            <div className="apart-item">
-              <h3>3. Empowering Diversity</h3>
-              <p>"Celebrating cultures by making global education accessible to Urdu speakers."</p>
-            </div>
-          </section>
+        <div className="what-sets-us-apart">
+          <h2>What Sets Us Apart?</h2>
+          <div className="apart-item">
+            <h3>1. Focused on Educational Impact</h3>
+            <p>We don’t just translate—we localize learning for Urdu-speaking students.</p>
+          </div>
+          <div className="apart-item">
+            <h3>2. Powered by Technology</h3>
+            <p>Using large language models to ensure quality and context-aware translations.</p>
+          </div>
+          <div className="apart-item">
+            <h3>3. Cultural Sensitivity</h3>
+            <p>We respect and integrate cultural nuances to improve student connection.</p>
+          </div>
         </div>
 
-        {/* Voices Section */}
         <div className="voices-container">
-          <h2>Voices Behind the Vision</h2>
+          <h2>Voices of Learners</h2>
           <div className="quotes-section">
             <div className="quote-item">
-              <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">Mizna Rauf</div>
+              <img
+                className="profile-picture"
+                src="https://via.placeholder.com/100"
+                alt="User"
+              />
+              <p>
+                “I never thought I’d understand such complex topics until I found content in Urdu. Thank you!”
+              </p>
             </div>
-
             <div className="quote-item">
-              <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">Faiza Nazakat</div>
+              <img
+                className="profile-picture"
+                src="https://via.placeholder.com/100"
+                alt="User"
+              />
+              <p>
+                “This has truly changed the way I learn. No more struggling with unfamiliar terms.”
+              </p>
             </div>
-
-            <div className="quote-item">
-              <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">Ifrah Muzahir</div>
-            </div>
-
-            <div className="quote-item">
-              <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">Yasir Baig</div>
-            </div>
-          </div>
-
-          {/* "What Drives You?" Section with Form */}
-          <div className="education-section">
-            <h3>What Drives You?</h3>
-            <textarea
-              placeholder="What does education mean to you?"
-              className="education-textarea"
-              value={story}
-              onChange={(e) => setStory(e.target.value)} // Update the story as user types
-            ></textarea>
-            
-            {/* Submit button */}
-            <button className="submit-learner-story-btn" onClick={handleSubmit}>
-              Submit
-            </button>
-
-            
-            {/* Display success or error message */}
-            {message && <p className="message">{message}</p>}
           </div>
         </div>
-      </div>
 
+        <div className="education-section">
+          <h3>What Drives You?</h3>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="education-textarea"
+              placeholder="Tell us how this helped you..."
+              value={story}
+              onChange={(e) => setStory(e.target.value)}
+            />
+            <br />
+            <button className="submit-learner-story-btn" type="submit">
+              Submit
+            </button>
+          </form>
+          {message && <p style={{ color: 'green', marginTop: '10px' }}>{message}</p>}
+        </div>
+      </div>
       <LastContainer />
       <Footer />
     </div>

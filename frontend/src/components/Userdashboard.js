@@ -80,19 +80,19 @@ const Userdashboard = () => {
             <p>00</p>
           </div>
 
-          <div className="discussion-section">
+          <div className="usersdiscussion-section">
           <h3><i class="fa-solid fa-user-group"></i>&nbsp;   Your Discussions</h3>
-            <div className="discussion-list">
-              <div className="discussion">
-                <div className="discussion-title">Discussion 01</div>
+            <div className="usersdiscussion-list">
+              <div className="usersdiscussion">
+                <div className="usersdiscussion-title">Discussion 01</div>
                 <div className="lecture-name">[Video Lecture's Name]</div>
               </div>
-              <div className="discussion">
-                <div className="discussion-title">Discussion 02</div>
+              <div className="usersdiscussion">
+                <div className="usersdiscussion-title">Discussion 02</div>
                 <div className="lecture-name">[Video Lecture's Name]</div>
               </div>
-              <div className="discussion">
-                <div className="discussion-title">Discussion 03</div>
+              <div className="usersdiscussion">
+                <div className="usersdiscussion-title">Discussion 03</div>
                 <div className="lecture-name">[Video Lecture's Name]</div>
               </div>
             </div>

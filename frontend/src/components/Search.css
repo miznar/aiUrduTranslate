@@ -117,7 +117,7 @@
 
 .blog-section h4 {
     font-size: 15px;
-    padding-right: 440px;
+    /* padding-right: 440px; */
     margin-top: 50px;
     position: relative;
     display: inline-block;
@@ -151,7 +151,7 @@
     color: #000000;
     margin-bottom: 10px;
     font-weight: bold;
-    padding-right: 290px;
+    /* padding-right: 290px; */
 }
 
 .blog-item h2-1 {
@@ -159,14 +159,14 @@
     color: #000000;
     margin-bottom: 10px;
     font-weight: bold;
-    padding-right: 350px;
+    /* padding-right: 350px; */
 }
 
 .blog-item p {
     font-size: 14px;
     color: #000000;
     line-height: 1.6;
-    padding-right: 45px;
+    /* padding-right: 45px; */
     font-style: italic;
 }
 
@@ -174,34 +174,40 @@
     font-size: 14px;
     color: #000000;
     line-height: 1.6;
-    padding-right: 0px;
+    /* padding-right: 0px; */
 }
 .blog-item p2 {
     font-size: 14px;
     color: #000000;
     line-height: 1.6;
     padding-right: 20px;
-    padding-left: 100px;
+    /* padding-left: 100px; */
 }
 .blog-item p3 {
     font-size: 14px;
     color: #000000;
     line-height: 1.6;
-    padding-right: 20px;
-    padding-left: 135px;
+    /* padding-right: 20px;
+    padding-left: 135px; */
 }
 
 hr {
     border: none;
     border-top: 1px solid #8F7131;
-    margin: 10px 0;
-    margin-left: 130px;
-    width: 600px;
+    /* margin: 10px 0; */
+    margin-left: 90px;     
+    width: 110px;
 }
 
 .separator {
-    margin-top: 10px;
+    margin-top: 10px; 
     margin-bottom: 20px;
     border: none;
     border-top: 1px solid #8F7131;  /* Updated color */
+}
+.blogsaligned-content {
+    width: 57%;
+     margin-left: 110px; 
+    margin-right: auto;
+    text-align: left;         
 }

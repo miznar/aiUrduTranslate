@@ -29,12 +29,6 @@ const BlueHeader = () => {
               <Link to="/about" style={{ fontWeight: 'bold' }}>About us</Link>
             </li>
             <li>
-              <Link to="/signup" style={{ fontWeight: 'bold' }}>TranslateAI Login</Link>
-            </li>
-            <li>
-              <Link to="/Userdashboard" style={{ fontWeight: 'bold' }}>User Dashboard</Link>
-            </li>
-            <li>
               <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
             </li>
           </ul>

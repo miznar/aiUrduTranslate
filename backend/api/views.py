@@ -548,6 +548,14 @@ def postLearnerStory(request):
     return JsonResponse({'error': 'Only POST method is allowed.'}, status=405)
 
 
+
+
+
+
+
+
+
+
 from rest_framework import generics
 from .models import UserQuery
 from .serializers import UserQuerySerializer
@@ -606,7 +614,7 @@ def get_search_content(request):
     })
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import UploadedVideoLecture
+from .models import UploadedVideoLecture, Discussion
 
 @csrf_exempt
 def get_videos_by_subject(request, subject_name):
@@ -621,6 +629,7 @@ def get_videos_by_subject(request, subject_name):
         response_data = []
         for video in videos:
             response_data.append({
+                "videoId": str(video.videoId),
                 "title": video.videoTitle,
                 "src": video.video_file.url,
                 "category": video.subject.name,
@@ -633,3 +642,199 @@ def get_videos_by_subject(request, subject_name):
         return JsonResponse({"error": "Subject not found"}, status=404)
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+    
+    
+@csrf_exempt
+def get_translations_by_video(request, video_id):
+    try:
+        video = UploadedVideoLecture.objects.get(videoId=video_id)
+        translations = LectureTranslation.objects.filter(video=video)
+
+        response_data = [
+            {
+                "translationId": str(t.translationId),
+                "sourceText": t.sourceText,
+                "translatedText": t.translatedText,
+                "status": t.status,
+            }
+            for t in translations
+        ]
+
+        return JsonResponse(response_data, safe=False)
+
+    except UploadedVideoLecture.DoesNotExist:
+        return JsonResponse({"error": "Video not found"}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+
+
+# @csrf_exempt
+# def create_discussion(request):
+#     if request.method == 'POST':
+#         try:
+#             data = json.loads(request.body)
+            
+#             email = data.get('email')
+#             video_id = data.get('videoId')
+#             body = data.get('body')
+
+#             if not email or not video_id or not body:
+#                 return JsonResponse({'error': 'Email, videoId, and body are required.'}, status=400)
+
+#             try:
+#                 user_profile = ufUserProfile.objects.get(email=email)
+#             except ufUserProfile.DoesNotExist:
+#                 return JsonResponse({'error': 'User profile not found.'}, status=404)
+
+#             try:
+#                 video = UploadedVideoLecture.objects.get(videoId=video_id)
+#             except UploadedVideoLecture.DoesNotExist:
+#                 return JsonResponse({'error': 'Video not found.'}, status=404)
+
+#             discussion = Discussion.objects.create(
+#                 author=user_profile,
+#                 video=video,
+#                 body=body
+#             )
+
+#             return JsonResponse({
+#                 'message': 'Discussion created successfully.',
+#                 'discussionId': str(discussion.discussionId)
+#             }, status=201)
+
+#         except json.JSONDecodeError:
+#             return JsonResponse({'error': 'Invalid JSON.'}, status=400)
+#         except Exception as e:
+#             return JsonResponse({'error': f'Unexpected error: {str(e)}'}, status=500)
+
+#     return JsonResponse({'error': 'Only POST method is allowed.'}, status=405)
+
+
+# this one
+# @api_view(['POST'])
+# @permission_classes([AllowAny])  # Allow anyone, as long as we use email for user lookup
+# @csrf_exempt
+# def create_discussion(request):
+#     data = json.loads(request.body)
+#     email = data.get('email')
+#     body = data.get('body')
+#     video_id = data.get('video_id')
+
+#     if not email or not body or not video_id:
+#         return JsonResponse({'error': 'Missing required fields'}, status=400)
+
+#     try:
+#         user = ufUserProfile.objects.get(email=email)
+#     except ufUserProfile.DoesNotExist:
+#         return JsonResponse({'error': 'User with this email not found'}, status=404)
+
+#     try:
+#         video = UploadedVideoLecture.objects.get(pk=video_id)
+#     except UploadedVideoLecture.DoesNotExist:
+#         return JsonResponse({'error': 'Video not found'}, status=404)
+
+#     discussion = Discussion.objects.create(
+#         author=user,
+#         video=video,
+#         body=body
+#     )
+
+#     serializer = DiscussionSerializer(discussion)
+#     return JsonResponse(serializer.data, status=201)
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+
+@csrf_exempt
+def create_discussion(request):
+    if request.method == 'OPTIONS':
+        return JsonResponse({'message': 'CORS preflight successful'}, status=200)
+
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            print("Received data:", data) 
+            email = data.get('email')
+            body = data.get('body')
+            video_id = data.get('video_id')
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON.'}, status=400)
+
+        if not email or not body or not video_id:
+            return JsonResponse({'error': 'Missing required fields'}, status=400)
+
+        try:
+            user = ufUserProfile.objects.get(email=email)
+        except ufUserProfile.DoesNotExist:
+            return JsonResponse({'error': 'User with this email not found'}, status=404)
+
+        try:
+            video = UploadedVideoLecture.objects.get(pk=video_id)
+        except UploadedVideoLecture.DoesNotExist:
+            return JsonResponse({'error': 'Video not found'}, status=404)
+
+        discussion = Discussion.objects.create(
+            author=user,
+            video=video,
+            body=body
+        )
+
+        serializer = DiscussionSerializer(discussion)
+        return JsonResponse(serializer.data, status=201)
+
+    return JsonResponse({'error': 'Only POST method is allowed.'}, status=405)
+
+
+
+
+
+
+
+
+
+
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from .models import Discussion
+from .serializers import DiscussionSerializer
+
+# @api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+# def create_discussion(request):
+#     serializer = DiscussionSerializer(data=request.data)
+#     if serializer.is_valid():
+#         serializer.save(author=request.user)
+#         return Response(serializer.data, status=201)
+#     return Response(serializer.errors, status=400)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def like_discussion(request, discussion_id):
+    try:
+        discussion = Discussion.objects.get(pk=discussion_id)
+    except Discussion.DoesNotExist:
+        return Response({'error': 'Discussion not found'}, status=404)
+
+    user = request.user
+    if user in discussion.likes.all():
+        discussion.likes.remove(user)
+    else:
+        discussion.likes.add(user)
+
+    return Response({'likes': discussion.total_likes()}, status=200)
+
+
+@api_view(['GET'])
+@permission_classes([])  
+def get_discussions(request):
+    video_id = request.query_params.get('video_id')
+    if video_id:
+        discussions = Discussion.objects.filter(video_id=video_id).order_by('-created_at')
+    else:
+        discussions = Discussion.objects.all().order_by('-created_at')
+    serializer = DiscussionSerializer(discussions, many=True)
+    return Response(serializer.data, status=200)

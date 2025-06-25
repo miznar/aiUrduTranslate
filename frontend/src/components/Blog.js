@@ -2,38 +2,47 @@ import './Blog.css';
 import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
+import { useLocation } from 'react-router-dom';
 
 const Blog = () => {
+    const location = useLocation();
+    const {
+        title = 'Technology Insights',
+        oneLiner = "How Large Language Models Are Revolutionizing Machine Translation",
+        content = `Lorem ipsum dolor sit amet consectetur. Eget cras risus ut consequat
+        neque. Malesuada tincidunt feugiat in arcu laoreet. Vel morbi pharetra
+        pharetra rutrum. Nulla adipiscing consectetur lectus condimentum
+        gravida. Id orci porta imperdiet id vivamus cras. Pellentesque viverra
+        a ante tortor. Mauris suscipit sed etiam eu id nunc egestas turpis.`,
+        date = 'Date not available'
+    } = location.state || {};
+
     return (
         <div>
             <Header />
             <div className="blog-container">
                 <div className="blog-header">
                     <p className="blog-category">Blog</p>
-                    <h1 className="blog-title">‘Technology Insights’</h1>
+                    <h1 className="blog-title">{`‘${title}’`}</h1>
                 </div>
+
                 {/* Picture section */}
                 <div className="blog-image-section">
                     <div className="blog-image-placeholder"></div>
                     <h5>Picture Caption</h5>
                     <hr />
                     <div className="blog-meta">
-                        <span>date</span>
+                        <span>{date}</span>
                         <span className="blog-share">Share</span>
                     </div>
-                    <div className= "highlight-text">
-                    "How Large Language Models Are Revolutionizing <br/> Machine Translation"
+                    <div className="highlight-text">
+                        {`"${oneLiner}"`}
                     </div>
                 </div>
+
                 {/* Text */}
                 <div className="blog-content">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur. Eget cras risus ut consequat
-                        neque. <br /> Malesuada tincidunt feugiat in arcu laoreet. Vel morbi pharetra
-                        pharetra rutrum. <br /> Nulla adipiscing consectetur lectus condimentum
-                        gravida. Id orci porta imperdiet <br /> id vivamus cras. Pellentesque viverra
-                        a ante tortor. Mauris suscipit sed etiam eu <br /> id nunc egestas turpis.
-                    </p>
+                    <p>{content}</p>
                 </div>
 
                 <div className="read-next">
@@ -52,7 +61,7 @@ const Blog = () => {
                 </div>
             </div>
             <LastContainer />
-            < Footer />
+            <Footer />
         </div>
     );
 };

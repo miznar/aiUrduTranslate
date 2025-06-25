@@ -47,3 +47,19 @@ class LearnerStoriesSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = LearnerStories
         fields = ['story', 'user']
+
+# serializers.py
+
+from rest_framework import serializers
+from .models import Discussion, ufUserProfile
+
+class DiscussionSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()  # Converts the author (user) to a readable string (username)
+    likes = serializers.SerializerMethodField()  # Custom field to get the number of likes
+
+    class Meta:
+        model = Discussion
+        fields = ['discussionId', 'author', 'video', 'body', 'likes', 'created_at']
+
+    def get_likes(self, obj):
+        return obj.total_likes()  # Using the total_likes method from the model to count likes
