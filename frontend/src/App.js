@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Home from './components/Home';
 import About from './components/About';
 import Search from './components/Search';
@@ -18,44 +19,11 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
-import Unregister_User from './components/unregister_User';
-import ViewTranslation from './components/ViewTranslation';
+import UnregisterUser from './components/unregister_User';
+import LectureViewTranslation from './components/LectureTranslation';
 import Subjects from './components/Subjects';
-// function App() {
-//   return (
-//     <div className="App">
-//       <Routes>
-//           <Route path="" element={<Home />}/>
-//           <Route path="/about" element={<About />}/>
-//           <Route path="/search" element={<Search />} />
-//           <Route path="/blog" element={<Blog />} />
-//           <Route path="/signup" element={<Signup />} />
-//           <Route path="/signup2" element={<Signup2 />} />
-//           <Route path="/login" element={<Login />} />
-//           <Route path="/Userdashboard" element={<Userdashboard />} />
-//           <Route path="/AccountSetting" element={<AccountSetting/>} />
-//           <Route path="/Contact" element={<Contact />} />
-//           <Route path="/query" element={<Query />} />
-//           <Route path="/LearnerHeader" element={<LearnerHeader/>} />
-//           <Route path="/uploadvideo" element={<UploadVideo />} />
-//           <Route path="/faq" element={<FAQ />} />
-//           <Route path="/footer2" element={<Footer2 />} />
-//           <Route path="/privacypage" element={<PrivacyPage />} />
-//           <Route path="/service" element={<Services />} />
-//           <Route path="/completeUser" element={<CompleteProfile />} />
-//           <Route path="/unregisterUser" element={<Unregister_User />} />
-//           <Route path="/viewtranslation" element={<ViewTranslation />} />
-//           <Route path="/subjects" element={<Subjects />} />
-//         </Routes>
-//     </div>
-// // import ViewTranslation from './components/ViewTranslation';
-// // eslint-disable-next-line 
-// import UnregisterUser from './components/unregister_User';
-// import LectureViewTranslation from './components/LectureTranslation';
-// import Subjects from './components/SubjectsPage';
-// import { GoogleOAuthProvider } from '@react-oauth/google';
-// import CornerNavigation from "./components/CornerNavigation";
-// import './App.css';
+import CornerNavHeader from './components/CornerNavHeader';
+import CornerNavigation from './components/CornerNavigation';
 
 function App() {
   return (
@@ -87,11 +55,12 @@ function App() {
             <Route path="/view-translation" element={<LectureViewTranslation />} />
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/corner-navigation" element={<CornerNavigation />} />
+            <Route path="/corner-nav-navigation" element={<CornerNavHeader />} />
+            <></>
           </Routes>
         </div>
   
     </GoogleOAuthProvider>
   );
 }
-
 export default App;
