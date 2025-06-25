@@ -32,19 +32,11 @@ const Home = () => {
 
       <section className="hero-buttons">
         <div className="button-row">
-<<<<<<< HEAD
           <Link to="/subjects" className="custom-link" >
           <button className="custom-button">
             <span className="button-text">Subjects</span>
             <span className="arrow">→</span>
           </button>
-=======
-        <Link to="/subjects" className="custom-link">
-            <button className="custom-button">
-              <span className="button-text">Subjects</span>
-              <span className="arrow">→</span>
-            </button>
->>>>>>> 838d891d48edd59f9cf4bc8805a873302a03a1b8
           </Link>
           <Link to="/uploadvideo" className="custom-link">
             <button className="custom-button">

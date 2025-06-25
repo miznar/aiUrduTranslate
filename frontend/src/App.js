@@ -18,46 +18,44 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
-<<<<<<< HEAD
 import Unregister_User from './components/unregister_User';
 import ViewTranslation from './components/ViewTranslation';
 import Subjects from './components/Subjects';
-function App() {
-  return (
-    <div className="App">
-      <Routes>
-          <Route path="" element={<Home />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/search" element={<Search />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signup2" element={<Signup2 />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Userdashboard" element={<Userdashboard />} />
-          <Route path="/AccountSetting" element={<AccountSetting/>} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/query" element={<Query />} />
-          <Route path="/LearnerHeader" element={<LearnerHeader/>} />
-          <Route path="/uploadvideo" element={<UploadVideo />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/footer2" element={<Footer2 />} />
-          <Route path="/privacypage" element={<PrivacyPage />} />
-          <Route path="/service" element={<Services />} />
-          <Route path="/completeUser" element={<CompleteProfile />} />
-          <Route path="/unregisterUser" element={<Unregister_User />} />
-          <Route path="/viewtranslation" element={<ViewTranslation />} />
-          <Route path="/subjects" element={<Subjects />} />
-        </Routes>
-    </div>
-=======
-// import ViewTranslation from './components/ViewTranslation';
-// eslint-disable-next-line 
-import UnregisterUser from './components/unregister_User';
-import LectureViewTranslation from './components/LectureTranslation';
-import Subjects from './components/SubjectsPage';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import CornerNavigation from "./components/CornerNavigation";
-import './App.css';
+// function App() {
+//   return (
+//     <div className="App">
+//       <Routes>
+//           <Route path="" element={<Home />}/>
+//           <Route path="/about" element={<About />}/>
+//           <Route path="/search" element={<Search />} />
+//           <Route path="/blog" element={<Blog />} />
+//           <Route path="/signup" element={<Signup />} />
+//           <Route path="/signup2" element={<Signup2 />} />
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/Userdashboard" element={<Userdashboard />} />
+//           <Route path="/AccountSetting" element={<AccountSetting/>} />
+//           <Route path="/Contact" element={<Contact />} />
+//           <Route path="/query" element={<Query />} />
+//           <Route path="/LearnerHeader" element={<LearnerHeader/>} />
+//           <Route path="/uploadvideo" element={<UploadVideo />} />
+//           <Route path="/faq" element={<FAQ />} />
+//           <Route path="/footer2" element={<Footer2 />} />
+//           <Route path="/privacypage" element={<PrivacyPage />} />
+//           <Route path="/service" element={<Services />} />
+//           <Route path="/completeUser" element={<CompleteProfile />} />
+//           <Route path="/unregisterUser" element={<Unregister_User />} />
+//           <Route path="/viewtranslation" element={<ViewTranslation />} />
+//           <Route path="/subjects" element={<Subjects />} />
+//         </Routes>
+//     </div>
+// // import ViewTranslation from './components/ViewTranslation';
+// // eslint-disable-next-line 
+// import UnregisterUser from './components/unregister_User';
+// import LectureViewTranslation from './components/LectureTranslation';
+// import Subjects from './components/SubjectsPage';
+// import { GoogleOAuthProvider } from '@react-oauth/google';
+// import CornerNavigation from "./components/CornerNavigation";
+// import './App.css';
 
 function App() {
   return (
@@ -93,7 +91,6 @@ function App() {
         </div>
   
     </GoogleOAuthProvider>
->>>>>>> 838d891d48edd59f9cf4bc8805a873302a03a1b8
   );
 }
 
