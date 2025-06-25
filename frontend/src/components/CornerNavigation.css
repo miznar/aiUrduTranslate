@@ -1,0 +1,67 @@
+.corner-navigation-page {
+    background-color: black; 
+    height: 100vh;  
+    width: 100%;  /* Prevents width overflow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: flex-start; /* Adjust to prevent centering header */
+    overflow-x: hidden;  /* Stops horizontal scrolling */
+}
+
+.corner-nav-header {
+    width: 100%;  /* Full width without causing overflow */
+    max-width: 100vw;  /* Prevents stretching beyond the viewport */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* Unique Button Container */
+/* Updated Button Container to Align Left */
+.corner-nav-button-container {
+    display: flex;
+    justify-content: flex-start;  /* Aligns items to the left */
+    align-items: center;
+    margin-top: 100px; /* Space below header */
+    gap: 40px; /* Space between buttons */
+    width: 100%; /* Ensures full width */
+    padding-left: 50px; /* Adjust as needed for spacing */
+}
+
+/* Unique Circle Buttons */
+.corner-nav-button {
+    width: 180px;
+    height: 180px;
+    background-color: #8F7131; /* Mustard color */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.corner-nav-button:hover {
+    transform: scale(1.1);
+    background-color: #755C29; /* Darker mustard on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .corner-nav-button-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .corner-nav-button {
+        width: 120px;
+        height: 120px;
+        font-size: 18px;
+    }
+}
+

@@ -1,120 +1,143 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from './creamHeader';
 import Footer2 from './Footer2';
 import './UploadVideo.css';
+import axios from './axios';
+import ProcessingPopup from './ProcessingPopup';
+import { useNavigate } from 'react-router-dom';
 
 const UploadVideo = () => {
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [progress, setProgress] = useState(0);
-    const [transcript, setTranscript] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [transcript, setTranscript] = useState('');
+  const [isDragging, setIsDragging] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setSelectedFile(file);
-            setProgress(0);
-        }
+  // Handle file selection
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      setProgress(0);
+    }
+  };
+
+  // Handle file upload
+  const handleUpload = async () => {
+    if (!selectedFile) {
+      setErrorMessage('Please select a video file first!');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email');
+    formData.append('email', email); 
+    try {
+      setLoading(true);
+      const response = await axios.post('/generate-transcript/', formData, {
+        headers: { 'Authorization': `Token ${token}` },
+        onUploadProgress: (progressEvent) => {
+          setProgress(Math.round((progressEvent.loaded * 100) / progressEvent.total));
+        },
+      });
+      localStorage.setItem('transcriptData', JSON.stringify(response.data));
+      navigate('/view-translation');
+      setTranscript(response.data.transcript || 'No transcript available.');
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(`Upload failed: ${error.response?.data?.error || error.message}`);
+    } finally {
+      setLoading(false);
+      setProgress(0);
+    }
+  };
+
+  // useEffect for handling drag and drop events
+  useEffect(() => {
+    const handleDragOver = (event) => {
+      event.preventDefault();
+      setIsDragging(true);
     };
 
-    const handleDragOver = (event) => {
-        event.preventDefault();
+    const handleDragLeave = (event) => {
+      event.preventDefault();
+      setIsDragging(false);
     };
 
     const handleDrop = (event) => {
-        event.preventDefault();
-        const file = event.dataTransfer.files[0];
-        if (file) {
-            setSelectedFile(file);
-            setProgress(0);
-        }
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        setSelectedFile(file);
+        setProgress(0);
+      }
     };
 
-    const handleUpload = async () => {
-        if (selectedFile) {
-            const formData = new FormData();
-            formData.append('file', selectedFile);
+    window.addEventListener('dragover', handleDragOver);
+    window.addEventListener('dragleave', handleDragLeave);
+    window.addEventListener('drop', handleDrop);
 
-            try {
-                const response = await fetch('http://127.0.0.1:8000/upload/', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log("Response data:", data);  // Log the response data
-                    if (data.transcript) {
-                        setTranscript(data.transcript);
-                        alert('File uploaded and transcript generated successfully!');
-                    } else {
-                        alert('No transcript found. Please check the video file.');
-                    }
-                } else {
-                    alert('Failed to upload file. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error during upload:', error);
-                alert('An error occurred. Please try again.');
-            }
-        } else {
-            alert('Please select a file first!');
-        }
+    return () => {
+      window.removeEventListener('dragover', handleDragOver);
+      window.removeEventListener('dragleave', handleDragLeave);
+      window.removeEventListener('drop', handleDrop);
     };
+  }, []); // Empty dependency array ensures this effect runs only once on mount/unmount
 
-    return (
-        <div>
-            <Header />
-            <div className="upload-page">
-                <aside className="sidebar">
-                    <ul>
-                        <li><a href="faq">FAQs</a></li>
-                        <li><a href="about">About Us</a></li>
-                    </ul>
-                </aside>
-                <main className="upload-content">
-                    <h1>Upload Video for Translation</h1>
-                    <p>Drag and Drop your file here, or click to upload</p>
-                    <input
-                        type="file"
-                        accept="video/mp4"
-                        style={{ display: 'none' }}
-                        id="file-upload"
-                        onChange={handleFileChange}
-                    />
-                    <label htmlFor="file-upload" className="upload-button">
-                        {selectedFile ? selectedFile.name : 'Upload Video'}
-                    </label>
-                    <p><small>Supported formats: MP4 | Max size: 10 MB.</small></p>
-                    <div
-                        className="upload-box"
-                        onDragOver={handleDragOver}
-                        onDrop={handleDrop}
-                    >
-                        <p>{selectedFile ? selectedFile.name : 'Drag or Drop your video here'}</p>
-                    </div>
-                    <div className="progress-bar">
-                        <div
-                            className="progress"
-                            style={{ width: `${progress}%` }}
-                        ></div>
-                    </div>
-                    <button
-                        className="translate-button"
-                        onClick={handleUpload}
-                    >
-                        Translate Now
-                    </button>
-                    {transcript && (
-                        <div className="transcript-container">
-                            <h2>Generated Transcript:</h2>
-                            <p>{transcript}</p>
-                        </div>
-                    )}
-                </main>
+  return (
+    <div>
+      <Header />
+      <div className="upload-page">
+        <aside className="upload-sidebar">
+          <ul>
+            <li><Link to="/faq">FAQs</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+          </ul>
+        </aside>
+        <main className="upload-content">
+          <h1>Upload Video for Translation</h1>
+          <p>Drag and Drop your file here, or click to upload</p>
+          <input
+            type="file"
+            accept="video/mp4"
+            style={{ display: 'none' }}
+            id="file-upload"
+            onChange={handleFileChange}
+          />
+          <label htmlFor="file-upload" className="upload-button">
+            {selectedFile ? selectedFile.name : 'Upload Video'}
+          </label>
+          <p><small>Supported formats: MP4 | Max size: 10 MB.</small></p>
+          <div
+            className={`upload-box ${isDragging ? 'dragging' : ''}`}
+          >
+            <p>{selectedFile ? selectedFile.name : 'Drag or Drop your video here'}</p>
+          </div>
+          {progress > 0 && (
+            <div className="progress-bar">
+              <div
+                className="progress"
+                style={{ width: `${progress}%` }}
+              ></div>
             </div>
-            <Footer2 />
-        </div>
-    );
+          )}
+          <button className="translate-button" onClick={handleUpload} disabled={loading}>
+            {loading ? 'Processing...' : 'Translate Now'}
+          </button>
+        </main>
+      </div>
+
+      {/* 🟡 Show popup while loading */}
+      {loading && <ProcessingPopup />}
+
+      <Footer2 />
+    </div>
+  );
 };
 
 export default UploadVideo;

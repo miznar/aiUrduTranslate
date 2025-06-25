@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans&display=swap');
+
 .contact-container {
   font-family: 'Arial', sans-serif;
   color: #616060;
@@ -14,39 +17,48 @@
 }
 
 .contact-header h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 54px;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  font-family: 'Inria Serif', serif;
 }
 
 .contact-header h2 {
-  font-size: 24px;
+  font-size: 40px;
+  font-family: 'Instrument Sans', sans-serif;
   margin-bottom: 3px;
-  margin-right: 230px;
+  margin-right: 620px;
+  white-space: nowrap;
+
 }
 
 .contact-header p {
-  font-size: 16px;
+  font-size: 32px;
   margin-top: 1px;
   color: #000000;
+  font-family: 'Instrument Sans', sans-serif;
   font-weight: bold;
 }
 
 .contact-header h6 {
-  font-size: 16px;
+  font-size: 32px;
   margin-top: -5px;
-  color: #252525;
-  font-weight: 200;
+  font-weight: 200;  
+  font-family: 'Instrument Sans', sans-serif;
+  color: #1E1E1E;
 }
 
 .contact-button {
   background-color: #143950;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 15px 20px;
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: -55px;
+  margin-top: 20px;
+  font-family: 'Instrument Sans', sans-serif;
   margin-right: 10px;
 }
 
@@ -57,83 +69,115 @@
 /* Connect with Team Section */
 .connect-team {
   background-color: #fff;
+  font-family: 'Instrument Sans', sans-serif;
   padding: 70px;
   width: 52%;
-  /* Adjust width to ensure enough space for text */
   margin-left: 300px;
+  text-align: center;
+  box-sizing: border-box; /* Ensures padding doesn't cause overflow */
 }
 
 .team-header {
   text-align: center;
   margin-top: -70px;
+  font-family: 'Instrument Sans', sans-serif;
   margin-right: 10px;
+  max-width: 100%; /* Prevent overflow */
+  overflow: hidden; /* Hide overflowed content */
 }
 
 .team-header h2 {
-  margin-right: 20px;
+  font-size: 40px;
+  font-family: 'Instrument Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%; /* Prevent overflow */
+}
+
+.team-header p {
+  font-size: 26px;
+  font-family: 'Instrument Sans', sans-serif;
+  text-align: center;
+  max-width: 100%; /* Prevent overflow */
 }
 
 .contact-options {
   display: flex;
-  justify-content: space-around;
+  align-items: flex-start; /* Align items to the top */
+
+  justify-content: space-between;
   margin-top: 20px;
+  font-family: 'Instrument Sans', sans-serif;
+  width: 52%;
+  margin-left: 300px; /* Same as connect-team */
+  text-align: left; /* ✅ Left-align text inside */
+
 }
 
-.contact-option {
-  display: flex;
-  align-items: flex-start;
-  width: 45%;
-  margin-top: -10px;
-}
-
-.bullet {
-  font-size: 20px;
-  color: #143950;
-  margin-right: 10px;
-  margin-left: 270px;
-  margin-top: 40px;
-}
-
-/* for Phone */
-.contact-option h3 {
-  font-size: 18px;
-  margin-bottom: -15px;
-  margin-right: 160px;
-}
-
-.contact-option p {
-  font-size: 14px;
-  color: #242323;
-  font-weight: 400;
-}
-
+.contact-option,
 .contact-option2 {
   display: flex;
   align-items: flex-start;
-  width: 45%;
-  margin-top: -10px;
+  width: 48%;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Instrument Sans', sans-serif;
+  color: #000000;
+  flex-direction: column; /* ✅ Stack content top-down */
+  align-items: flex-start; /* ✅ Align content to the left */
+  text-align: left; /* Redundant but reinforces left alignment */
+
 }
 
-/* for email */
+.bullet {
+  font-size: 50px;
+  color: #8F7131;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+/* for Phone */
+.contact-option h3,
 .contact-option2 h3 {
-  font-size: 18px;
-  margin-bottom: -15px;
-  margin-right: 165px;
+  margin-bottom: -5px;
+  font-size: 30px;
+  font-weight: bolder;
+  font-family: 'Instrument Sans', sans-serif;
+  margin-right: 10px;
+}
+
+.contact-option p,
+.contact-option2 p {
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Instrument Sans', sans-serif;
+  
+}
+
+/* Divider */
+.mustard-divider {
+  border: none;
+  height: 1px;
+  background-color: #8F7131;
+  width: 100%;
+  margin: 40px auto;
+  border-radius: 2px;
 }
 
 /* FAQ Section */
 .faq-section {
   text-align: left;
   padding: 20px;
+  font-family: 'Instrument Sans', sans-serif;
   margin-left: 280px;
   margin-right: 300px;
 }
 
 .faq-section h3 {
-  font-size: 16px;
+  font-size: 32px;
+  font-weight: 500;
   color: #242424;
   margin-bottom: 20px;
-  font-weight: 200;
 }
 
 .faq-highlight {
@@ -141,18 +185,24 @@
 }
 
 .faq-heading {
-  font-size: 30px;
+  font-size: 36px;
+  font-weight: bolder;
   color: #000000;
+  margin-bottom: 50px;
+
 }
 
 .faq-button {
-  background-color: #b68d40;
+  background-color: #8F7131;
   color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
+  border-radius: 20px;
+  padding: 15px 20px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .faq-button:hover {

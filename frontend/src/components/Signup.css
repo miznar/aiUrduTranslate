@@ -1,11 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* Container Styles */
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Instrument Sans', sans-serif;
+    max-width: 90%;
+    margin: auto;
+    
+}
+
+/* Title */
+.signup-title {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input Form */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.signup-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    background-color: #E7E7DF;  /* Updated background */
+    border: 1px solid #352607;  /* Added outline */
+    border: 1px solid #ccc;
+    border-radius: 15px;  /* Optional: Rounded edges for a cleaner look */
+    font-size: 16px;
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+/* Button */
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #002a50;
+    color: #E7E7DF;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+.signup-button:hover {
+    background-color: #001f3d;
+}
+
+/* Login Section */
+.signup-signup {
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.signup-signup a {
+    color: #002a50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-signup a:hover {
+    text-decoration: underline;
+}
+
+/* Divider */
+.signup-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.divider-line {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #8F7131;
+    margin: 0 10px;
+}
+/* Alternate Options */
+.signup-alternate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Instrument Sans', sans-serif;
+
+}
+
+.signup-alternate button {
+    width: 100%;
+    height: 45px;  /* Ensures same height as input fields */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px; /* Matches input field text size */
+       color: #352607; /* Match this to the text color of inputs */
+    font-weight: 600; /* Optional: Make text more readable */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align text and icon to the left */
+    background-color: #E7E7DF;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Instrument Sans', sans-serif;
+    padding-left: 15px; /* Ensures spacing from the left */
+}
+
+/* Adjust icon size and spacing */
+.signup-google .icon, 
+.signup-microsoft .icon {
+    width: 20px;  /* Larger icon size for better visibility */
+    height: 20px;
+    margin-right: 12px; /* Adds space between icon and text */
+    background-color: transparent; /* Ensures no black box */
+    border-radius: 50%; /* Ensures circular shape */
+    object-fit: contain; /* Prevents unwanted background */
+}
+
+/* Hover effect */
+.signup-alternate button:hover {
+    background-color: #D9D8C6;
+}
+
+
+/* Footer */
+.signup-footer {
+    margin-top: 50px;
+    font-size: 12px;
+    color: #777;
+}
+
+.signup-footer a {
+    color: #002a50;
+    text-decoration: none;
+}
+
+.signup-footer a:hover {
+    color: #001f3d;
+    
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .signup-title {
+        font-size: 30px;
+    }
+
+    .signup-form, .signup-alternate {
+        max-width: 300px;
+    }
+
+    .signup-button, .signup-input {
+        width: 100%;
+    }
+}
+
+
+
+/* Container Styles
 .signup-container {
     font-family: Arial, sans-serif;
     max-width: 600px;
     margin: 50px auto;
 }
 
-/* Title */
+ Title 
 .signup-title {
     font-size: 40px;
     font-weight: bold;
@@ -13,7 +198,7 @@
     text-align: center;
 }
 
-/* Input Form */
+ Input Form 
 .signup-form {
     display: flex;
     flex-direction: column;
@@ -45,7 +230,7 @@
     background-color: #001f3d;
 }
 
-/* Login Section */
+/* Login Section 
 .signup-login {
     margin: 15px 0;
     font-size: 14px;
@@ -61,7 +246,7 @@
     text-decoration: underline;
 }
 
-/* Divider */
+/* Divider 
 .signup-divider {
     display: flex;
     margin: 20px 0;
@@ -80,7 +265,7 @@
     align-items: center;
 }
 
-/* Alternate Options */
+/* Alternate Options 
 .signup-alternate button {
     width: 32%;
     padding: 12px;
@@ -116,7 +301,7 @@
     background-color: #fff;
 }
 
-/* Footer Links */
+/* Footer Links 
 .signup-footer {
     margin-top: 20px;
     font-size: 12px;
@@ -130,4 +315,4 @@
 
 .signup-footer a:hover {
     text-decoration: underline;
-}
+} */

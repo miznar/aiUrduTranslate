@@ -1,14 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import './Home.css';
 import Header from './creamHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
+import WelcomeBackPopup from './WelcomeBackPopup'; 
 
 const Home = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className= "main">
       <Header />
+      {showPopup && <WelcomeBackPopup onClose={handleClosePopup} />}
+
       <section className="hero-section">
         <h1>
           Breaking Language Barriers
@@ -24,11 +32,19 @@ const Home = () => {
 
       <section className="hero-buttons">
         <div className="button-row">
+<<<<<<< HEAD
           <Link to="/subjects" className="custom-link" >
           <button className="custom-button">
             <span className="button-text">Subjects</span>
             <span className="arrow">→</span>
           </button>
+=======
+        <Link to="/subjects" className="custom-link">
+            <button className="custom-button">
+              <span className="button-text">Subjects</span>
+              <span className="arrow">→</span>
+            </button>
+>>>>>>> 838d891d48edd59f9cf4bc8805a873302a03a1b8
           </Link>
           <Link to="/uploadvideo" className="custom-link">
             <button className="custom-button">
@@ -37,7 +53,7 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <Link to="/search" className="custom-link">
+        <Link to="/LectureViewTranslation" className="custom-link">
           <div className="button-row">
             <button className="custom-button">
               <span className="button-text">Explore All</span>

@@ -1,95 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap');
+
+/* CSS Variables */
+:root {
+    --bg-color: #E5E5D9;
+    --primary-color: #143950;
+    --primary-dark: #0f2c3b;
+    --accent-color: #8f7131;
+    --accent-dark: #725821;
+    --border-color: #ccc;
+    --font-color: #000;
+    --text-muted: #555;
+    --light-bg: #fff;
+}
+
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #E7E7DF;
+    font-family: 'Instrument Sans', sans-serif;
+    background-color: var(--bg-color);
     margin: 0;
+    flex-direction: column; 
     padding: 0;
 }
 
+/* Layout Container */
 .upload-page {
     display: flex;
-    height: 100vh;
+    flex-direction: row;
+    /* min-height: 100vh; */
+    justify-content: center; /* Centers both horizontally */
+    align-items: flex-start; /* Align items to the top */
+    width: 80%; /* Adjust this based on how much space you want */
+    min-height: 80vh; /* Ensures the layout has a minimum height */
 }
 
+
 /* Sidebar Styling */
-.sidebar {
-    width: 15%;
-    padding: 20px;
+.upload-sidebar {
+    width: 20%;
+    min-width: 180px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 100px;
+    box-sizing: border-box;
+    align-items: flex-start;
+
+    text-align: left;         /* explicitly left-aligns the text */
+    box-sizing: border-box;
+    position: relative;       /* make sure it's not absolute unless you want it to be */
+    margin-top: 100px;
 }
 
-.sidebar ul {
+.upload-sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;              /* ensures <ul> takes full width of sidebar */
 
-.sidebar li {
-    margin-bottom: 10px;
 }
-
-.sidebar a {
+.upload-sidebar a {
     text-decoration: none;
-    color: #000;
+    color: var(--font-color);
     font-weight: bold;
+    font-size: larger;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;        /* Space for bullet */
+    transition: all 0.3s ease; /* Smooth shift on hover */
 }
 
-.sidebar a:hover {
-    color: #8f7131;
+/* The bullet (• or ●) will appear on hover */
+.upload-sidebar a::before {
+    content: '●';              /* Rounder bullet */
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: transparent;        /* Hide bullet initially */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.upload-sidebar a:hover {
+    color: var(--accent-color);   /* Change text color */
+    padding-left: 40px;           /* Shift text slightly right */
+}
+
+.upload-sidebar a:hover::before {
+    color: #143950;               /* Show bullet on hover */
 }
 
 /* Main Content Styling */
 .upload-content {
-    width: 85%;
+    flex: 1;
+    width: 70%;
     padding: 30px;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    background-color: #E7E7DF;
+    justify-content: center;
+    min-height: 100vh; /* ensures it fills height properly */
+    box-sizing: border-box;
+    justify-content: flex-start;
+    min-height: auto;
+    justify-content: flex-start; /* Keeps content aligned at the top */
+    min-height: 90vh; /* Ensures the content fills the full height */
+    box-sizing: border-box;
 }
+
 
 .upload-content h1 {
     font-size: 24px;
-    color: #000;
-    margin-right: 300px;
-    text-align: center;
+    color: var(--font-color);
+    margin-bottom: 10px;
 }
 
 .upload-content p {
     font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
-    margin-right: 290px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
 }
 
-.upload-button {
-    padding: 10px 20px;
-    background-color: #143950;
-    color: #fff;
-    font-size: 16px;
+/* Buttons */
+.upload-button,
+.translate-button {
+    padding: 20px 20px;
+    font-size:20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     margin-bottom: 20px;
-    margin-right: 200px;
+    font-weight: bold;
+    color: var(--bg-color);
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease;
 }
 
 .upload-button:hover {
-    background-color: #143950;
+    background-color: var(--primary-dark);
 }
 
+.translate-button {
+    background-color: var(--accent-color);
+}
+
+.translate-button:hover {
+    background-color: var(--accent-dark);
+}
+
+.upload-button:focus,
+.translate-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Upload Box */
 .upload-box {
     width: 70%;
     height: 200px;
-    margin: 20px auto;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
+    margin: 20px 0;
+    border: 2px dashed var(--border-color);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    border-radius: 20px;
+    background-color: var(--light-bg);
 }
 
 .upload-box p {
@@ -97,44 +180,23 @@ body {
     font-size: 14px;
 }
 
+/* Progress Bar */
 .progress-bar {
     width: 70%;
     height: 10px;
-    background-color: #ffffff;
-    margin: 20px auto;
+    background-color: var(--light-bg);
+    margin: 20px 0;
     border-radius: 5px;
     overflow: hidden;
 }
 
 .progress {
-    width: 50%; /* Adjust this width dynamically for progress */
+    width: 50%; /* You can update dynamically with JS */
     height: 100%;
     background-color: #00283c;
 }
 
-/* Translate Button */
-.translate-button {
-    padding: 10px 20px;
-    background-color: #8f7131;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.translate-button:hover {
-    background-color: #725821;
-}
-
-/* Loading message */
-.upload-content p {
-    font-size: 16px;
-    color: #555;
-    margin-top: 20px;
-}
-
-/* Transcript Styling */
+/* Transcript Box */
 .transcript-container {
     margin-top: 30px;
     padding: 20px;
@@ -155,160 +217,27 @@ body {
     color: #333;
     white-space: pre-wrap;
 }
-/* General Styling */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #E7E7DF;
-  margin: 0;
-  padding: 0;
-}
 
-.upload-page {
-  display: flex;
-  height: 100vh;
-}
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .upload-page {
+        flex-direction: column;
+    }
 
-/* Sidebar Styling */
-.sidebar {
-  width: 15%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-top: 100px;
-}
+    .upload-sidebar {
+        width: 100%;
+        margin-top: 20px;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+    .upload-content {
+        width: 100%;
+        padding: 20px;
+    }
 
-.sidebar li {
-  margin-bottom: 10px;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-}
-
-.sidebar a:hover {
-  color: #8f7131;
-}
-
-/* Main Content Styling */
-.upload-content {
-  width: 85%;
-  padding: 30px;
-  text-align: center;
-  background-color: #E7E7DF;
-}
-
-.upload-content h1 {
-  font-size: 24px;
-  color: #000;
-  margin-right: 300px;
-  text-align: center;
-}
-
-.upload-content p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 20px;
-  margin-right: 290px;
-}
-
-.upload-button {
-  padding: 10px 20px;
-  background-color: #143950;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  margin-right: 200px;
-}
-
-.upload-button:hover {
-  background-color: #143950;
-}
-
-.upload-box {
-  width: 70%;
-  height: 200px;
-  margin: 20px auto;
-  border: 2px dashed #ccc;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 20px;
-}
-
-.upload-box p {
-  color: #888;
-  font-size: 14px;
-}
-
-.progress-bar {
-  width: 70%;
-  height: 10px;
-  background-color: #ffffff;
-  margin: 20px auto;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress {
-  width: 50%; /* Adjust this width dynamically for progress */
-  height: 100%;
-  background-color: #00283c;
-}
-
-/* Translate Button */
-.translate-button {
-  padding: 10px 20px;
-  background-color: #8f7131;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.translate-button:hover {
-  background-color: #725821;
-}
-
-/* Loading message */
-.upload-content p {
-  font-size: 16px;
-  color: #555;
-  margin-top: 20px;
-}
-
-/* Transcript Styling */
-.transcript-container {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  max-width: 80%;
-  margin: 20px auto;
-}
-
-.transcript-container h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.transcript-container p {
-  font-size: 16px;
-  color: #333;
-  white-space: pre-wrap;
+    .upload-box,
+    .progress-bar {
+        width: 100%;
+    }
 }

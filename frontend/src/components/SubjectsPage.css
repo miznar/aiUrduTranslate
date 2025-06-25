@@ -1,0 +1,111 @@
+
+/* General Page Styling */
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #061F2F;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Page Title */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-left: 340px;
+    padding-right: 480px;
+}
+
+/* Subject Buttons */
+.subject-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    margin-right: 85px;
+}
+
+.subject-button {
+    background-color: #afaf9d;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.subject-button:hover {
+    background-color: #143950;
+    color: #afaf9d;
+}
+
+.subject-button.active {
+    background-color: #143950;
+    color: #afaf9d;
+}
+
+/* Video Container */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-right: 110px;
+}
+
+/* Video Player */
+.video-player {
+    width: 320px;  /* Fixing the width */
+    height: 180px;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Play Icon */
+.play-icon {
+    color: #afaf9d;
+    font-size: 30px;
+}
+
+/* Video Caption - Center Aligned */
+.video-caption {
+    color: #AFAF9D;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    width: 320px;  /* Same as video width */
+    margin-top: 5px;
+}
+
+/* Category (Finance) */
+.video-category {
+    font-style: italic;
+    font-size: 13px;
+    color: #afaf9d;
+    margin-top: 5px;
+}
+
+/* Divider - Same as Video Width */
+.divider {
+    width: 320px;  /* Same as video width */
+    border-bottom: 1px solid #afaf9d;
+    margin: 10px auto;
+}
+
+/* .video-caption:hover {
+    color: #000000;
+} */

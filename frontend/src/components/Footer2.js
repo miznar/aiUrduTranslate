@@ -14,14 +14,17 @@ const Footer2 = () => {
                 <Link to="/about">
                     <div>About</div>
                 </Link>
+                <div className="footer-logo-placeholder">
+                    <div className="footer-circle"></div>
+                </div>
                 <Link to="/search">
-                    <div>Blog</div>
+                    <div>Blogs</div>
                 </Link>
                 <Link to="/discussions">
                     <div>Discussions</div>
                 </Link>
                 <Link to="/contact">
-                    <div>Contact-us</div>
+                    <div>Contact</div>
                 </Link>
             </footer>
         </div>

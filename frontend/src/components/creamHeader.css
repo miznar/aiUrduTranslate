@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #E7E7DF;
+  background-color: #E5E5D9;
   color: black;
   position: relative;
 }
@@ -61,6 +61,7 @@
 .header-right {
   display: flex;
   align-items: center;
+  gap: 20px;  
 }
 
 .get-info-btn {
@@ -71,9 +72,10 @@
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 15px;
+  margin-right: 20px;
   transition: background-color 0.3s ease;
   font-family: 'Instrument Sans', sans-serif;
+  margin-right: 20px; 
 }
 
 .get-info-btn:hover {
@@ -83,10 +85,12 @@
 /* Icon Containers */
 .icons {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .icon {
+  width: 35px;  /* Set a fixed width */
+  height: 35px; /* Set the same height */
   background-color: #3d3c3c;
   color: white;
   padding: 10px;

@@ -2,8 +2,55 @@ import './About.css';
 import WhiteHeader from './whiteHeader';
 import Footer from './Footer';
 import LastContainer from './lastContainer';
+import { useState } from 'react';
 
 const About = () => {
+  const [story, setStory] = useState('');
+  const [message, setMessage] = useState('');
+  
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!story.trim()) {
+      setMessage('Please write your story before submitting.');
+      return;
+    }
+  
+    const token = localStorage.getItem('token');
+    const email = localStorage.getItem('email'); // ✅ Get email from localStorage
+  
+    // Create headers
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    if (token) {
+      headers['Authorization'] = `Token ${token}`;
+    }
+  
+    try {
+      const response = await fetch('http://127.0.0.1:8000/learner-story/', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          story,
+          email: email || null, // ✅ Include email in body
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setMessage('Your story has been successfully submitted!');
+        setStory('');
+      } else {
+        setMessage(`Error: ${data.error || 'Something went wrong'}`);
+      }
+    } catch (error) {
+      setMessage(`Error: ${error.message}`);
+    }
+  };
+  
   return (
     <div>
       <WhiteHeader />
@@ -15,9 +62,7 @@ const About = () => {
 
         {/* image boxes */}
         <div className="image-container">
-          <div className="image-box">
-            {/* <img src="/trans.png" alt="Translation" /> */}
-          </div>
+          <div className="image-box"></div>
           <div className="image-box"></div>
           <div className="image-box"></div>
         </div>
@@ -77,19 +122,13 @@ const About = () => {
           </section>
         </div>
 
+        {/* Voices Section */}
         <div className="voices-container">
           <h2>Voices Behind the Vision</h2>
           <div className="quotes-section">
-
             <div className="quote-item">
               <p>everybody’s one line quote</p>
-              <div className="picture-placeholder">
-                {/* <img
-                  src={"/mizna.jpeg"}
-                  alt="Everyone's Picture"
-                  className="profile-picture"
-                /> */}
-              Mizna Rauf</div>
+              <div className="picture-placeholder">Mizna Rauf</div>
             </div>
 
             <div className="quote-item">
@@ -108,17 +147,28 @@ const About = () => {
             </div>
           </div>
 
+          {/* "What Drives You?" Section with Form */}
           <div className="education-section">
             <h3>What Drives You?</h3>
             <textarea
               placeholder="What does education mean to you?"
               className="education-textarea"
+              value={story}
+              onChange={(e) => setStory(e.target.value)} // Update the story as user types
             ></textarea>
+            
+            {/* Submit button */}
+            <button className="submit-learner-story-btn" onClick={handleSubmit}>
+              Submit
+            </button>
+
+            
+            {/* Display success or error message */}
+            {message && <p className="message">{message}</p>}
           </div>
         </div>
-
-
       </div>
+
       <LastContainer />
       <Footer />
     </div>

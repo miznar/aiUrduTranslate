@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
     const handleButtonClick = () => {
-      navigate("/query");
+      navigate("/Userdashboard");
     };
 
   return (
@@ -20,16 +20,10 @@ const Header = () => {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/" style={{ fontWeight: 'bold' }}>How it Works</Link>
+            <Link to="/home" style={{ fontWeight: 'bold' }}>How it Works</Link>
           </li>
           <li>
             <Link to="/about" style={{ fontWeight: 'bold' }}>About us</Link>
-          </li>
-          <li>
-            <Link to="/signup" style={{ fontWeight: 'bold' }}>TranslateAI Login</Link>
-          </li>
-          <li>
-            <Link to="/Userdashboard" style={{ fontWeight: 'bold' }}>Userdashboard</Link>
           </li>
           <li>
             <a href="/contact" style={{ fontWeight: 'bold' }}>Contact Us</a>
@@ -41,19 +35,21 @@ const Header = () => {
       </nav>
       {/* Right Corner Icons */}
       <div className="header-right">
-        <button className="get-info-btn" onClick={handleButtonClick} >Get Info</button> 
-        <div className="icons">
+      <div className="icons">
+      <div className="icon menu-icon">
+            <Link to="/corner-navigation">
+              <i className="fa fa-bars"></i>
+            </Link>
+          </div>
           <div className="icon search-icon">
             <Link to="/search">
               <i className="fa fa-search"></i>
             </Link>
           </div>
-          <div className="icon menu-icon">
-            <Link to="/blog">
-              <i className="fa fa-bars"></i>
-            </Link>
-          </div>
+         
         </div>
+        <button className="get-info-btn" onClick={handleButtonClick} >Get Info</button> 
+       
       </div>
     </header>
   );

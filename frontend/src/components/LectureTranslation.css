@@ -1,0 +1,145 @@
+/* Updated background styling */
+/* Ensure full-page background color */
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #061F2F;
+  color: #AFAF9D;
+  margin: 0;
+  padding: 0;
+}
+
+.translation-view {
+  background-color: #061F2F;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  margin: 0px 50px;
+  color: #afaf9d;
+}
+
+.back-arrow {
+  cursor: pointer;
+  margin-right: 15px;
+  color: #afaf9d;
+  font-size: 24px;  /* Increase size */
+  font-weight: bold; /* Make it thicker */
+  stroke-width: 3px; /* If using SVG-based icons */
+}
+
+.uploaded-video-name {
+  text-align: left;
+  font-size: 16px;
+  color: #afaf9d;
+}
+
+/* Title Styling */
+.title {
+  text-align: left;
+  font-size: 22px;
+  margin: 20px 50px;
+  color: #AFAF9D;
+  margin-top: 50px;
+}
+
+.new-box-container, 
+.translation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2;
+  margin: 20px auto;
+  max-width: 90%;
+  flex-wrap: wrap;
+}
+
+.new-box-container .box,
+.column {
+  background-color: #061F2F;
+  border: 1px solid #AFAF9D;
+  padding: 15px;
+  width: 30%; /* Equal width for consistent layout */
+  text-align: left;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 1;
+  color: #AFAF9D;
+  max-height: 400px; /* Added scrolling boundary */
+  overflow-y: auto; /* Enable scrolling */
+}
+
+/* Scrollbar Styling */
+.new-box-container .box::-webkit-scrollbar,
+.translation-container .column::-webkit-scrollbar {
+  width: 8px;
+}
+
+.new-box-container .box::-webkit-scrollbar-thumb,
+.translation-container .column::-webkit-scrollbar-thumb {
+  background: #AFAF9D;
+  border-radius: 10px;
+}
+
+.new-box-container .box::-webkit-scrollbar-track,
+.translation-container .column::-webkit-scrollbar-track {
+  background: #061F2F;
+}
+
+.column h3 {
+  text-align: center;
+  font-size: 18px;
+  border-bottom: 1px solid #AFAF9D;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  color: #AFAF9D;
+}
+.separator-line {
+  background-color: #AFAF9D;
+  height: 0.2px;
+  width: 100%;
+  margin: 5px 0;
+}
+/* Video Container */
+.translation-video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 80%;
+  flex-direction: column;
+}
+
+/* Video Player Styling */
+.translation-video-player {
+  width: 100%;  /* Makes it responsive */
+  max-width: 800px;  /* Limits it to 800px */
+  height: auto;  /* Keeps correct aspect ratio */
+  background-color: #AFAF9D;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+
+/* Video Title */
+.video-title {
+  font-size: 18px;
+  text-align: center;
+  color: #AFAF9D;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-player {
+    max-width: 90%;
+  }
+}
