@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Home from './components/Home';
 import About from './components/About';
 import Search from './components/Search';
@@ -18,14 +19,11 @@ import Footer2 from './components/Footer2';
 import PrivacyPage from './components/PrivacyPage';
 import Services from './components/Services';
 import CompleteProfile from './components/complete_User';
-// import ViewTranslation from './components/ViewTranslation';
-// eslint-disable-next-line 
 import UnregisterUser from './components/unregister_User';
 import LectureViewTranslation from './components/LectureTranslation';
-import Subjects from './components/SubjectsPage';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import CornerNavigation from "./components/CornerNavigation";
-import './App.css';
+import Subjects from './components/Subjects';
+import CornerNavHeader from './components/CornerNavHeader';
+import CornerNavigation from './components/CornerNavigation';
 
 function App() {
   return (
@@ -57,11 +55,12 @@ function App() {
             <Route path="/view-translation" element={<LectureViewTranslation />} />
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/corner-navigation" element={<CornerNavigation />} />
+            <Route path="/corner-nav-navigation" element={<CornerNavHeader />} />
+            <></>
           </Routes>
         </div>
   
     </GoogleOAuthProvider>
   );
 }
-
 export default App;
